@@ -1,0 +1,4 @@
+.movieCards{
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -26,3 +26,8 @@
     flex-direction: column;
   }
 }
+/* .MovieCard2{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+} */

@@ -1,0 +1,19 @@
+.movie-card{
+    border: solid black;
+    margin: 2% 0% 2% 2%;
+    border-radius: 10px;
+    width: 20%;
+    height: 10%;
+
+}
+.movieImage{
+    width: 100%;
+    padding-bottom: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 10px;
+}
+p{
+    text-align: center;
+}
