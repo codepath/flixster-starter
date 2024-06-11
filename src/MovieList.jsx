@@ -1,4 +1,3 @@
-import.meta.env.VITE_API_KEY
 import './MovieList.css'
 import MovieCard from './MovieCard'
 
@@ -31,8 +30,11 @@ function MovieList() {
             title="test"
             rating="10"
             />
-
-
+             <MovieCard
+            imgSrc=""
+            title="vulture"
+            rating="10"
+            />
         </div>
 
 
