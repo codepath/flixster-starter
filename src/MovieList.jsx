@@ -5,6 +5,8 @@ import "./MovieList.css"
 // Purpose: Create card elements from API info
 const MovieList = () => {
     const [data,setData] = useState([]) // create data (will hold json elements)
+    const [page, updatePage] = useState(1);//State starts at 1 since link starts at 1
+
     const options = {
         method: 'GET',
         headers: {
@@ -14,15 +16,15 @@ const MovieList = () => {
       };
       
       const fetchData = async () => {
-        const resp = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
+        const resp = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`, options)//fills link
 
         const Data = await resp.json()
         
-        setData(Data.results)
+        setData(prevData => [...prevData, ...Data.results]);//appends results to end
     }
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [page]);//adds to update for every new page
 
     console.log(data)
         return(//creates movie card element
@@ -39,6 +41,9 @@ const MovieList = () => {
             ) : (
                 <p>Loading movies...</p>//error handle if data length == 0
             )} 
+            <button className="load-btn" onClick={() => updatePage(prevPage => prevPage + 1 )}>
+                Show More
+            </button>
         </div>
         );
     };
