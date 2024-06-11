@@ -2,14 +2,11 @@ import './MovieList.css'
 import MovieCard from './MovieCard'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import SearchBar from './SearchBar'
 
 function MovieList() {
   const [movies, setMovies] = useState([])
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [isSearching, setIsSearching] = useState(false);
 
   const loadMoreMovies = () => {
     setPage((prevPage) => prevPage + 1);
