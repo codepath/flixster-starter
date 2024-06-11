@@ -1,0 +1,11 @@
+.movie-row {
+        display: flex;
+        flex-wrap: wrap;
+        /* gap: 10px;  Adds space between cards */
+        justify-content: space-between;  /* Center cards horizontally */
+        padding: 20px;
+        width: 75%; 
+        margin: 0 auto;
+        
+
+}
