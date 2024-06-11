@@ -1,12 +1,26 @@
 import './SearchBar.css'
 
-function SearchBar({posts, setSearchResults}) {
+function SearchBar({ searchQuery }) {
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const formData = new FormData(event.target)
+    const movieName = formData.get('movieName')
+    searchQuery(movieName)
+
+    event.target.reset();
+  };
+
   return (
-    <>
-      <input type="text" placeholder="Search for movies" onSubmit={handleSubmit} onChange={handleSearchChange}/>
-      <button>Search</button>
-    </>
-  )
+    <form className="search-form" onSubmit={handleSubmit}>
+      <input
+      className="search-input"
+      type="text" name="movieName"
+      placeholder="Search for movies"
+     />
+      <button className="search-button" type="submit">Search</button>
+    </form>
+  );
 }
 
-export default SearchBar;
+export default SearchBar
