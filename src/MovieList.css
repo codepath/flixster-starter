@@ -1,0 +1,9 @@
+.movies{
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+
