@@ -6,10 +6,26 @@ import {useState, useEffect} from 'react';
 
 const App = () => {
 
-//   const fetchData = async () => {
-//     const apiKey = import.meta.env.VITE_API_KEY;
-//     const response = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1')
-//   }
+  const [page, setPage] = useState(1);
+  const [movieList, setMovieList] = useState([]);
+
+  const fetchData = async () => {
+    let url = 'https://api.themoviedb.org/3/movie/now_playing'
+    const apiKey = import.meta.env.VITE_API_KEY
+    url += `?api_key=${apiKey}`
+    // url += `&page=${page}`
+    
+    const response = await fetch(url)
+    const data= await response.json()
+    console.log(data.results)
+    setMovieList(data.results)
+  }
+  
+
+  useEffect(() =>{
+    fetchData();
+  },[]
+)
 
   return(
   <div className="App">
@@ -18,7 +34,7 @@ const App = () => {
       <SearchBar/>
     </header>
     <main>
-      <MovieList/>
+      <MovieList data={movieList} />
     </main>
     <footer className='App-footer'>
       <LoadMore/>

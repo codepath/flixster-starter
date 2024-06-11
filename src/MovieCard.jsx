@@ -3,7 +3,7 @@ import './MovieCard.css';
 import Modal from './Modal';
 import PropType from 'prop-types';
 
-function MovieCard({title, imgSrc, avgRating, description,releaseDate,trailer}){
+function MovieCard({title, imgSrc, avgRating, description,releaseDate,trailer,genres}){
     return(
         <>
         
@@ -15,7 +15,7 @@ function MovieCard({title, imgSrc, avgRating, description,releaseDate,trailer}){
                     title={title}
                     releaseDate={releaseDate}
                     overview={description}
-                    genres='Action, Sci-Fy'
+                    genres={genres}
                     trailer={trailer}
 
                 />
@@ -32,7 +32,8 @@ MovieCard.propTypes={
     avgRating: PropType.number.isRequired,
     description: PropType.string.isRequired,
     releaseDate: PropType.string.isRequired,
-    trailer:PropType.string.isRequired
+    trailer:PropType.string.isRequired,
+    genres: PropType.array.isRequired
 };
 
 
