@@ -1,6 +1,12 @@
 .list {
+    text-align: center;
+    /* display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    gap: 1vw;
+    */
+    margin: 1vw 1vw 0 1vw;
     display: flex;
-    flex-wrap: nowrap;
     flex-direction: row;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
 }

@@ -1,28 +1,31 @@
-.App {
-  text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
+header {
+  height: 10vh;
+  background-color: #457462;
+  position: sticky;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
-  color: white;
-  padding: 20px;
 }
 
-@media (max-width: 600px) {
-  .movie-card {
-    width: 100%;
-  }
+h1 {
+  color: #ee892f;
+  margin-left: 2%;
+} 
 
-  .search-bar {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .search-bar form {
-    flex-direction: column;
-  }
+footer {
+  background-color: #457462;
+  height: 10vh;
+  justify-content: center;
+  align-self: center;
+  bottom: 0;
+  position: fixed;
+  display: flex;
+  width: 100%;
 }
+
+#loadbtn {
+  justify-content: center;
+  align-self: center;
+  display: flex;
+}
+
+
