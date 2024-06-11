@@ -26,8 +26,26 @@
     flex-direction: column;
   }
 }
-/* .MovieCard2{
+header{
+  border: solid black;
+}
+.title-header{
+  text-align: center;
+}
+.loadMoreButton{
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  justify-content: center;
+}
+footer{
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-} */
+  flex-direction: column;
+}
+.button{
+  margin-left: auto;
+  margin-right: auto;
+}
+.search-bar{
+  width: 80%
+}

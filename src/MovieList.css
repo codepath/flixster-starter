@@ -1,4 +1,6 @@
 .movieCards{
     display: flex;
     flex-wrap: wrap;
+    border: solid black;
+    margin-top: 3%;
 }
