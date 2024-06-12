@@ -5,13 +5,14 @@ function SearchScreen(){
     const[query, setSearchQuery]= useState('')
     const[movies, setMovies]= useState([]);
     const[pageNumber, setPageNumber]= useState(1)
+    const ACCESS_TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 
     function handleSearch(searchQuery){
       const options = {
         method: 'GET',
         headers: {
           accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYWU5YTZiOThlMTBjZDkyZTcxN2Y4OWIzZDYxYjdjNSIsInN1YiI6IjY2NjY1MTQ1Y2M3MDc0ZDliNjFjMWM2ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IDf1-04fWbMoc-zzed3BAcZLflL14UG-mdjcZobVjxA'
+          Authorization: `Bearer ${ACCESS_TOKEN}`
         }
       };
       
@@ -23,9 +24,9 @@ function SearchScreen(){
 
     function loadMore(){
       setPageNumber(prevPageNumber => prevPageNumber+1)
-
+      
     }
-     
+
     return(
       <div className="search-bar">
       <input
