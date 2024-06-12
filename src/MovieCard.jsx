@@ -11,16 +11,19 @@ function MovieCard({title, imgSrc, avgRating, description,releaseDate,trailer,ge
                 <img src={imgSrc} alt="Image could not be loaded." className='movieImage'/>
                 {/* <h3 className='movieTitle'>{title}</h3> */}
                 <p className='movieAvgRating'>Rating: {avgRating}</p>
-                <Modal
-                    title={title}
-                    releaseDate={releaseDate}
-                    overview={description}
-                    genres={genres}
-                    trailer={trailer}
-                    runtime={runtime}
-                    backdrop_path={backdrop_photo}
+                
+                    <Modal
+                        title={title}
+                        releaseDate={releaseDate}
+                        overview={description}
+                        genres={genres}
+                        trailer={trailer}
+                        runtime={runtime}
+                        backdrop_path={backdrop_photo}
 
-                />
+                    />
+                    {/* <FavoriteButton/> */}
+                
             </div>
         
         </>

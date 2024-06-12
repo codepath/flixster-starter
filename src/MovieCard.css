@@ -18,6 +18,10 @@
     border-radius: .5rem .5rem .0rem .0rem;
     border-bottom: .2rem black solid;
 }
+.movieImage:hover{
+    border-radius:  .2rem .2rem .0rem .0rem;
+}
+
 
 .movieTitle{
     margin:2px;

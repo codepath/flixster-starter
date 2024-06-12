@@ -2,14 +2,31 @@ import './MovieList.css';
 import MovieCard from './MovieCard';
 import {useState, useEffect} from 'react';
 function MovieList(){
-    // const [page,setPage]= useState(1);
-
-    // const LoadMore= () => {
-    //     setPage(page+1);
-
-    // }
+    
+    // const[search, setSearch] = useState('');
     const [page, setPage] = useState(1);
     const [movieList, setMovieList] = useState([]);
+    // const [query, setQuery] = useState('');
+    const [filteredMovies, setFilteredMovies] = useState([]);
+
+    
+
+    function updateSearch(e){
+        setFilteredMovies(
+            movieList.filter(movie => movie.title.toLowerCase().includes((e.target.value).toLowerCase()))
+        )
+
+    }
+    useEffect(()=>{
+        setFilteredMovies(movieList);
+    },[movieList])
+
+
+
+    // const filteredMovies = movieList.filter(movie => {
+    //     return movie.title.toLowerCase().includes(query.toLowerCase())
+    // },[movieList, query])
+
 
     useEffect(() =>{
         const options = {
@@ -19,7 +36,7 @@ function MovieList(){
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZTk4ZTdhNDAzODljYmRlYjQwMTQ0OTQ1ZGQwYTMxZiIsInN1YiI6IjY2Njc3MTY3ZGQzYTMzZDdhZjg1YTVhMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DMEfKAm2887y-Rm2Qj9F66yNZjFJ28QrgcE2ktrx8tc'
             }
           };
-          
+         
         fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`, options)
             .then(response => response.json())
             .then(response => setMovieList([...movieList, ...response.results]))
@@ -31,30 +48,19 @@ function MovieList(){
     }
 
 
-
-    // const fetchData = async () => {
-    //     let url = 'https://api.themoviedb.org/3/movie/now_playing'
-    //     const apiKey = import.meta.env.VITE_API_KEY
-    //     url += `?api_key=${apiKey}`
-    //     url += `&page=${page}`
-        
-    //     const response = await fetch(url)
-    //     const data= await response.json()
-    //     // console.log(data.results)
-    //     setMovieList(data.results)
-    // }
-
-    
-
-
-
-    // const parsedData = movieList ? movieList : [];
     return(
         <div>
-            
+            <div className='search_bar_container'>
+            {/* value = {query }onChange={e => setQuery(e.target.value)} */}
+                <input  id="search_bar" placeholder='Search for movies...' onChange={updateSearch}>
+                
+                </input>
+                
+
+            </div>
             <div className='movies'>
-                {console.log(movieList)}
-                {movieList?.map((movie, i)=> {return (
+                {/* {console.log(movieList)} */}
+                {filteredMovies?.map((movie, i)=> {return (
                     <MovieCard key={i}
                     title={movie.title}
                     avgRating={movie.vote_average}

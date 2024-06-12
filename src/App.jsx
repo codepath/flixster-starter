@@ -1,6 +1,5 @@
 import './App.css';
 import MovieList from './MovieList';
-import SearchBar from './SearchBar';
 
 const App = () => {
 
@@ -10,7 +9,6 @@ const App = () => {
   <div className="App">
     <header className='App-header'>
       <h1 className='site-title'>Movies</h1>
-      <SearchBar/>
     </header>
     <main>
       <MovieList />
