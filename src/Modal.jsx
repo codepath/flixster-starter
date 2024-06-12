@@ -2,7 +2,7 @@ import  { useState } from "react";
 import PropType from 'prop-types';
 import "./Modal.css";
 
-export default function Modal({title, releaseDate, overview,genres,trailer}) {
+export default function Modal({title, releaseDate, overview,genres,trailer, runtime,backdrop_path}) {
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => {
@@ -22,15 +22,18 @@ export default function Modal({title, releaseDate, overview,genres,trailer}) {
       </button>
 
       {modal && (
-        <div className="modal">
-          <div onClick={toggleModal} className="overlay"></div>
-          <div className="modal-content">
+        <div className="overlay" onClick={toggleModal}>
+          <div  className="modal" ></div>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <img src={`https://image.tmdb.org/t/p/w500${backdrop_path}`} alt="Image could not be loaded." />
             <h2>{title}</h2>
             <h3>Released on: {releaseDate}</h3>
-            <h3>Genres: {genres}</h3>
+            {/* <h3>Genres: {genres}</h3> */}
+            {/* <h3>Runtime: {runtime}</h3> */}
             <p>
               Overview: {overview}
             </p>
+
             <video src={trailer}></video>
             <button className="close-modal" onClick={toggleModal}>
               CLOSE
@@ -46,6 +49,8 @@ Modal.propTypes = {
     title: PropType.string.isRequired,
     releaseDate: PropType.string.isRequired,
     overview: PropType.string.isRequired,
-    genres: PropType.string.isRequired,
-    trailer: PropType.string.isRequired
+    genres: PropType.array.isRequired,
+    trailer: PropType.string.isRequired,
+    runtime: PropType.string.isRequired,
+    backdrop_path: PropType.string.isRequired
 }

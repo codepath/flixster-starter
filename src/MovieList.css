@@ -7,3 +7,13 @@
     justify-content: center;
 }
 
+#loadMore{
+    margin: 20px;
+    width: 10%;
+    height: 50px;
+}
+
+.loadMore-container{
+    display: flex;
+    justify-content: center;
+}
