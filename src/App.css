@@ -27,20 +27,32 @@
   }
 }
 header{
-  border: solid black;
+  border: solid white;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 60);
 }
 .title-header{
   text-align: center;
+  color: white;
+  /* apply box shadow here */
 }
 .loadMoreButton{
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
   justify-content: center;
+  background-color: white;
+  color: black
 }
 footer{
   display: flex;
   flex-direction: column;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  background-color:black;
+  border: solid white;
 }
 .button{
   margin-left: auto;
@@ -48,4 +60,13 @@ footer{
 }
 .search-bar{
   width: 80%
+}
+.body{
+  background-color: black;
+}
+.hide{
+  display: none;
+}
+.show{
+  display: flex;
 }
