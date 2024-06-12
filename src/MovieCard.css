@@ -6,11 +6,12 @@
 .movieCards img{
     width: 100%;
     display: block;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 17px;
+    border-top-right-radius: 17px;
     width: 15rem;
     height: 15rem;
 }
 .movieCard-title{
    font-weight: bold;
+   text-wrap: wrap;
 }
