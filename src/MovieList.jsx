@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 
 function MovieList() {
-  const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [searchQuery, setsearchQuery] = useState('')
@@ -16,17 +16,25 @@ function MovieList() {
 
 
   const fetchMovies = async() => {
-    setMovies([]);
+    // setMovies([]);
     setLoading(true);
     try{
       const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}&api_key=9fc2582941573c4b168e5c4155a13688`);
       const data = await response.json();
-      setMovies(prevMovies => [...prevMovies, ...data.results]);
+      console.log('DATA', data);
+
+      if (page === 1){
+      setMovies(data.results)
+      } else {
+        setMovies(prevMovies => ([...prevMovies, ...data.results]));
+      }
     } catch(err) {
       console.error(err);
     }
     setLoading(false);
   }
+
+  console.log('MOVIES STATE', movies);
 
   //function to add more movies to the list
   const handleLoadMoreMovies = () => {
@@ -83,7 +91,7 @@ function MovieList() {
   const sortMovies = () => {
     const sortedMovies = [...movies].sort((a, b) => {
       if(sortOrder === 'none') {
-        fetchMovies();
+        // fetchMovies();
       } else if(sortOrder === 'ascending') {
         return a.title.localeCompare(b.title);
       } else if (sortOrder === 'descending') {
