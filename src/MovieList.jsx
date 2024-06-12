@@ -16,6 +16,7 @@ function MovieList() {
 
 
   const fetchMovies = async() => {
+    setMovies([]);
     setLoading(true);
     try{
       const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}&api_key=9fc2582941573c4b168e5c4155a13688`);
@@ -65,11 +66,8 @@ function MovieList() {
     setLoading(false);
   }
   const handleResetSearch = () => {
-    setsearchQuery('');
-    setIsSearching(false);
     setMovies([]);
     fetchMovies();
-    setPage(1);
   }
 
   //function to open the modal
