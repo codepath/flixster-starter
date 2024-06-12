@@ -1,0 +1,36 @@
+
+
+.movie-card {
+    background-color: #ff0000;
+    color: white;
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+.movie-card:hover {
+    transform: scale(1.0);
+    box-shadow: 0 7px 14px black;
+
+}
+.movie-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.movie-card h2 {
+    font-size: 18px;
+    margin: 10px 0 5px;
+}
+
+.movie-card p {
+    margin: 5px 0;
+}
+
+.movieList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
