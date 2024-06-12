@@ -1,12 +1,12 @@
 .movie-row {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;  /* Center cards horizontally */
+        justify-content: flex-start;  /* Center cards horizontally */
         padding: 20px;
         width: 75%; 
         margin: 0 auto;
-        
-
+        gap: 2%;
+        z-index: 0;
 }
 
 .load-btn {

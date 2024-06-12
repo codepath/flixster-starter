@@ -1,29 +1,15 @@
 import { useState, useEffect } from "react";
-import MovieCard from "./MovieCard";
 import "./MovieList.css";
+import MovieCard from "./MovieCard";
+import Modal from "./Modal";
 
 // Purpose: Create card elements from API info
-const MovieList = () => {
+export const MovieList = () => {
   const [data, setData] = useState([]);
   const [page, updatePage] = useState(1);
   const [searchText, updateSearchText] = useState("");
-
-  const searchMovies = () => {
-    updatePage(1);
-    setData([]);
-    fetchData();
-  };
-
-  const resetPage = () => {
-    console.log("resetPage");
-    updatePage(
-      // make sure that fetch data runs after updating prevPage
-      (prevPage) => prevPage + 1,
-      () => {
-        fetchData();
-      }
-    );
-  };
+  const [modalOpen, setShowModal] = useState(false);
+  const [selectedMovieInfo, updateMovieInfo] = useState(null);
 
   const options = {
     method: "GET",
@@ -33,29 +19,67 @@ const MovieList = () => {
     },
   };
 
+  const searchMovies = () => {
+    updatePage(1);
+    setData([]);
+    fetchData();
+  };
+
+  const changePage = () => {
+    updatePage(
+      (prevPage) => prevPage + 1,
+      () => {
+        fetchData();
+      }
+    );
+  };
+
+  const toggleModal = async (movie_id) => {
+    const movieInfoResponse = await fetch(
+      `https://api.themoviedb.org/3/movie/${movie_id}?language=en-US`,
+      options
+    );
+    const movieInfoData = await movieInfoResponse.json();
+    updateMovieInfo(movieInfoData);
+    setShowModal((prev) => !prev);
+  };
+
+  const genre_convert = (ids) => {
+    if (!selectedMovieInfo || !selectedMovieInfo.genres || !ids) {
+      return "";
+    }
+    return ids
+      .map(
+        (id) => selectedMovieInfo.genres.find((genre) => genre.id === id)?.name
+      )
+      .filter((name) => name) // filter out any undefined values
+      .join(", ");
+  };
+
   const fetchData = async () => {
     if (searchText === "") {
+      //add if dropdown menu
       const resp = await fetch(
         `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`,
         options
-      ); //fills link
-      const Data = await resp.json();
+      );
+      const Movies = await resp.json();
       if (page === 1) {
-        setData([...Data.results]);
+        setData([...Movies.results]);
       } else {
-        setData((prevData) => [...prevData, ...Data.results]); //appends results to end
+        setData((prevData) => [...prevData, ...Movies.results]); //appends results to end
       }
-      console.log("prev", Data.results);
     } else {
+      //option for drop down
       const resp = await fetch(
         `https://api.themoviedb.org/3/search/movie?query=${searchText}&include_adult=false&language=en-US&page=${page}`,
         options
       );
-      const Data = await resp.json();
+      const Movies = await resp.json();
       if (page === 1) {
-        setData([...Data.results]);
+        setData([...Movies.results]);
       } else {
-        setData((prevData) => [...prevData, ...Data.results]); //appends results to end
+        setData((prevData) => [...prevData, ...Movies.results]); //appends results to end
       }
     }
   };
@@ -73,6 +97,15 @@ const MovieList = () => {
           value={searchText}
         />
         <button onClick={searchMovies}>Search</button>
+
+        <select name="sort" id="">
+          <option disabled selected value="">
+            Sort by
+          </option>
+          <option value="popular">Popular</option>
+          <option value="top-rated">Top rated</option>
+          <option value="upcoming">Upcoming</option>
+        </select>
       </div>
       <div className="movie-row">
         {data.length > 0 ? (
@@ -82,15 +115,29 @@ const MovieList = () => {
               title={movie.title}
               poster={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               rating={Math.round(movie.vote_average * 100) / 100} //get two decimal points
+              clickHandler={() => toggleModal(movie.id)}
             />
           ))
         ) : (
-          <p>Loading movies...</p> //error handle if data length == 0
+          <p>No movies found...</p> //error handle if data length == 0
         )}
-        <button className="load-btn" onClick={resetPage}>
+        <button className="load-btn" onClick={changePage}>
           Show More
         </button>
       </div>
+      {modalOpen && selectedMovieInfo && (
+        <Modal
+          isOpen={modalOpen}
+          onClose={() => setShowModal(false)}
+          title={selectedMovieInfo.name}
+          poster={`https://image.tmdb.org/t/p/original${selectedMovieInfo.poster_path}`}
+          release={selectedMovieInfo.release_date}
+          overview={selectedMovieInfo.overview}
+          genres={genre_convert(
+            selectedMovieInfo.genres.map((genre) => genre.id)
+          )}
+        />
+      )}
     </>
   );
 };
