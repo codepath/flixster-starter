@@ -4,7 +4,7 @@ import Header from "./Header"
 
 
 function NowPlayingScreen({ criteriaFromHeader }){
-    const [isSearching, setSearching] = useState(false);
+    const 
     const [movies, setMovies]=useState([]);
     const [pageNumber, setPageNumber]=useState(1);
     const[url, setUrl]=useState(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${pageNumber}`)
@@ -23,7 +23,6 @@ function NowPlayingScreen({ criteriaFromHeader }){
           .then(response => response.json())
           .then(response => {
             handleSortMovies(criteriaFromHeader, movies.concat(response.results))
-            // setMovies(prevMovies =>prevMovies)
           })
           .catch(err => console.error(err));
       }, [url, pageNumber]);
