@@ -1,5 +1,27 @@
 .card {
     border: 1px solid black;
     border-radius: 8px;
-    margin: 2%;
+    margin: 10px; 
+    width: 200px; 
+    height: 400px; 
+    max-width: 90%; 
+    overflow: visible;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.card img {
+    width: 100%; 
+    height: auto; 
+    display: block; 
+}
+
+/*
+.card:hover {
+    box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.5);
+} */
+
+.card:hover {
+    transform: scale(1.04);
 }

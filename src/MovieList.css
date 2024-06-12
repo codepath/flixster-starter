@@ -1,12 +1,9 @@
 .list {
     text-align: center;
-    /* display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    gap: 1vw;
-    */
-    margin: 1vw 1vw 0 1vw;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 1vw;
+    align-items: center;
 }

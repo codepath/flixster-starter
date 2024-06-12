@@ -1,3 +1,4 @@
+
 header {
   height: 10vh;
   background-color: #457462;
@@ -9,6 +10,7 @@ header {
 h1 {
   color: #ee892f;
   margin-left: 2%;
+  font-size: 40pt;
 } 
 
 footer {
@@ -17,7 +19,6 @@ footer {
   justify-content: center;
   align-self: center;
   bottom: 0;
-  position: fixed;
   display: flex;
   width: 100%;
 }
@@ -29,3 +30,10 @@ footer {
 }
 
 
+.App {
+  width: 100%; 
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column; 
+}

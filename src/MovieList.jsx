@@ -1,44 +1,31 @@
 import './MovieList.css'
 import MovieCard from './MovieCard'
 
-function MovieList() {
+
+
+function MovieList({ data }) { 
     return (
         <div className='list'>
            
-            <MovieCard
-            imgSrc=""
-            title="test"
-            rating="10"
-            />
-             <MovieCard
-            imgSrc=""
-            title="test"
-            rating="10"
-            />
-             <MovieCard
-            imgSrc=""
-            title="test"
-            rating="10"
-            />
-             <MovieCard
-            imgSrc=""
-            title="test"
-            rating="10"
-            />
-             <MovieCard
-            imgSrc=""
-            title="test"
-            rating="10"
-            />
-             <MovieCard
-            imgSrc=""
-            title="vulture"
-            rating="10"
-            />
+        {data.map(movie => (
+            <div className='movie' key={movie.title}>
+                <MovieCard
+                imgSrc={movie.poster_path}
+                title={movie.title}
+                rating={movie.vote_average}
+                genres={movie.genre_ids} 
+                overview={movie.overview}
+                date={movie.release_date}
+                />
+            </div>
+
+                
+        ))}
+            
         </div>
 
 
-    )
+    );
 }
 
 export default MovieList;
