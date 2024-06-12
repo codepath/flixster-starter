@@ -10,6 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
+    "axios": "^1.7.2",
+=======
+>>>>>>> 1df80dae512daf95c0ef6e398da96500f64caeb0
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
