@@ -3,14 +3,12 @@ import './FavoriteButton.css';
 
 
 
-function FavoriteButton(){
+const FavoriteButton = ({isFavorite, onToggle}) =>{
     return(
-        <>
-            <button className='favorite-button'>
-                <i className='fa-regular fa-heart'></i>
-            </button>
-        </>
-    );
+        <button className={`favorite-button ${isFavorite ? 'favorite': ''}`} onClick={onToggle}>
+            <i className={`fa-regular fa-heart ${isFavorite ? 'favorite' : ''}`}></i>
+        </button>
+    )
 }
 
 export default FavoriteButton;

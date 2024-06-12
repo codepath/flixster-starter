@@ -1,6 +1,9 @@
 import './SearchBar.css';
 
 function SearchBar(){
+
+    
+
     return(
         <>
             <div id='search'>

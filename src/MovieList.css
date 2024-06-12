@@ -17,3 +17,15 @@
     display: flex;
     justify-content: center;
 }
+
+.search_bar_container{
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+#search_bar{
+    width: 60%;
+    height: 30px;
+
+}
