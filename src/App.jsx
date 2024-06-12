@@ -16,8 +16,11 @@ export default App
 
 
 // TO-DO:
-// style movie list to spread well
-//pick suitable colors
-// style modal
+//'Now playing' button load
+// modal info
+//ascending, descending and NONE *
+//sort by release date and rating too *
+//repeated movies?
+//pull request
 //style header and footer
-//ascending, descending and NONE
+// style modal *

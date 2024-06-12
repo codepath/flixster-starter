@@ -12,7 +12,20 @@ function MovieList() {
   const [isSearching, setIsSearching] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const [sortOrder, setSortOrder] = useState('ascending');
+  const [sortOrder, setSortOrder] = useState('none');
+
+
+  const fetchMovies = async() => {
+    setLoading(true);
+    try{
+      const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}&api_key=9fc2582941573c4b168e5c4155a13688`);
+      const data = await response.json();
+      setMovies(prevMovies => [...prevMovies, ...data.results]);
+    } catch(err) {
+      console.error(err);
+    }
+    setLoading(false);
+  }
 
   //function to add more movies to the list
   const handleLoadMoreMovies = () => {
@@ -38,7 +51,6 @@ function MovieList() {
   const handleSearch = async () => {
     if (searchQuery.trim() === ''){
       handleResetSearch();
-      return;
     }
     setLoading(true);
     setIsSearching(true);
@@ -52,12 +64,12 @@ function MovieList() {
     }
     setLoading(false);
   }
-
   const handleResetSearch = () => {
     setsearchQuery('');
-    setPage(1);
     setIsSearching(false);
     setMovies([]);
+    fetchMovies();
+    setPage(1);
   }
 
   //function to open the modal
@@ -72,7 +84,9 @@ function MovieList() {
 
   const sortMovies = () => {
     const sortedMovies = [...movies].sort((a, b) => {
-      if(sortOrder === 'ascending') {
+      if(sortOrder === 'none') {
+        fetchMovies();
+      } else if(sortOrder === 'ascending') {
         return a.title.localeCompare(b.title);
       } else if (sortOrder === 'descending') {
         return b.title.localeCompare(a.title);
@@ -80,24 +94,23 @@ function MovieList() {
     });
     setMovies(sortedMovies);
   }
-
   const handleSortChange = (e) => {
     setSortOrder(e.target.value);
   }
 
+  const nowPlaying = (event) => {
+    if (event.target.id === 'now-playing') {
+      //TO-DO: add a function to hide input bar
+      handleResetSearch()
+    }
+    else if (event.target.id === 'search'){
+      handleSearch()
+    }
+
+  }
+
   useEffect(() => {
     if(!isSearching) {
-      const fetchMovies = async() => {
-        setLoading(true);
-        try{
-          const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}&api_key=9fc2582941573c4b168e5c4155a13688`);
-          const data = await response.json();
-          setMovies(prevMovies => [...prevMovies, ...data.results]);
-        } catch(err) {
-          console.error(err);
-        }
-        setLoading(false);
-      }
       fetchMovies();
     }
   }, [page, isSearching]);
@@ -116,41 +129,42 @@ function MovieList() {
   return (
     <>
       <div>
-        <h1>Movies Library</h1>
+        {/* header section */}
+        <h1>Flixster</h1>
+        <div className='header'>
+          {/* search section */}
+          <div>
+            <input
+            type="text" value={searchQuery}
+            onChange={(e) => setsearchQuery(e.target.value.toLowerCase())}
+            placeholder="Search for movies"
+            />
+            <button id="search" className="search-button" type="submit" onClick={nowPlaying}>Search</button>
+            <button id="now-playing" className='now-playing' type="submit" onClick={nowPlaying}>Now Playing</button>
+          </div>
 
-        {/* search section */}
-        <div>
-          <input
-          type="text" value={searchQuery}
-          onChange={(e) => setsearchQuery(e.target.value)}
-          placeholder="Search for movies"
-          />
-          <button className="search-button" type="submit" onClick={handleSearch}>Search</button>
-          <button className='now-playing' type="submit" onClick={handleResetSearch}>Now Playing</button>
-        </div>
-
-        {/* Sort section */}
-        <div>
-           <label htmlFor="sortOrder">Sort by:</label>
-           <select id ="sortOrder" value={sortOrder} onChange={handleSortChange}>
-            <option value="none"> None</option>
-            <option value="ascending">Sort movie title A-Z</option>
-            <option value="descending">Sort movie title Z-A</option>
-          </select>
+          {/* Sort section */}
+          <div>
+            <label>Sort by:</label>
+            <select id ="sortOrder" value={sortOrder} onChange={handleSortChange}>
+              <option value="none"> None</option>
+              <option value="ascending">Sort movie title A-Z</option>
+              <option value="descending">Sort movie title Z-A</option>
+            </select>
+          </div>
         </div>
 
         {/* movie list section */}
         <div className='movieList'>
-          {movies.map((movie) => {
+          {movies.map((movie, i) => {
             return(
-            <>
-              <div className='movie-cards' onClick={() => handleMovieCardClick(movie)}>
+              <div key={i} className='movie-cards' onClick={() => handleMovieCardClick(movie)}>
                 <MovieCard
                 poster_path = {`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 title = {movie.title}
-                vote_average = {movie.vote_average} />
+                vote_average = {movie.vote_average}/>
               </div>
-            </>)
+            )
           })}
         </div>
         {loading ? <p>Loading...</p> : <button onClick={handleLoadMoreMovies}>Load More</button>}
