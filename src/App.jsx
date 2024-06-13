@@ -12,6 +12,7 @@ function App() {
   const [searchValue, setSearchValue] = useState('');
   const [modal, setModal] = useState(false);
   const [movieID, setMovieID] = useState('');
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   const getMovies = async () => {
     const url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}&api_key=0d7613c1b95dbc61f3dd491c8f802475`;
@@ -19,7 +20,7 @@ function App() {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZDc2MTNjMWI5NWRiYzYxZjNkZDQ5MWM4ZjgwMjQ3NSIsInN1YiI6IjY2Njc2NmJhODAyN2M0OWNmYjk5ZmJiYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0iAwLYCfoeheb8A8_TWhHNrdDn2P1x3LL-d0_fGs6BA'
+        Authorization: `Bearer ${apiKey}`
       }
     };
 
@@ -40,7 +41,7 @@ function App() {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZDc2MTNjMWI5NWRiYzYxZjNkZDQ5MWM4ZjgwMjQ3NSIsInN1YiI6IjY2Njc2NmJhODAyN2M0OWNmYjk5ZmJiYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0iAwLYCfoeheb8A8_TWhHNrdDn2P1x3LL-d0_fGs6BA'
+        Authorization: `Bearer ${apiKey}`
       }
     };
     const response = await fetch(url, options);
