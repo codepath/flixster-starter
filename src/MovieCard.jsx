@@ -5,6 +5,9 @@ import './App.css';
 
 const MovieCard = (props) => {
     const [isClicked, setIsClicked] = useState(false);
+    const [genres, setGenres] = useState([]);
+    const [runtime, setRuntime] = useState('');
+    const apiKey = import.meta.env.VITE_API_KEY;
 
     const toggleModal = () => {
         setIsClicked(!isClicked);
@@ -13,12 +16,12 @@ const MovieCard = (props) => {
     const className = Number(props.rating) < 5 ? 'bad' : Number(props.rating) < 7.5 ? 'okay' : 'good'
     return (
         <div>
-            <div className="imageContainer" onClick={toggleModal} >
+            <div className="imageContainer" onClick={toggleModal}>
                 <img src={props.image} id="movie-poster"/>
                 <p id="movie-title">{props.title}</p>
                 <p id="movie-rating" className={className}>{props.rating}</p>
             </div>
-            <Modal id={props.id} isClicked={isClicked} toggleModal={toggleModal} movieTitle={props.title} image={props.image} releaseDate={props.releaseDate} movieOverview={props.movieOverview} movieGenres={props.movieGenres}/>
+            <Modal  id={props.id} isClicked={isClicked} toggleModal={toggleModal} movieTitle={props.title} image={props.image} releaseDate={props.releaseDate} movieOverview={props.movieOverview} movieGenres={props.movieGenres}/>
         </div>
     )
 }
