@@ -52,7 +52,7 @@ function MovieList(){
             }
         };
         
-        fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page} &query=${search}`, options)
+        fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`, options)
             .then(response => response.json())
             .then(response => {
                 console.log(response.results)
