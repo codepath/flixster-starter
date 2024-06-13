@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Nav.css";
 
+//Purpose: create nav bar to sort,search,filter info
 const Nav = ({
   setShowSearch,
   setData,
@@ -15,7 +16,8 @@ const Nav = ({
   applySort,
   updateGenreFilter,
 }) => {
-  const [action, setAction] = useState("now_showing");
+  const [action, setAction] = useState("now_showing"); // update last used action
+
   const handleSortChange = (newSortString) => {
     applySort(newSortString);
   };
@@ -112,9 +114,3 @@ const Nav = ({
 };
 
 export default Nav;
-
-// add on click
-// calls function
-// ignores modal
-// switches state to true/false
-// changes emoji

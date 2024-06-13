@@ -54,11 +54,11 @@ export const MovieList = () => {
       return;
     }
     setLastAction("search");
-    setSortString(""); // Reset sort state
-    setGenreFilter(""); // Reset genre filter
-    setPage(1); // Reset to the first page
-    setData([]); // Clear existing data
-    fetchData(); // Fetch new data based on search text
+    setSortString("");
+    setGenreFilter("");
+    setPage(1);
+    setData([]);
+    fetchData();
   };
 
   const changePage = () => {
@@ -140,26 +140,21 @@ export const MovieList = () => {
       />
       <div className="movie-row">
         {data.length > 0 ? (
-          data.map(
-            (
-              movie // no shadow til hover
-            ) => (
-              <MovieCard
-                key={movie.id}
-                title={movie.title}
-                poster={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                rating={Math.round(movie.vote_average * 100) / 100}
-                clickHandler={() => toggleModal(movie.id)}
-                seen={seenMovies.includes(movie.id)}
-                loved={lovedMovies.includes(movie.id)}
-                toggleSeen={() => toggleSeen(movie.id)}
-                toggleLoved={() => toggleLoved(movie.id)}
-              />
-            )
-          )
+          data.map((movie) => (
+            <MovieCard
+              key={movie.id}
+              title={movie.title}
+              poster={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+              rating={Math.round(movie.vote_average * 100) / 100}
+              clickHandler={() => toggleModal(movie.id)}
+              seen={seenMovies.includes(movie.id)}
+              loved={lovedMovies.includes(movie.id)}
+              toggleSeen={() => toggleSeen(movie.id)}
+              toggleLoved={() => toggleLoved(movie.id)}
+            />
+          ))
         ) : (
           <p>No movies found...</p> //error handle if data length == 0
-          //hide show more
         )}
         {data.length > 0 && (
           <button className="load-btn" onClick={changePage}>
