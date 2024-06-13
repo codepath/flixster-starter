@@ -23,6 +23,7 @@ const Nav = ({
   };
 
   const handleGenreChange = (newGenre) => {
+    setData([]);
     updateGenreFilter(newGenre);
   };
 
@@ -96,7 +97,6 @@ const Nav = ({
             id="filter-menu"
             className="sort-menu"
             onChange={(e) => {
-              setData([]);
               handleGenreChange(e.target.value);
             }}
           >
