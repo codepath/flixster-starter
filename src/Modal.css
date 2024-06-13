@@ -28,6 +28,7 @@
     display: flex;
     flex-direction: column;
     padding: 25px;
+    overflow: auto;
 }
 
 .modalContainer p{
@@ -80,7 +81,18 @@
     font-size: 20px;
     cursor: pointer;
 }
+.titleCloseBtn{
+    padding: 0;
+}
+.xSign{
+    margin: 1.5rem;
+    padding: 0;
+}
 
 #cancelBtn {
     background-color: crimson;
+}
+
+.backdrop{
+    margin: 2rem;
 }

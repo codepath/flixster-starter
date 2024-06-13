@@ -12,17 +12,15 @@ function MovieList() {
   const [isSearching, setIsSearching] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const [sortOrder, setSortOrder] = useState('none');
+  const [sortOrder, setSortOrder] = useState('ascending');
+  const [showSearchButton, setShowSearchButton] = useState(false);
 
 
   const fetchMovies = async() => {
-    // setMovies([]);
     setLoading(true);
     try{
       const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}&api_key=9fc2582941573c4b168e5c4155a13688`);
       const data = await response.json();
-      console.log('DATA', data);
-
       if (page === 1){
       setMovies(data.results)
       } else {
@@ -33,8 +31,6 @@ function MovieList() {
     }
     setLoading(false);
   }
-
-  console.log('MOVIES STATE', movies);
 
   //function to add more movies to the list
   const handleLoadMoreMovies = () => {
@@ -90,12 +86,14 @@ function MovieList() {
 
   const sortMovies = () => {
     const sortedMovies = [...movies].sort((a, b) => {
-      if(sortOrder === 'none') {
-        // fetchMovies();
-      } else if(sortOrder === 'ascending') {
+      if(sortOrder === 'ascending') {
         return a.title.localeCompare(b.title);
       } else if (sortOrder === 'descending') {
         return b.title.localeCompare(a.title);
+      } else if (sortOrder === 'releaseDateAscending') {
+        return a.release_date.localeCompare(b.release_date);
+      } else if (sortOrder === 'releaseDateDescending') {
+        return b.release_date.localeCompare(a.release_date);
       }
     });
     setMovies(sortedMovies);
@@ -106,10 +104,11 @@ function MovieList() {
 
   const nowPlaying = (event) => {
     if (event.target.id === 'now-playing') {
-      //TO-DO: add a function to hide input bar
+      setShowSearchButton(false)
       handleResetSearch()
     }
     else if (event.target.id === 'search'){
+      setShowSearchButton(!showSearchButton)
       handleSearch()
     }
 
@@ -134,18 +133,19 @@ function MovieList() {
 
   return (
     <>
-      <div>
+      <div className='wholeFlixster'>
         {/* header section */}
         <h1>Flixster</h1>
         <div className='header'>
           {/* search section */}
           <div>
-            <input
-            type="text" value={searchQuery}
-            onChange={(e) => setsearchQuery(e.target.value.toLowerCase())}
-            placeholder="Search for movies"
-            />
-            <button id="search" className="search-button" type="submit" onClick={nowPlaying}>Search</button>
+            {showSearchButton &&
+             <input
+             type="text" value={searchQuery}
+             onChange={(e) => setsearchQuery(e.target.value.toLowerCase())}
+             placeholder= "Search for movies..."
+             />}
+            <button id="search" className="search-button" type="submit" onClick={nowPlaying}> Search</button>
             <button id="now-playing" className='now-playing' type="submit" onClick={nowPlaying}>Now Playing</button>
           </div>
 
@@ -153,9 +153,11 @@ function MovieList() {
           <div>
             <label>Sort by:</label>
             <select id ="sortOrder" value={sortOrder} onChange={handleSortChange}>
-              <option value="none"> None</option>
-              <option value="ascending">Sort movie title A-Z</option>
-              <option value="descending">Sort movie title Z-A</option>
+              <option value="none"> Sort options: </option>
+              <option value="ascending">Movie title A-Z</option>
+              <option value="descending">Movie title Z-A</option>
+              <option value="releaseDateAscending">Release Date (ascending)</option>
+              <option value="releaseDateDescending">Release Date (descending)</option>
             </select>
           </div>
         </div>

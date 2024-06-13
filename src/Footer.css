@@ -1,0 +1,19 @@
+#footerText{
+    /* background-color: white; */
+    color: black;
+    padding: 1rem;
+}
+.footerEnd{
+    height: 2rem;
+    background-color: white;
+}
+
+.socialMediaIcons{
+    padding: 1rem;
+}
+
+.fa{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    color: black;
+}

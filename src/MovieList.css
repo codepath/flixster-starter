@@ -14,6 +14,9 @@ button{
     margin: 1.5rem;
     width: 8rem;
 }
+.wholeFlixster{
+    margin: 30px;
+}
 
 h1{
     color: white;
@@ -21,9 +24,29 @@ h1{
 label{
     color: white;
 }
+img{
+    width: 12rem;
+    height: 10rem;
+}
+input{
+    border-radius: 2rem;
+    height: 1.5rem;
+    width: 15rem;
+    padding: 0.7rem;
+}
+select{
+    height: 1.5rem;
+    border-radius: 0.6rem;
+}
+.modalText{
+    color: black;
+}
 .header{
     display: flex;
     justify-content: space-between;
+    padding: 30px;
+    align-items: center;
+    border-bottom: white solid;
 }
 .hide{
     display: none;
