@@ -36,10 +36,28 @@
     justify-content: center;  
     align-items: center;
     height: 20%;
-
 }
 
 .txt-container h2, .txt-container p {
     font-size: 15px;
     margin: 0%;
+}
+
+.sub-txt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.icons {
+    display: flex;
+    gap: 5px;
+    position: absolute;
+    left: 10px; /* Position icons to the left inside the card */
+}
+
+.rating {
+    flex-grow: 1;
+    text-align: center;
 }

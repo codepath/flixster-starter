@@ -79,7 +79,10 @@ const Nav = ({
             name="filter"
             id="filter-menu"
             className="sort-menu"
-            onChange={(e) => handleGenreChange(e.target.value)}
+            onChange={(e) => {
+              setData([]);
+              handleGenreChange(e.target.value);
+            }}
           >
             <option value="">All Genres</option>
             <option value="28">Action</option>
@@ -95,3 +98,9 @@ const Nav = ({
 };
 
 export default Nav;
+
+// add on click
+// calls function
+// ignores modal
+// switches state to true/false
+// changes emoji
