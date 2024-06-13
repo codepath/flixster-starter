@@ -15,7 +15,7 @@ const MovieList = (props) => {
                 const posterImage = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
                 return (
                     <div key={movie.id} onClick={() => props.handleMovieClick(movie.id)}>
-                    <MovieCard key={movie.id} image={posterImage} title={movie.title} rating={movie.vote_average.toFixed(1)} />
+                    <MovieCard key={movie.id} image={posterImage} title={movie.title} rating={movie.vote_average.toFixed(1)} releaseDate={movie.release_date} movieOverview={movie.overview} movieGenres={movie.genre_ids}/>
                     </div>
                 );
             })}

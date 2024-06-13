@@ -65,6 +65,7 @@ form{
   display: none;
 }
 
+
 @media all and (max-width: 630px) {
   #search-bar {
     width: 300px;

@@ -2,15 +2,13 @@ import React from 'react';
 import MovieList from './MovieList';
 import Search from './Search';
 import { useEffect, useState } from 'react';
-import Modal from './Modal';
 import './App.css';
-import './Modal.css';
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [searchValue, setSearchValue] = useState('');
-  const [modal, setModal] = useState(false);
+  // const [modal, setModal] = useState(false);
   const [movieID, setMovieID] = useState('');
   const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -55,7 +53,6 @@ function App() {
       setMovies(results);
     }
 
-
   }
 
   useEffect(() => {
@@ -98,7 +95,6 @@ function App() {
         searchMovies();
         }}>Search</button>
     </header>
-    <Modal data={movies} movieID={movieID}/>
     <MovieList data={movies} loadMore={loadMore} handleMovieClick={movieClick}/>
     </>
   )
