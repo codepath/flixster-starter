@@ -7,6 +7,8 @@ const MovieCard = (props) => {
     const [isClicked, setIsClicked] = useState(false);
     const [genres, setGenres] = useState([]);
     const [runtime, setRuntime] = useState('');
+    const [likeCount, setLikeCount] = useState(0);
+    const [isChecked, setIsChecked] = useState(false);
     const apiKey = import.meta.env.VITE_API_KEY;
 
     const toggleModal = () => {
@@ -17,6 +19,11 @@ const MovieCard = (props) => {
         fetchMoreInfo(props.id);
       }, [isClicked])
 
+    const increaseLikes = () => {
+        const heart = document.getElementById(props.id).querySelector('#like-count');
+        setLikeCount(likeCount + 1);
+        heart.innerText = `❤️ ${likeCount + 1}`;
+    }
 
 
     const fetchMoreInfo = async () => {
@@ -35,13 +42,18 @@ const MovieCard = (props) => {
           setRuntime(jsonResponse.runtime);
     }
 
+    const handleCheckboxChange = () => {
+        setIsChecked(!isChecked);
+    }
+
     const className = Number(props.rating) < 5 ? 'bad' : Number(props.rating) < 7.5 ? 'okay' : 'good'
     return (
         <div>
-            <div className="imageContainer" onClick={toggleModal} id={props.id} >
-                <img src={props.image} id="movie-poster"/>
+            <div className="imageContainer" id={props.id} >
+                <img src={props.image} id="movie-poster" onClick={toggleModal}/>
                 <p id="movie-title">{props.title}</p>
-                <p id="movie-rating" className={className}>{props.rating}</p>
+                <label id="check-box"><input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />Watched</label>
+                <p><span id="movie-rating" className={className}>{props.rating}</span><span id="like-count" onClick={increaseLikes}> ♡ {likeCount}</span></p>
             </div>
             <Modal  id={props.id} isClicked={isClicked} toggleModal={toggleModal} movieTitle={props.title} image={props.image} releaseDate={props.releaseDate} movieOverview={props.movieOverview} movieGenres={props.movieGenres} runtime={runtime} genres={genres}/>
         </div>

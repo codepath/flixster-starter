@@ -19,8 +19,9 @@
 #movie-title {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     flex-shrink: 1;
+    color: indigo;
 }
 
 #movie-rating {
@@ -41,6 +42,17 @@
     color: lightgreen;
 }
 
+#like-count {
+    font-weight: bold;
+    cursor: pointer;
+    color: indigo;
+    margin-left: 4px;
+}
+
+#check-box {
+    font-weight: bold;
+    color: indigo;
+}
 
 @media all and (max-width: 630px) {
     .imageContainer {
