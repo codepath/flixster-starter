@@ -39,12 +39,12 @@ const Modal = (props) =>{
         <div className="modal-content">
             <span className="close" onClick={handleClick}>&times;</span>
             <div className="cover">
-                <h3 className="modal-title">{data.original_title}</h3>
+                <h3 className="title">{data.original_title}</h3>
                 <img className="img" src={"https://image.tmdb.org/t/p/w500" + data.poster_path}/>
-                <h3 className="creator-name">Runtime: {data.runtime} minutes</h3>
-                <h3>Overview: {data.overview}</h3>
-                <h3>Genre: {FilterArray(data.genres)}</h3>
-                <h3>Release Date: {data.release_date}</h3>
+                <h3 className="runtime">Runtime: {data.runtime} minutes</h3>
+                <h3 className="runtime">Overview: {data.overview}</h3>
+                <h3 className="runtime">Genre: {FilterArray(data.genres)}</h3>
+                <h3 className="runtime">Release Date: {data.release_date}</h3>
             </div>
                 <div className="container">
                 </div>

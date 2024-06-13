@@ -7,8 +7,6 @@ const Load = () => {
     const [data, setData] = useState([]);
     const [count, setCount] = useState(1);
     let container = document.querySelector(".container")
-    console.log(container)
-
 
     let url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=' + count;
     useEffect(() => {
@@ -23,7 +21,6 @@ const Load = () => {
         .then(response => response.json())
         .then(response => setData(response.results))
         }, [count]);
-        console.log(data);
     return(
         <button type="button" onClick={event = () =>{
             setCount(count=>count+1);

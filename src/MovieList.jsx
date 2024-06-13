@@ -12,7 +12,6 @@ const MovieList = () =>{
     const[genre, setGenre] = useState(1);
     let url;
     if(genre !== 1){
-        console.log("Genre picked: ", genre);
         url=`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${count}&with_genres=${genre}`
     } else if(sort !== ""){
         url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${count}&sort_by=${sort}`
@@ -21,7 +20,6 @@ const MovieList = () =>{
     } else {
         url =`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`
     }
-    console.log(url);
     useEffect(() => {
         const options = {
             method: 'GET',
@@ -46,7 +44,6 @@ const MovieList = () =>{
 
         const form = e.target;
         const formData = new FormData(form);
-        console.log(formData.get("search"));
         setSearch(formData.get("search"));
         setSort("");
         setGenre(1)
@@ -61,35 +58,41 @@ const MovieList = () =>{
     }
     function handleSort(e){
         e.preventDefault();
-        console.log(e.target.textContent);
-        if(e.target.textContent === "Revenue"){
-            console.log("TESTING")
+        if(e.target.value === "Revenue"){
             setSort("revenue.desc")
-        } else if(e.target.textContent === "Popularity"){
+        } else if(e.target.value === "Popularity"){
             setSort("popularity.desc")
-        } else if(e.target.textContent === "Primary Release Date"){
+        } else if(e.target.value === "Primary Release Date"){
             setSort("primary_release_date.desc")
-        } else if(e.target.textContent === "Vote Average"){
+        } else if(e.target.value === "Vote Average"){
             setSort("vote_average.desc")
-        }else if(e.target.textContent === "Vote Count"){
+        }else if(e.target.value === "Vote Count"){
             setSort("vote_count.desc")
+        } else {
+            setSort("");
         }
     }
     function handleFilter(e){
         e.preventDefault();
-        console.log(e.target.textContent);
-        if(e.target.textContent === "Action"){
-            console.log("TESTING")
+        if(e.target.value === "Action"){
             setGenre(28);
-        } else if(e.target.textContent === "Comedy"){
+        } else if(e.target.value === "Comedy"){
             setGenre(35);
-        } else if(e.target.textContent === "Thriller"){
+        } else if(e.target.value === "Thriller"){
             setGenre(53);
-        } else if(e.target.textContent === "War"){
+        } else if(e.target.value === "War"){
             setGenre(10752);
-        }else if(e.target.textContent === "Romance"){
+        }else if(e.target.value === "Romance"){
             setGenre(10749);
+        }else {
+            setGenre(1);
         }
+    }
+    function ResetSearch(e){
+        e.preventDefault();
+        setSearch("");
+        setSort("");
+        setGenre(1)
     }
 
     return(
@@ -102,26 +105,22 @@ const MovieList = () =>{
             </label>
             <button className='search' type="submit">Search</button>
         </form>
-        <div className="dropdown" >
-            <button className="dropbtn">Sort</button>
-            <div className="dropdown-content">
-                <p onClick={handleSort}>Revenue</p>
-                <p onClick={handleSort}>Popularity</p>
-                <p onClick={handleSort}>Vote Average</p>
-                <p onClick={handleSort}>Vote Count</p>
-            </div>
-            <div></div>
-        </div>
-        <div className="dropdown-right" >
-            <button className="dropbtn-right">Filter</button>
-            <div className="dropdown-content-right">
-                <p onClick={handleFilter}>Comedy</p>
-                <p onClick={handleFilter}>Thriller</p>
-                <p onClick={handleFilter}>War</p>
-                <p onClick={handleFilter}>Romance</p>
-            </div>
-            <div></div>
-        </div>
+        <button onClick={ResetSearch} className='reset' type="submit">Reset</button>
+        <select  className='dropdown' id="pet-select" onChange={handleSort}>
+                <option value="">Sort</option>
+                <option value="Revenue">Revenue</option>
+                <option value="Popularity">Popularity</option>
+                <option value="Vote Average">Vote Average</option>
+                <option value="Vote Count">Vote Count</option>
+                
+        </select>
+         <select  className='dropdown-right' onChange={handleFilter}>
+                <option value="">Genre</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Thriller">Popularity</option>
+                <option value="War">War</option>
+                <option value="Romance">Romance</option>  
+        </select>
         </header>
         <div className='movie-container'>
                 {open &&
@@ -135,7 +134,7 @@ const MovieList = () =>{
             setCount(count=>count+1);
         }}>Load More+</button>: null}
         <footer>
-            di0ojqwfiewj
+            <p>© Copyright 2024. All Rights Reserved.</p>
         </footer>
         </>
     )
