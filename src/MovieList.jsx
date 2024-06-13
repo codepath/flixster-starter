@@ -7,14 +7,14 @@ import Nav from "./Nav";
 // Purpose: Create card elements from API info
 export const MovieList = () => {
   const [data, setData] = useState([]);
-  const [page, updatePage] = useState(1);
-  const [searchText, updateSearchText] = useState("");
-  const [modalOpen, setShowModal] = useState(false);
-  const [selectedMovieInfo, updateMovieInfo] = useState(null);
-  const [sortString, sortBy] = useState("");
-  const [lastAction, updateLastAction] = useState("");
+  const [page, setPage] = useState(1);
+  const [searchText, setSearchText] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [MovieInfo, setMovieInfo] = useState(null);
+  const [sortString, setSortString] = useState("");
+  const [lastAction, setLastAction] = useState("");
   const [showSearch, setShowSearch] = useState(false);
-  const [genre, updateGenreFilter] = useState("");
+  const [genre, setGenreFilter] = useState("");
 
   const options = {
     method: "GET",
@@ -25,23 +25,23 @@ export const MovieList = () => {
   };
 
   const applySort = (newSortString) => {
-    updateLastAction("sort");
-    sortBy(newSortString); // Update sort state
-    updatePage(1); // Reset to the first page
-    updateGenreFilter(""); // Clear the genre filter
+    setLastAction("sort");
+    setSortString(newSortString); // Update sort state
+    setPage(1); // Reset to the first page
+    setGenreFilter(""); // Clear the genre filter
   };
 
   const performSearch = () => {
     if (searchText === "") {
       return;
     }
-    updateLastAction("search");
-    updatePage(1); // Reset to the first page
+    setLastAction("search");
+    setPage(1); // Reset to the first page
     fetchData(); // Manually trigger data fetching
   };
 
   const changePage = () => {
-    updatePage(
+    setPage(
       (prevPage) => prevPage + 1,
       () => {
         fetchData();
@@ -55,18 +55,16 @@ export const MovieList = () => {
       options
     );
     const movieInfoData = await movieInfoResponse.json();
-    updateMovieInfo(movieInfoData);
+    setMovieInfo(movieInfoData);
     setShowModal((prev) => !prev);
   };
 
   const genre_convert = (ids) => {
-    if (!selectedMovieInfo || !selectedMovieInfo.genres || !ids) {
+    if (!MovieInfo || !MovieInfo.genres || !ids) {
       return "";
     }
     return ids
-      .map(
-        (id) => selectedMovieInfo.genres.find((genre) => genre.id === id)?.name
-      )
+      .map((id) => MovieInfo.genres.find((genre) => genre.id === id)?.name)
       .filter((name) => name) // filter out any undefined values
       .join(", ");
   };
@@ -104,16 +102,16 @@ export const MovieList = () => {
       <Nav
         setShowSearch={setShowSearch}
         setData={setData}
-        updateSearchText={updateSearchText}
-        sortBy={sortBy}
-        updatePage={updatePage}
-        updateLastAction={updateLastAction}
+        updateSearchText={setSearchText}
+        sortBy={setSortString}
+        updatePage={setPage}
+        updateLastAction={setLastAction}
         fetchData={fetchData}
         showSearch={showSearch}
         searchText={searchText}
         performSearch={performSearch}
         applySort={applySort}
-        updateGenreFilter={updateGenreFilter}
+        updateGenreFilter={setGenreFilter}
       />
       <div className="movie-row">
         {data.length > 0 ? (
@@ -140,17 +138,15 @@ export const MovieList = () => {
           </button>
         )}
       </div>
-      {modalOpen && selectedMovieInfo && (
+      {showModal && MovieInfo && (
         <Modal
-          isOpen={modalOpen}
+          isOpen={showModal}
           onClose={() => setShowModal(false)}
-          title={selectedMovieInfo.name}
-          poster={`https://image.tmdb.org/t/p/original${selectedMovieInfo.poster_path}`}
-          release={selectedMovieInfo.release_date}
-          overview={selectedMovieInfo.overview}
-          genres={genre_convert(
-            selectedMovieInfo.genres.map((genre) => genre.id)
-          )}
+          title={MovieInfo.name}
+          poster={`https://image.tmdb.org/t/p/original${MovieInfo.poster_path}`}
+          release={MovieInfo.release_date}
+          overview={MovieInfo.overview}
+          genres={genre_convert(MovieInfo.genres.map((genre) => genre.id))}
         />
       )}
     </>

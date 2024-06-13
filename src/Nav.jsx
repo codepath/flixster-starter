@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Nav.css";
 
 const Nav = ({
@@ -15,14 +15,33 @@ const Nav = ({
   applySort,
   updateGenreFilter,
 }) => {
+  const [action, setAction] = useState("now_showing");
   const handleSortChange = (newSortString) => {
     applySort(newSortString);
-    updateGenreFilter(""); // Reset genre filter when sort is changed
   };
 
   const handleGenreChange = (newGenre) => {
     updateGenreFilter(newGenre);
-    sortBy(""); // Reset sort when genre is changed
+  };
+
+  const clearInfo = (newAction) => {
+    if (newAction === action) {
+      return;
+    }
+    setShowSearch(!showSearch);
+    setData([]);
+    setAction(newAction);
+  };
+
+  const resetVariables = () => {
+    updateSearchText("");
+    sortBy("");
+    updatePage(1);
+  };
+
+  const activateNowShowing = () => {
+    updateLastAction("now_showing");
+    fetchData();
   };
 
   return (
@@ -30,21 +49,16 @@ const Nav = ({
       <div className="button-group">
         <button
           onClick={() => {
-            setShowSearch(true);
-            setData([]); // Clear the movie list
+            clearInfo("search");
           }}
         >
           Search
         </button>
         <button
           onClick={() => {
-            setShowSearch(false);
-            updateSearchText("");
-            sortBy("");
-            updatePage(1);
-            updateLastAction("now_showing");
-            setData([]);
-            fetchData();
+            clearInfo("now_showing");
+            resetVariables();
+            activateNowShowing();
           }}
         >
           Now Showing
