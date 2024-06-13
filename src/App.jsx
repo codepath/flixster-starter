@@ -12,6 +12,22 @@ function App() {
   const [movieID, setMovieID] = useState('');
   const apiKey = import.meta.env.VITE_API_KEY;
 
+  useEffect(() => {
+    getMovies();
+  }, [page])
+
+  useEffect(() => {
+    searchMovies()
+  }, [searchValue])
+
+  const loadMore = () => {
+    setPage(page => page + 1);
+};
+
+  const movieClick = (movieId) => {
+    setMovieID(movieId);
+  }
+
   const getMovies = async () => {
     const url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}&api_key=0d7613c1b95dbc61f3dd491c8f802475`;
     const options = {
@@ -55,21 +71,7 @@ function App() {
 
   }
 
-  useEffect(() => {
-    getMovies();
-  }, [page])
 
-  useEffect(() => {
-    searchMovies()
-  }, [searchValue])
-
-  const loadMore = () => {
-    setPage(page => page + 1);
-};
-// setModal(!modal);
-  const movieClick = (movieId) => {
-    setMovieID(movieId);
-  }
 
 
   return (

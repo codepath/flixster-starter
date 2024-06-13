@@ -9,7 +9,6 @@ const MovieCard = (props) => {
     const toggleModal = () => {
         setIsClicked(!isClicked);
     }
-    // console.log(props);
 
     const className = Number(props.rating) < 5 ? 'bad' : Number(props.rating) < 7.5 ? 'okay' : 'good'
     return (
@@ -19,7 +18,7 @@ const MovieCard = (props) => {
                 <p id="movie-title">{props.title}</p>
                 <p id="movie-rating" className={className}>{props.rating}</p>
             </div>
-            <Modal isClicked={isClicked} toggleModal={toggleModal} movieTitle={props.title} image={props.image} releaseDate={props.releaseDate} movieOverview={props.movieOverview} movieGenres={props.movieGenres}/>
+            <Modal id={props.id} isClicked={isClicked} toggleModal={toggleModal} movieTitle={props.title} image={props.image} releaseDate={props.releaseDate} movieOverview={props.movieOverview} movieGenres={props.movieGenres}/>
         </div>
     )
 }
