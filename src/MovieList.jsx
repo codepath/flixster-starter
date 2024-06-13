@@ -12,6 +12,7 @@ const MovieList = () =>{
     const[genre, setGenre] = useState(1);
     let url;
     if(genre !== 1){
+        console.log("Genre picked: ", genre);
         url=`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${count}&with_genres=${genre}`
     } else if(sort !== ""){
         url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${count}&sort_by=${sort}`

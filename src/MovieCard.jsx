@@ -9,14 +9,14 @@ const MovieCard = (props) => {
     }
 
     return (
-        <div class="card clear-fix" onClick={handleClick}>
-            <div class="cards card-movie">
-                <img src={props.url} class="img-responsive" alt="Cards Image"/>
-                <span class="card-movie__rect"></span>
-                <ul class="card-movie__list">
+        <div className="card clear-fix" onClick={handleClick}>
+            <div className="cards card-movie">
+                <img src={props.url} className="img-responsive" alt="Cards Image"/>
+                <span className="card-movie__rect"></span>
+                <ul className="card-movie__list">
                 <li>Rating: ⭐{props.rating}</li>
                 </ul>
-                <span class="card-movie__tri"></span>
+                <span className="card-movie__tri"></span>
                 <p>{props.title}</p>
             </div>
           </div>
