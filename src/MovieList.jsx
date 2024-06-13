@@ -8,7 +8,7 @@ function MovieList(){
     const [movieList, setMovieList] = useState([]);
     // const [query, setQuery] = useState('');
     const [filteredMovies, setFilteredMovies] = useState([]);
-
+    const [search, setSearch] = useState('');
     
 
     function updateSearch(e){
@@ -35,9 +35,9 @@ function MovieList(){
             accept: 'application/json',
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZTk4ZTdhNDAzODljYmRlYjQwMTQ0OTQ1ZGQwYTMxZiIsInN1YiI6IjY2Njc3MTY3ZGQzYTMzZDdhZjg1YTVhMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DMEfKAm2887y-Rm2Qj9F66yNZjFJ28QrgcE2ktrx8tc'
             }
-          };
-         
-        fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`, options)
+        };
+        
+        fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page} &query=${search}`, options)
             .then(response => response.json())
             .then(response => setMovieList([...movieList, ...response.results]))
             .catch(err => console.error(err));
