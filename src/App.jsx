@@ -1,10 +1,106 @@
-import { useState } from 'react'
-import './App.css'
+import React from 'react';
+import MovieList from './MovieList';
+import Search from './Search';
+import { useEffect, useState } from 'react';
+import Modal from './Modal';
+import './App.css';
+import './Modal.css';
 
-const App = () => {
-  <div className="App">
-    
-  </div>
+function App() {
+  const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
+  const [searchValue, setSearchValue] = useState('');
+  const [modal, setModal] = useState(false);
+  const [movieID, setMovieID] = useState('');
+
+  const getMovies = async () => {
+    const url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}&api_key=0d7613c1b95dbc61f3dd491c8f802475`;
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZDc2MTNjMWI5NWRiYzYxZjNkZDQ5MWM4ZjgwMjQ3NSIsInN1YiI6IjY2Njc2NmJhODAyN2M0OWNmYjk5ZmJiYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0iAwLYCfoeheb8A8_TWhHNrdDn2P1x3LL-d0_fGs6BA'
+      }
+    };
+
+    const response = await fetch(url, options);
+    const jsonResponse = await response.json();
+    if (page === 1){
+      setMovies(jsonResponse.results)
+    } else {
+      setMovies(prevMovies => [...prevMovies, ...jsonResponse.results])
+    }
+
+  }
+
+  const searchMovies = async () => {
+    const result = searchValue.replace(/ +/g, '+');
+    const url = `https://api.themoviedb.org/3/search/movie?query=${result}&api_key=0d7613c1b95dbc61f3dd491c8f802475`;
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZDc2MTNjMWI5NWRiYzYxZjNkZDQ5MWM4ZjgwMjQ3NSIsInN1YiI6IjY2Njc2NmJhODAyN2M0OWNmYjk5ZmJiYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0iAwLYCfoeheb8A8_TWhHNrdDn2P1x3LL-d0_fGs6BA'
+      }
+    };
+    const response = await fetch(url, options);
+    const jsonResponse = await response.json();
+    const results = jsonResponse.results.filter((movie) => {
+      return movie.title && movie.title.toLowerCase().includes(searchValue.toLowerCase());
+    })
+    if (results.length === 0){
+      return "Try again, No results found :)"
+    }else {
+      setMovies(results);
+    }
+
+
+  }
+
+  useEffect(() => {
+    getMovies();
+  }, [page])
+
+  useEffect(() => {
+    searchMovies()
+  }, [searchValue])
+
+  const loadMore = () => {
+    setPage(page => page + 1);
+};
+// setModal(!modal);
+  const movieClick = (movieId) => {
+    setMovieID(movieId);
+  }
+
+
+  return (
+    <>
+    <header className="header">
+      <h1 className="title">Flixster</h1>
+      <Search className="searchForm" searchValue={searchValue} setSearchValue={setSearchValue}/>
+
+      <button id="nowPlayingButton" onClick={() => {
+          const form = document.getElementsByClassName("searchForm")[0];
+          const loadButton = document.getElementById('load-more');
+          form.style.display = 'none';
+          loadButton.style.display = 'grid';
+          loadButton.style.marginLeft = '40%';
+          getMovies();
+      }}>Now Playing</button>
+
+      <button id="searchTabButton" onClick={() => {
+        const form = document.getElementsByClassName("searchForm")[0];
+        const loadButton = document.getElementById('load-more');
+        form.style.display = 'block';
+        loadButton.style.display = 'none';
+        searchMovies();
+        }}>Search</button>
+    </header>
+    <Modal data={movies} movieID={movieID}/>
+    <MovieList data={movies} loadMore={loadMore} handleMovieClick={movieClick}/>
+    </>
+  )
 }
 
-export default App
+export default App;
