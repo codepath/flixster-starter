@@ -1,0 +1,31 @@
+.movieModal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(225, 225, 225, 0.5);
+    /* margin-top: 15px; */
+}
+
+.modalContent {
+    display: grid;
+    position: relative;
+    margin: 10% auto;
+    padding: 20px;
+    width: 63%;
+    height: 75%;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: black;
+    justify-content: center;
+    color: white;
+}
+
+.body-no-scroll {
+    overflow: hidden;
+    height: 100%;
+}
