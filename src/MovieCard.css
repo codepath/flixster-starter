@@ -15,6 +15,9 @@
    font-weight: bold;
    text-wrap: wrap;
 }
+.watch-button{
+    padding: 0.2rem;
+}
 
 p{
     color: white;

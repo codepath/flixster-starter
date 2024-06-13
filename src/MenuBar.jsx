@@ -7,14 +7,10 @@ function MenuBar({ movie, setOpenModal }) {
         <div className="titleCloseBtn">
           <button onClick={() => {setOpenModal(false)}}> X </button>
         </div>
-        <div className="title">
-          <h2>{movie.title}</h2>
-        </div>
         <div className="body">
-          {/* <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
-          <p className="modalText">Release Date: {movie.release_date} </p>
-          <p className="modalText">Overview: {movie.overview} </p> */}
-          <p className="modalText">Genres: </p>
+          <p className="modalText">Home </p>
+          <p className="modalText">Favorites </p>
+          <p className="modalText">Watchlist </p>
         </div>
         <div className="footer">
           <button onClick={() => {setOpenModal(false)}} id="cancelBtn"> Cancel</button>

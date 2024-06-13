@@ -15,9 +15,10 @@ export default App
 
 
 // TO-DO:
+//when favorite/watchlist is clicked, let it follow the movie id (then add to favorites array)
 //filter (genres, release date, vote average, or other relevant options.)
 //genre id map
-//style header and footer
+//style footer
 //style modal *
 //modal info
 //sort by rating too*

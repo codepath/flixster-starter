@@ -3,6 +3,7 @@ import MovieCard from './MovieCard'
 import Modal from './Modal'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import MenuBar from './MenuBar'
 
 function MovieList() {
   const [movies, setMovies] = useState([]);
@@ -14,6 +15,7 @@ function MovieList() {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [sortOrder, setSortOrder] = useState('ascending');
   const [showSearchButton, setShowSearchButton] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 
   const fetchMovies = async() => {
@@ -84,6 +86,13 @@ function MovieList() {
     setIsModalOpen(false);
   };
 
+  const handleMenuBar = () => {
+    setIsMenuOpen(!isMenuOpen);
+  }
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   const sortMovies = () => {
     const sortedMovies = [...movies].sort((a, b) => {
       if(sortOrder === 'ascending') {
@@ -135,7 +144,12 @@ function MovieList() {
     <>
       <div className='wholeFlixster'>
         {/* header section */}
-        <h1>Flixster</h1>
+        <div className='title'>
+          <label onClick={handleMenuBar}>
+            <i className="fa-solid fa-bars fa-2xl"></i>
+          </label>
+          <h1>Flixster</h1>
+        </div>
         <div className='header'>
           {/* search section */}
           <div>
@@ -179,6 +193,7 @@ function MovieList() {
         {isModalOpen && selectedMovie &&  (
             <Modal movie={selectedMovie} setOpenModal={closeModal} />
         )}
+        {isMenuOpen && (<MenuBar setOpenModal={closeMenu}/>)}
       </div>
     </>
   )

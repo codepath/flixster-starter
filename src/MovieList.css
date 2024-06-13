@@ -5,7 +5,7 @@
 }
 .movie-cards{
     border: solid white;
-    margin: 10px;
+    margin: 2rem;
     border-radius: 20px;
     width: 15rem;
 }
@@ -16,6 +16,13 @@ button{
 }
 .wholeFlixster{
     margin: 30px;
+}
+.title{
+    display: inline;
+}
+.title i{
+    align-self: center;
+    float: left;
 }
 
 h1{
@@ -48,9 +55,6 @@ select{
     align-items: center;
     border-bottom: white solid;
 }
-.hide{
-    display: none;
-}
-.show{
-    display: flex;
+.fa-bars{
+    margin: 2rem;
 }
