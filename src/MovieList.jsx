@@ -3,9 +3,10 @@ import "./MovieList.css";
 import MovieCard from "./MovieCard";
 import Modal from "./Modal";
 import Nav from "./Nav";
+import SideBar from "./SideBar";
 
 // Purpose: Create card elements from API info
-export const MovieList = () => {
+export const MovieList = ({ isSidebarOpen, toggleSidebar }) => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [searchText, setSearchText] = useState("");
@@ -17,6 +18,7 @@ export const MovieList = () => {
   const [genre, setGenreFilter] = useState("");
   const [seenMovies, setSeenMovies] = useState([]);
   const [lovedMovies, setLovedMovies] = useState([]);
+  const [trailer, setTrailer] = useState("");
 
   const options = {
     method: "GET",
@@ -26,20 +28,22 @@ export const MovieList = () => {
     },
   };
 
-  const toggleSeen = (movieId) => {
-    setSeenMovies((prev) =>
-      prev.includes(movieId)
-        ? prev.filter((id) => id !== movieId)
-        : [...prev, movieId]
-    );
+  const toggleSeen = (movie) => {
+    setSeenMovies((prev) => {
+      const isAlreadySeen = prev.some((m) => m.id === movie.id);
+      return isAlreadySeen
+        ? prev.filter((m) => m.id !== movie.id)
+        : [...prev, movie];
+    });
   };
 
-  const toggleLoved = (movieId) => {
-    setLovedMovies((prev) =>
-      prev.includes(movieId)
-        ? prev.filter((id) => id !== movieId)
-        : [...prev, movieId]
-    );
+  const toggleLoved = (movie) => {
+    setLovedMovies((prev) => {
+      const isAlreadyLoved = prev.some((m) => m.id === movie.id);
+      return isAlreadyLoved
+        ? prev.filter((m) => m.id !== movie.id)
+        : [...prev, movie];
+    });
   };
 
   const applySort = (newSortString) => {
@@ -71,12 +75,18 @@ export const MovieList = () => {
   };
 
   const toggleModal = async (movie_id) => {
-    const movieInfoResponse = await fetch(
-      `https://api.themoviedb.org/3/movie/${movie_id}?language=en-US`,
-      options
-    );
-    const movieInfoData = await movieInfoResponse.json();
-    setMovieInfo(movieInfoData);
+    const url = `https://api.themoviedb.org/3/movie/${movie_id}?language=en-US&append_to_response=videos`;
+    const movieInfoResponse = await fetch(url, options);
+    const movie = await movieInfoResponse.json();
+    setMovieInfo(movie);
+    let trailerKey = "";
+    for (let trailer of movie.videos.results) {
+      if (trailer.type === "Trailer") {
+        trailerKey = trailer.key;
+        break;
+      }
+    }
+    setTrailer(`https://www.youtube.com/embed/${trailerKey}`);
     setShowModal((prev) => !prev);
   };
 
@@ -139,6 +149,13 @@ export const MovieList = () => {
         updateGenreFilter={setGenreFilter}
       />
       <div className="movie-row">
+        <SideBar
+          lovedMovies={lovedMovies}
+          seenMovies={seenMovies}
+          onMovieSelect={toggleModal}
+          toggleSidebar={toggleSidebar}
+          isSidebarOpen={isSidebarOpen}
+        />
         {data.length > 0 ? (
           data.map((movie) => (
             <MovieCard
@@ -147,10 +164,14 @@ export const MovieList = () => {
               poster={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               rating={Math.round(movie.vote_average * 100) / 100}
               clickHandler={() => toggleModal(movie.id)}
-              seen={seenMovies.includes(movie.id)}
-              loved={lovedMovies.includes(movie.id)}
-              toggleSeen={() => toggleSeen(movie.id)}
-              toggleLoved={() => toggleLoved(movie.id)}
+              seen={seenMovies.some((m) => m.id === movie.id)}
+              loved={lovedMovies.some((m) => m.id === movie.id)}
+              toggleSeen={() =>
+                toggleSeen({ id: movie.id, title: movie.title })
+              }
+              toggleLoved={() =>
+                toggleLoved({ id: movie.id, title: movie.title })
+              }
             />
           ))
         ) : (
@@ -166,11 +187,12 @@ export const MovieList = () => {
         <Modal
           isOpen={showModal}
           onClose={() => setShowModal(false)}
-          title={MovieInfo.name}
+          title={MovieInfo.title}
           poster={`https://image.tmdb.org/t/p/original${MovieInfo.poster_path}`}
           release={MovieInfo.release_date}
           overview={MovieInfo.overview}
           genres={genre_convert(MovieInfo.genres.map((genre) => genre.id))}
+          trailer={trailer}
         />
       )}
     </>
