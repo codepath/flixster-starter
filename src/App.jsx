@@ -2,6 +2,8 @@ import React from 'react';
 import MovieList from './MovieList';
 import Search from './Search';
 import { useEffect, useState } from 'react';
+import SideBar from './SideBar';
+import { FaBarsStaggered } from "react-icons/fa6";
 import './App.css';
 
 function App() {
@@ -10,6 +12,7 @@ function App() {
   const [searchValue, setSearchValue] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('');
   const [movieID, setMovieID] = useState('');
+  const [showSideBar, setShowSideBar] = useState(false);
   const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
@@ -141,11 +144,16 @@ function App() {
     setMovies(jsonResponse.results);
   }
 
-
+  const handleClickSideBar = () => {
+    setShowSideBar(!showSideBar);
+  }
 
   return (
     <>
     <header className="header">
+      <div onClick={handleClickSideBar}>
+        <FaBarsStaggered className="side-bar-logo" onClick={handleClickSideBar}/>
+      </div>
       <h1 className="title">🎥 Flixster 🍿</h1>
       <Search className="searchForm" searchValue={searchValue} setSearchValue={setSearchValue}/>
 
@@ -176,7 +184,10 @@ function App() {
           <option value="action">Action</option>
         </select>
     </header>
-    <MovieList data={movies} loadMore={loadMore} handleMovieClick={movieClick}/>
+    <SideBar showing={showSideBar} />
+    <main>
+      <MovieList data={movies} loadMore={loadMore} handleMovieClick={movieClick}/>
+    </main>
     <footer className="footer">
       <p>Copyright &copy; 2024 Meta U</p>
     </footer>

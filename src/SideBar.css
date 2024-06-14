@@ -1,0 +1,32 @@
+.side-bar {
+    width: 200px;
+    background-color: indigo;
+    position: absolute;
+    height: 100vh;
+    padding: 0 30px;
+    left: -100%;
+    transition: all 0.5s;
+    color: white;
+    display: fixed;
+    z-index: 100;
+}
+
+.side-bar.active {
+    left: 0;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+.side-bar-content{
+    font-size: 18px;
+}
+
+.side-bar-title {
+    font-size: 20px;
+}

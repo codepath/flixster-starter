@@ -1,17 +1,21 @@
 #root {
   max-width: 1900px;
   margin: 0 auto;
-  /* padding: 2rem; */
   text-align: center;
   background-color: #f5f5f5;
+}
+
+main {
+  max-width: 1700px;
+  display: grid;
+  justify-content: end;
+  margin-left: 70px;
 }
 
 .header {
   border: 2px solid indigo;
   width: 100%;
   background-color: indigo;
-  display: fixed;
-  border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
 }
 
@@ -28,7 +32,9 @@
 
 .title {
   color: white;
+  margin-top: 0px;
 }
+
 form{
   display: flex;
   justify-content: flex-start;
@@ -85,6 +91,18 @@ form{
   border: 2px solid darkmagenta;
   border-radius: 5px;
   text-align: center;
+}
+
+.side-bar-logo {
+  font-size: 30px;
+  display: grid;
+  margin-left: 30px;
+  margin-top: 20px;
+  color: #f5f5f5;
+}
+
+.side-bar-logo:hover {
+  transform: scale(1.2);
 }
 
 @media all and (max-width: 630px) {

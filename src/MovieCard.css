@@ -6,8 +6,15 @@
     width: 250px;
     height: auto;
     justify-content: center;
-    margin: 20px 10px 10px 20px;
+    margin: 30px 10px 10px 30px;
     background-color: #f5f5f5;
+    transition: transform 0.3s ease-in-out;
+    will-change: transform;
+}
+
+.imageContainer:hover {
+    transform: scale(0.9) rotate(3deg);
+    cursor: pointer;
 }
 
 #movie-poster {
