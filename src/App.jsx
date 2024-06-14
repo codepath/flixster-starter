@@ -1,74 +1,99 @@
 import './App.css';
 import MovieList from './MovieList';
 import Search from './Search';
+import Filter from './Filter';
+import Sort from './Sort';
 import { useState, useEffect } from 'react';
 
 function App() {
+  //a central state object map for all elements that interact with api requests allows us to ensure all fetch requests are in sync with all current relevant values
+  const [apiData, setApiData] = useState({
+    search: '',
+    page: 1,
+    filters: [],
+    sort: ''
+  });
   const [movieData, setMovieData] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [searchData, setSearchData] = useState([]);
-  const [page, setPage] = useState(1);
-  useEffect(() => {
-    fetchData()
-   }, [])
 
   useEffect(() => {
-    const filterSearchData = () => {
-      if(!searchQuery) {
-        setSearchData(movieData);
-      } else {
-        const filteredData = movieData.filter(movie =>
-          movie.title.toUpperCase().includes(searchQuery.toUpperCase())
-        );
-        setSearchData(filteredData); 
-      }
-    };
-    filterSearchData();
-  }, [searchQuery, movieData]);
+    fetchData();
+  }, [apiData]);
 
-  useEffect(() => {
-    console.log('click')
-    fetchData()
-  }, [page]);
-
-  const increment = () => {
-    setPage(page+1)
-  };
-
+//fetchData fetches data by inserting sort,search,and filter info onto the base API URL as needed and sets visible movies to correspond with API response
   const fetchData = async () => {
-  try {
-      const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}&api_key=${import.meta.env.VITE_API_KEY}`);
+    try {
+      let url = `https://api.themoviedb.org/3/discover/movie?language=en-US&include_adult=false&include_video=false&page=${apiData.page}&api_key=${import.meta.env.VITE_API_KEY}`;
+
+      if (apiData.search !== '') {
+        url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(apiData.search)}&language=en-US&page=${apiData.page}&include_adult=false&api_key=${import.meta.env.VITE_API_KEY}`;
+      }
+      if (apiData.filters.length > 0) {
+        url += `&with_genres=${apiData.filters.join(',')}`;
+      }
+      if (apiData.sort !== ''){
+        url += `&sort_by=${apiData.sort}`
+      }
+
+      const response = await fetch(url);
       if (!response.ok) {
-          throw new Error('Network response was not ok');
+        throw new Error('Failed to fetch movies: ' + response.statusText);
       }
       const data = await response.json();
-      console.log(data.results)
-      setMovieData(movieData.concat(data.results));
-  } catch (error) {
+      // Update movieData by appending new results to existing data if not on the first page, otherwise replace existing data.
+      setMovieData(prevData => apiData.page > 1 ? [...prevData, ...data.results] : [...data.results]);
+
+    } catch (error) {
       console.error('Fetch error:', error);
     }
   };
-  
 
+  // All handlers work by updating the apiData state with new values for search, filters, sort, or page whenever relevant while maintaining unchanged fields
+  const handleSearch = (query) => {
+    setApiData({...apiData, search: query, page: 1});
+  };
+
+  const handleFilter = (newFilters) => {
+    setApiData({...apiData, filters: newFilters, page: 1});
+  };
+
+  const handleSort = (newSort) => {
+    setApiData({...apiData, sort: newSort, page: 1});
+  };
+
+  const incrementPage = () => {
+    setApiData({...apiData, page: apiData.page + 1}); 
+  };
+
+  const checkForEmptyMovie = () => {
+    if (movieData.length > 0) {
+      return (
+        <>
+          <MovieList data={movieData} />
+          <footer>
+            <button id="loadbtn" onClick={incrementPage}>Load More</button>
+          </footer>
+        </>
+      );
+    } else {
+      return <p id="emptymessage">No movies match your search for "{apiData.search}", try searching for something else :D</p>
+    }
+  };
 
   return (
     <>  
       <header>
         <h1>Flixster</h1>
-        <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+        <Search searchQuery={apiData.search} setSearchQuery={handleSearch}/>
+        <Filter setFilters={handleFilter}/>
+        <Sort setSort={handleSort}/>
       </header>
       <div className="App">
-        <MovieList data={searchData}/>
+        {checkForEmptyMovie()}
       </div>
-      <footer>
-      <button id="loadbtn" onClick={increment}>Load More</button>
-      </footer>
     </>
-      
   );
 }
 
 export default App;
-
 
 

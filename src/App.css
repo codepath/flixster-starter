@@ -14,12 +14,12 @@ h1 {
 } 
 
 footer {
-  background-color: #457462;
   height: 10vh;
-  justify-content: center;
-  align-self: center;
-  bottom: 0;
+  background-color: #457462;
+  position: sticky;
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
 }
 
@@ -36,4 +36,9 @@ footer {
   justify-content: center; 
   align-items: center; 
   flex-direction: column; 
+}
+
+
+#emptymessage {
+  font-size: 16pt;
 }
