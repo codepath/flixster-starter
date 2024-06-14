@@ -44,24 +44,21 @@ Deployed Application (optional): [Flixster Deployed Site](https://flixster-start
   - [X] The sidebar displays the user's favorited and watched movies
 
 ### Walkthrough Video
-
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+`[ADD_EMBEDDED_CODE_HERE](https://www.loom.com/share/fed1b3fdf9c64469ac9084acf1505b09?sid=b6ae632f-f6f4-4099-ac12-2f8b36bd2abf)`
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+Yes the labs did prepare me
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+I would have added users be able to click on the movies in the favorite tab and the modal for the movie dsplays.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I think being able to do most of the stretch feautres was the best thing. One thing that did not go as planned was having to move code around because i didnt understand passing props properling and how states should be higher up in componenets that need it.
 
 ### Open-source libraries used
 
@@ -69,4 +66,4 @@ Add your response here
 
 ### Shout out
 
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+Shout out to Theo
