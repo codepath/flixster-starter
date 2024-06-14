@@ -3,7 +3,7 @@
     display: flex;
     flex-wrap: nowrap;
 }
-.movieCards img{
+.movieCardImg{
     width: 100%;
     display: block;
     border-top-left-radius: 17px;

@@ -9,6 +9,10 @@
     border-radius: 20px;
     width: 15rem;
 }
+.movie-cards:hover{
+    transform: translateY(-20px);
+    box-shadow: 0 8px 16px rgba(213, 205, 205, 0.4);
+}
 .AppName{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
@@ -26,6 +30,7 @@ button{
 .title i{
     align-self: center;
     float: left;
+    padding: 15px;
 }
 
 h1{

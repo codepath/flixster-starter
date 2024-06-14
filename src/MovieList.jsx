@@ -22,8 +22,8 @@ function MovieList() {
   const [selectedGenre, setSelectedGenre] = useState('');
   const [genres, setGenres] = useState([]);
   const [view, setView] = useState('movies');
-  const [watchList, setWatchList] = useState({});
   const [favoritedMovies, setFavoritedMovies] = useState([]);
+  const [movieTrailer, setMovieTrailer] = useState({})
 
   const handleWatchButton = (e, movieId) => {
     e.stopPropagation();
@@ -53,9 +53,11 @@ function MovieList() {
       const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}&api_key=9fc2582941573c4b168e5c4155a13688`);
       const data = await response.json();
       if (page === 1){
-      setMovies(data.results)
+        setMovies(data.results)
+        data.results.forEach(movie => fetchTrailer(movie.id));
       } else {
         setMovies(prevMovies => ([...prevMovies, ...data.results]));
+        data.results.forEach(movie => fetchTrailer(movie.id));
       }
     } catch(err) {
       console.error(err);
@@ -174,6 +176,19 @@ function MovieList() {
     }).join(', ');
   }
 
+  const fetchTrailer = async(movieId) => {
+    try{
+      const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US=${page}&api_key=9fc2582941573c4b168e5c4155a13688`);
+      const data = await response.json();
+      const trailer = data.results.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+      if (trailer){
+        setMovieTrailer(prevTrailers => ({...prevTrailers, [movieId]: trailer.key}));
+      }
+    } catch(error){
+      console.error(error);
+    }
+  }
+
   useEffect(() => {
     if(!isSearching) {
       fetchMovies();
@@ -287,7 +302,7 @@ function MovieList() {
 
         {loading ? <p>Loading...</p> : <button onClick={handleLoadMoreMovies}>Load More</button>}
         {isModalOpen && selectedMovie &&  (
-            <Modal movie={selectedMovie} setOpenModal={closeModal} genre={genres} getGenreName={getGenreName}/>
+            <Modal movie={selectedMovie} setOpenModal={closeModal} genre={genres} getGenreName={getGenreName} trailers={movieTrailer}/>
         )}
         {isMenuOpen && (<MenuBar setOpenModal={closeMenu} setView={setView}/>)}
       </div>

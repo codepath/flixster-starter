@@ -1,6 +1,6 @@
 import "./Modal.css";
 
-function Modal({ movie, setOpenModal, getGenreName }) {
+function Modal({ movie, setOpenModal, getGenreName, trailers}) {
   return (
     <div className="modalBackground">
       <div className="modalContainer">
@@ -14,8 +14,20 @@ function Modal({ movie, setOpenModal, getGenreName }) {
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
           <p className="modalText">Release Date: {movie.release_date} </p>
           <p className="modalText">Overview: {movie.overview} </p>
-          <p className="modalText">Genres:{getGenreName(movie.genre_ids)}</p>
+          <p className="modalText">Genres: {getGenreName(movie.genre_ids)}</p>
           <img className="backdrop" src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}/>
+          {trailers[movie.id] && (
+            <div className="trailer">
+              <iframe
+              width= '200'
+              height="100"
+              src={`https://www.youtube.com/embed/${trailers[movie.id]}`}
+              allow="autoplay"
+              title={movie.title}
+              >
+              </iframe>
+            </div>
+          )}
         </div>
         <div className="footer">
           <button onClick={() => {setOpenModal(false)}} id="cancelBtn"> Cancel</button>

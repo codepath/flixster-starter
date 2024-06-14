@@ -1,18 +1,11 @@
 import './MovieCard.css'
-import { useState } from 'react';
-
 
 function MovieCard(props) {
-  // const [setFavorite, isSetFavorite] = useState({});
-  // const handleFavoriteButton = (event, movieId) => {
-  //   event.stopPropagation();
-  //   isSetFavorite((prevfavorite) => ({...prevfavorite, [movieId]: !prevfavorite[movieId]}));
-  // }
   return (
     <>
       <div className='movieCards'>
         <div>
-          <img src={props.poster_path}/>
+          <img className="movieCardImg" src={props.poster_path}/>
           <p className='movieCard-title'>{props.title}</p>
           <label onClick={(e) => props.handleFavoriteButton(e, props.id)}>
             {props.favoritedMoviesList.includes(props.id)? <i className="fa-solid fa-heart"></i> : <i className="fa-regular fa-heart"></i>}
