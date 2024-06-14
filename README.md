@@ -4,7 +4,7 @@ Submitted by: Gabriella
 
 Estimated time spent: 25 hours spent in total
 
-Deployed Application (optional): [Flixster Deployed Site]((https://flixster-starter-jpsb.onrender.com))
+Deployed Application (optional): [Flixster Deployed Site](https://flixster-starter-jpsb.onrender.com)
 
 ### Application Features
 
