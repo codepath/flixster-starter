@@ -1,20 +1,20 @@
 import './MovieList.css';
 import MovieCard from './MovieCard.jsx';
+import SideBar from './SideBar';
 function MovieList(props) {
 
     const toggleLikeList = (movieID, isRemove) => {
         if(isRemove){
-            props.handleSetLikedMoviesList((prev) => {
+            props.setLikedMovies((prev) => {
                 return props.likedMovies.filter((movieDataID) => movieDataID !== movieID);
             })
         }
         else{
-            props.handleSetLikedMoviesList((prev) => {
-                return [...props.likedMoviesList, movieID];
+            props.setLikedMovies((prev) => {
+                return [...props.likedMovies, movieID];
             });
         }
     }
-
     function createMovieCards(card, i) {
         // if(!id.includes(card.id)){
         //     id.push(card.id);
@@ -28,8 +28,9 @@ function MovieList(props) {
                 backdropImage = {card.backdrop_path != null ? "https://image.tmdb.org/t/p/w500" + card.backdrop_path : 'https://img.freepik.com/free-vector/vector-damask-seamless-pattern-background-classical-luxury-old-fashioned-damask-ornament-royal-victorian-seamless-texture-wallpapers-textile-wrapping-exquisite-floral-baroque-template_1217-738.jpg?t=st=1718339274~exp=1718342874~hmac=5b79e745851a4888614e6daf9ce85b622e8f4df2071e3432456ae64724dbf882&w=1380'}
                 originalTitle = {card.original_title}
                 releaseDate = {card.release_date}
-                isLiked = {props.likedMovies.includes(card.id)}
-                toggleLikedList = {(isRemove) => {toggleLikeList(card.id, isRemove)}}
+                genres = {card.genre_ids}
+                setFavoriteMovies={() => props.setFavoriteMovies(card.id)}
+                setWatchedMovies={() => props.setWatchedMovie(card.id)}
                 />
 
         )

@@ -2,6 +2,7 @@ import './MovieCard.css';
 import React from 'react';
 import { useState } from 'react';
 import Modal from './Modal.jsx';
+import SideBar from './SideBar';
 // import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 // import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,10 +16,6 @@ function MovieCard(props) {
     }
     function closeModal() {
         setIsModalOpen(false);
-    }
-    const toggleLike = (event) => {
-        event.preventDefault();
-        props.toggleLikedList(props.isLiked)
     }
     const likeButton = () =>{
         setLiked(prevState => !prevState);
@@ -42,13 +39,24 @@ function MovieCard(props) {
                     <p className='title'><strong>{props.title}</strong></p>
                     <p>{props.rating}</p>
                     <button onClick={openModal} className='view-details button'>View Details</button>
-                    <span onClickCapture={toggleLike} caria-label="toggle-favorite"></span>
-                    <button onClick={likeButton} className={`heart ${liked ? 'clicked' : ''} button`}>
+                    <span  caria-label="toggle-favorite"></span>
+                    <button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setLiked(!liked);
+                            props.setFavoriteMovies();
+                        }}
+                        className={`heart ${liked ? 'clicked' : ''} button`}>
                        {liked ? "Favorite!" : "Not Favorite?"}
                     </button>
 
                 <div className='watched-button-unclicked'>
-                    <button className={`watch-button ${watched ? "watched" : ""} button`} onClick={watchButton}>
+                    <button
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setWatched(!watched);
+                        props.setWatchedMovies();
+                    }} className={`watch-button ${watched ? "watched" : ""} button`}>
                         {watched ? "Watched" : "Not Watched"}
                     </button>
                 </div>

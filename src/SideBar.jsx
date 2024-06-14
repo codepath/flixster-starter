@@ -1,60 +1,41 @@
 import './SideBar.css'
 import { useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
+
 function SideBar(props){
-    const [moviesData, setMoviesData] = useState([]);
-    const apiKey = import.meta.env.VITE_API_KEY;
 
-    const getMoviesData = async (movieID) => {
-        const options = {
-            method: 'GET',
-            headers: {
-              accept: 'application/json',
-              Authorization: 'Bearer' + apiKey
-            }
-          };
-        const response = await fetch('https://api.themoviedb.org/3/movie/' + movieID ,options);
-        if (!response.ok) {
-            console.log(response);
-            return null;
-        }
-        return await response.json();
-    }
 
-    const updateMoviesLikedList = async() => {
-        let likedMovies = [];
-        for (let i = 0; i < props.likedMoviesInformation.length; i++) {
-            let movieData = await getMoviesData(props.likedMoviesInformation[i]);
-            console.log(movieData);
-            likedMovies.push(movieData);
-        }
-        setMoviesData(likedMovies);
+
+    function MovieCardForSideBar(movieID, index){
+        // get selected movie from the list of movies
+        const movie = props.movies.find((item) => item.id === movieID);
+
+
+        // update state to show the selected movie
+
+
+
+        console.log(movie);
+        return(
+            // display updated state to the user (in the browser)
+            <div key={index}>
+                <img src={movie.poster_path != null ? "https://image.tmdb.org/t/p/w500" + movie.poster_path : 'https://www.pngmart.com/files/22/Carl-Jimmy-Neutron-PNG-File.png"'} alt="Movie Poster" width="200" height="200" />
+                <p className='texts'>{movie.title}</p>
+            </div>
+        )
     }
-    useEffect(() => {
-        updateMoviesLikedList();
-    }, [props.likedMoviesInformation]);
 
     return(
         <div className="sidebar">
-            <p>Liked Movies: </p>
-            {moviesData.map((props) => {
-                console.log(moviesData);
-                return(
-                    <MovieCard
-                    key={props.id}
-                    name={props.title}
-                    isLiked = {true}
-                    toggleLikedList = {(isRemove) => {}}/>
-                )
-
-            })}
-
+            <div id='title-liked'>
+                <h2>Favorites</h2>
+            </div>
+            <div className='favorite-cards'>
+            {props.favoriteMovies.map(MovieCardForSideBar)}
+            </div>
+            <h2>Watched Movies: </h2>
+            {props.watched.map(MovieCardForSideBar)}
         </div>
     )
 }
 export default SideBar;
-
-//movieID={card.id}
-
-//title={card.title}
-//

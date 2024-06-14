@@ -3,6 +3,7 @@ import './App.css'
 import MovieList from './MovieList.jsx';
 import SideBar from './SideBar';
 
+
 function App() {
     //state variable to store movie data
     const [movies, setMovieData] = useState([]);
@@ -33,8 +34,16 @@ function App() {
     //state variable to store search data
     const [searchTerm, setSearchTerm] = useState('');
 
-    //state variable to store side-bar information
+    //state variable to liked movies information
     const [likedMovies, setLikedMovies] = useState([]);
+
+    //state variable to store watched movies information
+    const [watchedMovies, setWatchedMovies] = useState([]);
+
+    //state variable to store genre type
+    const [genreType, setGenreType] = useState('');
+
+
 
 
     //function to choose what to display on the page. If it's now playing, it will fetch the data from now-playing endpoint.
@@ -45,6 +54,9 @@ function App() {
                 if (sortType != "") {
                     fetchURL += '&sort_by=' + sortType;
                 }
+                // if (genreType != "") {
+                //     fetchURL += '&with_genres=' + genreType;
+                // }
                 setMovieData([]);
                 setPageNumber(1);
                 const response = await fetch(fetchURL);
@@ -52,6 +64,7 @@ function App() {
                 setMovieData(data.results);
             }
             else {
+                setMovieData([]);
                 setFetchBetweenTabs('search-results');
             }
         }
@@ -66,6 +79,9 @@ function App() {
             if (sortType != "") {
                 fetchURL += '&sort_by=' + sortType;
             }
+            // if (genreType != "") {
+            //     fetchURL += '&with_genres=' + genreType;
+            // }
             fetchURL += '&page=' + pageNumber;
             const response = await fetch(fetchURL);
             const data = await response.json();
@@ -77,11 +93,12 @@ function App() {
     }
 
     //useEffect to fetch if the tab is now playing or search
+
     useEffect(() => {
         if (fetchBetweenTabs === 'now-playing-home' && searchTerm === '') {
             fetchNewPageMovieData()
         }
-        else {
+        else{
             searchDataValue(searchTerm);
         }
     }, [pageNumber, searchTerm]);
@@ -102,7 +119,7 @@ function App() {
         };
         fetch(`https://api.themoviedb.org/3/search/movie?query=${searchData}&include_adult=false&language=en-US&page=${pageNumber}`, options)
             .then(response => response.json())
-            .then(response => setMovieData((response.results)))
+            .then(response => setMovieData(movies.concat(response.results)))
             .catch(err => console.error(err));
 
     }
@@ -114,6 +131,7 @@ function App() {
             setSearchButton('inactive');
             setdisplaySearchBarButton('hide');
             setSortType('');
+            setGenreType('')
             setMovieData([]);
             setSearchTerm('');
             handleDiscoverRequest();
@@ -132,31 +150,73 @@ function App() {
     }, [sortType]);
 
     //function to move liked movies to the sidebar
-    const handlesetLikedMovies = (value) => {
-        setLikedMovies(value);
+     function handlesetLikedMovies(movieID){
+        if(likedMovies.includes(movieID)){
+            setLikedMovies(previousIDs => previousIDs.filter(previousID => previousID !== movieID));
+        }
+        else{
+            setLikedMovies(previousID => [...previousID, movieID]);
+        }
     }
+
+    //function to move watched movies to the sidebar
+    function handlesetWatchedMovies(movieID){
+        if(watchedMovies.includes(movieID)){
+            setWatchedMovies(previousIDs => previousIDs.filter(previousID => previousID !== movieID));
+        }
+        else{
+            setWatchedMovies(previousID => [...previousID, movieID]);
+        }
+    }
+
+    //dictionary of genre IDS to their corresponding names
+    const Genres = {
+        28:"Action",
+        12:"Adventure",
+        16:"Animation",
+        35:"Comedy",
+        80:"Crime",
+        99:"Documentary",
+        18:"Drama",
+        10751:"Family",
+        14:"Fantasy",
+        36:"History",
+        27:"Horror",
+        10402:"Music",
+        9648:"Mystery",
+        10749:"Romance",
+        878:"Science Fiction",
+        10770:"TV Movie",
+        53:"Thriller",
+        10752:"War",
+        37:"Western",
+    }
+
+
 
     return (
         <div className='whole-body'>
             <div className='nav-bar'>
-                <SideBar likedMoviesInformation={likedMovies} setLikedMovies={handlesetLikedMovies} />
+                <SideBar favoriteMovies = {likedMovies} watched = {watchedMovies} movies={movies}/>
             </div>
 
             <div className='body'>
                 <header>
-                    <div className='header'>
-                        <h1 className='title-header'>Flixster</h1>
-                        <section className='navigation-bar'>
-                            <button id='search' className = "button" onClick={NowPlaying}>Search</button>
-                            <button id="now-playing" className="button" onClick={NowPlaying}>Now Playing</button>
-                            <select className='sort-by button' value={sortType} onChange={(e) => { setSortType(e.target.value) }} id='sortedData'>
-                                <option value="">Choose a Sort</option>
-                                <option value="title.asc">Sort By Title</option>
-                                <option value="primary_release_date.asc">Sort By Date</option>
-                                <option value="vote_average.desc">Sort By Rating</option>
-                                <option value="revenue.desc">Sort By Revenue</option>
-                            </select>
-                        </section>
+                    <div>
+                        <div className='header'>
+                            <h1 className='title-header'>Flixster</h1>
+                            <section className='navigation-bar'>
+                                <button id='search-results' className = "button" onClick={NowPlaying}>Search</button>
+                                <button id="now-playing" className="button" onClick={NowPlaying}>Now Playing</button>
+                                <select className='sort-by button' value={sortType} onChange={(e) => { setSortType(e.target.value) }} id='sortedData'>
+                                    <option value="">Choose a Sort</option>
+                                    <option value="title.asc">Sort By Title</option>
+                                    <option value="primary_release_date.asc">Sort By Date</option>
+                                    <option value="vote_average.desc">Sort By Rating</option>
+                                    <option value="revenue.desc">Sort By Revenue</option>
+                                </select>
+                            </section>
+                        </div>
                     </div>
                     <section className={displaySearchBarButton}>
                         <input id='search-bar'
@@ -165,14 +225,14 @@ function App() {
                             placeholder='Search for a movie...'
                             value={searchData}
                             onChange={(e) => setSearchData(e.target.value.toLowerCase())} />
-                        <button id='search' onClick={() => setSearchTerm(searchData)}>Search</button>
+                        <button id='search-results' onClick={() => setSearchTerm(searchData)} >Search</button>
                     </section>
                 </header>
                 <div className='MovieCard2'>
-                    <MovieList data={movies}  likedMovies = {likedMovies}/>
+                    <MovieList data={movies} setWatchedMovie={handlesetWatchedMovies} setFavoriteMovies = {handlesetLikedMovies} />
                 </div>
                 <footer>
-                    <div className='button'>
+                    <div className='load-more'>
                         <button className='loadMoreButton' onClick={loadMorePages}>Load More</button>
                     </div>
                     <div>
