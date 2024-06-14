@@ -21,7 +21,7 @@
 }
 
 .modalContainer {
-    width: 500px;
+    width: 50rem;
     height: 500px;
     border-radius: 12px;
     background-color: white;
@@ -34,7 +34,7 @@
 
 .modalText{
     font-size: 1rem;
-    color: black;
+    color: white;
 }
 
 .modalContainer .title {
@@ -53,6 +53,7 @@
     border: none;
     font-size: 25px;
     cursor: pointer;
+    color: white;
 }
 
 .modalContainer .body {
@@ -100,4 +101,11 @@
     width: 100%;
     margin-top: 2rem;
     margin-bottom: 2rem;
+}
+.title{
+    color: white;
+}
+
+.modal-body{
+    background-image: 'https://image.tmdb.org/t/p/w500${movie.poster_path}';
 }

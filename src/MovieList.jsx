@@ -243,28 +243,31 @@ function MovieList() {
           </div>
 
           {/* Sort section */}
-          <div>
-            <label>Sort by:</label>
-            <select id ="sortOrder" value={sortOrder} onChange={handleSortChange}>
-              <option value="none"> Sort options: </option>
-              <option value="ascending">Movie title A-Z</option>
-              <option value="descending">Movie title Z-A</option>
-              <option value="releaseDateAscending">Release Date (ascending)</option>
-              <option value="releaseDateDescending">Release Date (descending)</option>
-            </select>
-          </div>
-          <div className="">
-              <select name="genre" value={selectedGenre} onChange={handleGenreChange}>
-                  <option>All Genres</option>
-                  {genres && genres.map((genre) => {
-                      return (
-                      <option key={genre.id} value={genre.id}>
-                          {genre.name}
-                        </option>
-                      )
-                  })}
+          <div className='filters'>
+            <div>
+              <label>Sort by:</label>
+              <select id ="sortOrder" value={sortOrder} onChange={handleSortChange}>
+                <option value="none"> Sort options: </option>
+                <option value="ascending">Movie title A-Z</option>
+                <option value="descending">Movie title Z-A</option>
+                <option value="releaseDateAscending">Release Date (ascending)</option>
+                <option value="releaseDateDescending">Release Date (descending)</option>
               </select>
-        </div>
+            </div>
+            <div className="genre">
+                <select name="genre" value={selectedGenre} onChange={handleGenreChange}>
+                    <option>All Genres</option>
+                    {genres && genres.map((genre) => {
+                        return (
+                        <option key={genre.id} value={genre.id}>
+                            {genre.name}
+                          </option>
+                        )
+                    })}
+                </select>
+            </div>
+          </div>
+
         </div>
 
         {/* movie list section */}

@@ -1,7 +1,8 @@
 .movieList{
     display: flex;
     flex-wrap: wrap;
-    margin: 25px;
+    /* width: 100%; */
+    /* margin: 25px; */
 }
 .movieCard{
     border: solid white;
@@ -12,8 +13,10 @@
 }
 img{
     width: 15rem;
-    height: 10rem;
+    height: 15rem;
     border-top-right-radius: 17px;
     border-top-left-radius: 17px;
 }
-
+.watchListCards{
+    height: 20rem;
+}
