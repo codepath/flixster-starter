@@ -3,13 +3,32 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #880ac2;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
   color: white;
-  padding: 20px;
+  padding: 10px 20px;
+  
+}
+.title {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.title h1 {
+  font-size: 50px;
+}
+@media (max-width: 600px) {
+  .title h1 {
+    font-size: 30px; /
+  }
+}
+.title img {
+  height: 60px;
 }
 
 @media (max-width: 600px) {
@@ -25,4 +44,38 @@
   .search-bar form {
     flex-direction: column;
   }
+}
+
+.line {
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 3px 0;
+}
+
+.btn-wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column; /* Aligns the lines vertically */
+  justify-content: center; /* Center lines vertically within the btn-wrapper */
+  align-items: flex-start;
+}
+
+.btn-wrapper:hover {
+  cursor: pointer;
+}
+
+.App-footer {
+  background-color: #880ac2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  padding: 10px 20px;
+}
+.App-footer a {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  color: white;
 }
