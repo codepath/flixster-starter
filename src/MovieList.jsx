@@ -71,6 +71,8 @@ const MovieList = () =>{
         } else {
             setSort("");
         }
+        setSearch("");
+        setGenre(1);
     }
     function handleFilter(e){
         e.preventDefault();
@@ -92,7 +94,7 @@ const MovieList = () =>{
         e.preventDefault();
         setSearch("");
         setSort("");
-        setGenre(1)
+        setGenre(1);
     }
 
     return(
