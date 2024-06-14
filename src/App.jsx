@@ -24,6 +24,11 @@ const App = () => {
         </div>
       </header>
       <MovieList isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+      <footer className="App-footer">
+        <a href="https://www.linkedin.com/in/boris-hernandez-jr/">
+          Learn More!
+        </a>
+      </footer>
     </div>
   );
 };
