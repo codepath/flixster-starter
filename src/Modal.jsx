@@ -37,7 +37,7 @@ function Modal({ isOpen, imgSrc, title, genres, overview, date, closeModal, runt
         <FocusTrap>
             <div className='modal' onClick={closeModal}>
                 <button onClick={closeModal}>Close</button>
-                <p className='title'>{title}</p>
+                <h3 className='title'>{title}</h3>
                 <div className='movieMedia'>
                     {checkForTrailer()}
                 </div>

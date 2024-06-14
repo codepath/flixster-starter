@@ -1,3 +1,4 @@
+//directory of genre id's and their value taken from themoviedb site
 export const genre_to_id = {
     'Action': 28,
     'Adventure': 12,
@@ -58,3 +59,4 @@ export function imageGuard(img) {
     }
 
 }
+

@@ -7,6 +7,7 @@ function MovieCard({ imgSrc, title, rating, genres, overview, date, id, trailer 
     const [modalView, setModalView] = useState(false);
     const [runtime, setRuntime] = useState('');
     const [trailerKey, setTrailerKey] = useState('');
+    const [likeFill, setLikeFill] = useState("#c0c0c0")
 
     const showModal = () => {
         setModalView(true);
@@ -45,14 +46,25 @@ function MovieCard({ imgSrc, title, rating, genres, overview, date, id, trailer 
         }
     };
 
+    const likeHandler = (e) => {
+        e.stopPropagation();
+        if (likeFill == "#c0c0c0") {
+            setLikeFill("#ff6961")
+        }
+        else {
+            setLikeFill("#c0c0c0")
+        }
+    }
 
     return (
         <>
             <div className='card' onClick={showModal} key={id}>
             <img src={imageGuard(imgSrc)} />
             <p className='title'>{title}</p>
-            <p>{`Rating: ${rating}`}</p>
-
+            <p className='rating'>{`Rating: ${rating}`}</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill={likeFill} viewBox="0 0 16 16">
+            <path fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" onClick={likeHandler}/>
+            </svg>
             </div>
             <Modal 
                 isOpen={modalView} 
