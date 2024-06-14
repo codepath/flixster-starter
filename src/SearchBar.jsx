@@ -8,11 +8,6 @@ function SearchBar({ handleSearch }) {
     const formData = new FormData(event.target)
     const movieName = formData.get('movieName')
     searchQuery(movieName)
-    // make API call
-    // store results in a variable
-    // handleSearch(movieData)
-
-
     event.target.reset();
   };
 
