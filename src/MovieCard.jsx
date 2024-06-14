@@ -1,21 +1,21 @@
-import Modal from "./Modal";
+// import Modal from "./Modal";
 import "./MovieCard.css"
-import EmptyHeart from './assets/heart1.png'
-import Heart from './assets/heart2.png'
+// import EmptyHeart from './heart1.png'
+// import Heart from './heart2.png'
 import { useState, useEffect} from "react";
 
 const MovieCard = (props) => {
-    const[heart, setHeart] = useState(EmptyHeart);
+    const[heart, setHeart] = useState(false);
     function handleClick () {
         props.query(props.id);
         props.handleOpening()
     }
     function ChangeHeart(e){
         e.stopPropagation();
-        if(e.target.src.substring(e.target.src.length - 10) === "heart1.png"){
-            setHeart(Heart);
+        if(e.target.src.substring(e.target.src.length - 10) != "heart2.png"){
+            setHeart(true);
         } else {
-            setHeart(EmptyHeart);
+            setHeart(false);
         }
     }
     function Check(e){
@@ -37,7 +37,7 @@ const MovieCard = (props) => {
                 <p>{props.title}</p>
             </div>
             <div className="heart">
-                <img className="heart-image" src={heart} onClick={ChangeHeart}></img>
+                <img className="heart-image" src={heart ? "/heart2.png" : "heart1.png"} onClick={ChangeHeart}></img>
                 <input type="checkbox" id="scales" onClick={Check}></input>
             </div>
           </div>
