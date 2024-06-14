@@ -13,7 +13,6 @@ export default App
 
 
 // TO-DO:
-//when favorite/watchlist is clicked, let it follow the movie id (then add to favorites array)
+//favorite page
 //show genre movies in the modal
-//genre id map
 //style modal *

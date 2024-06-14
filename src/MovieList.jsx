@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import MenuBar from './MenuBar'
 import WatchList from './WatchList'
+import Favorites from './Favorites'
 
 function MovieList() {
   const [movies, setMovies] = useState([]);
@@ -22,6 +23,7 @@ function MovieList() {
   const [genres, setGenres] = useState([]);
   const [view, setView] = useState('movies');
   const [watchList, setWatchList] = useState({});
+  const [favoritedMovies, setFavoritedMovies] = useState([]);
 
   const handleWatchButton = (e, movieId) => {
     e.stopPropagation();
@@ -33,7 +35,17 @@ function MovieList() {
       }
     })
   };
-  console.log(watchedMovies)
+
+  const handleFavoriteButton = (e, movieId) => {
+    e.stopPropagation();
+    setFavoritedMovies((prevFavoriteList) => {
+      if(prevFavoriteList.includes(movieId)) {
+        return prevFavoriteList.filter(id => id !== movieId);
+      } else {
+        return [...prevFavoriteList, movieId];
+      }
+    })
+  };
 
   const fetchMovies = async() => {
     setLoading(true);
@@ -71,8 +83,6 @@ function MovieList() {
       setPage((prevPage) => prevPage + 1);
     }
   }
-  // console.log(watchedMovies)
-  // console.log(movies)
 
   const handleSearch = async () => {
     if (searchQuery.trim() === ''){
@@ -249,14 +259,25 @@ function MovieList() {
                     vote_average = {movie.vote_average}
                     id = {movie.id}
                     handleWatchButton = {handleWatchButton}
-                    watchedMovies={watchedMovies}/>
+                    handleFavoriteButton = {handleFavoriteButton}
+                    watchedMovies={watchedMovies}
+                    favoritedMoviesList={favoritedMovies}/>
                  </div>
               )
             })}
           </div>
         )}
         {view === 'watchlist' && (
-          <WatchList movies={movies} watchList={watchedMovies} />)}
+          <div className='movieList'>
+            <WatchList movies={movies} watchList={watchedMovies} watchedMovies={watchedMovies}/>
+          </div>
+        )}
+
+        {view === 'favorites' && (
+          <div className='movieList'>
+            <Favorites movies={movies} favoriteList={favoritedMovies} favoritedMovies={favoritedMovies} />
+          </div>
+        )}
 
         {loading ? <p>Loading...</p> : <button onClick={handleLoadMoreMovies}>Load More</button>}
         {isModalOpen && selectedMovie &&  (
