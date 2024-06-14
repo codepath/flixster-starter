@@ -42,8 +42,8 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
 #### STRETCH FEATURES
 
-- [ ] **Deployment**
-  - [ ] Website is deployed via Render.
+- [ x] **Deployment**
+  - [x ] Website is deployed via Render.
 - [x ] **Embedded Movie Trailers**
   - [ x] Within the popup displaying a movie's details, users can play the movie trailer.
 - [x ] **Watched Checkbox**
@@ -56,23 +56,22 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
-
+`TODO://`
 `ADD_EMBEDDED_CODE_HERE`
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-They prepared me for only a little part the project. Things like useState and API fetchi
+They prepared me for only a little part the project. Lectures on useState and API calls did help
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 
-Add your response here
+With more time, I would have done some more unique designs for User experience
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+Using APIs for the first time stood out to me. I always thought it was a really hard and long process
 
 ### Open-source libraries used
 
@@ -81,3 +80,4 @@ Add your response here
 ### Shout out
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+I would like to shout out to my manager for taking her time to break down concepts for my understanding. Also special appreciation to Paige, Sammy, and Erika for the quick fixes and debugging help. And to my peers like Izu, Dara, Ian, shoutout for brainstorming solutions with me.
