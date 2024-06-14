@@ -1,5 +1,5 @@
 .header {
-    background-color: #ff0000;
+    background-color:red;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -11,7 +11,7 @@
     margin: 0;
 }
 
-.toggle-button {
+.toggleButton {
     display: flex;
     align-items: center;
 }
@@ -34,7 +34,7 @@
     margin-right: 10px;
 }
 
-.header .sort-by {
+.header .sortBy {
     background-color: #ff0000;
     color: white;
     border: none;

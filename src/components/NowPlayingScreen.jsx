@@ -1,17 +1,33 @@
+/* eslint-disable react/prop-types */
 import {useEffect, useState} from "react";
 import MovieList from "./MovieList";
-import Header from "./Header"
+import SideBar from "./SideBar";
+const ACCESS_TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 
 
-function NowPlayingScreen({ criteriaFromHeader }){
-  
+function NowPlayingScreen({criteriaFromHeader, setFave, isFave, setWatched, isWatched}){ 
     const [movies, setMovies]=useState([]);
     const [pageNumber, setPageNumber]=useState(1);
     const[url, setUrl]=useState(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${pageNumber}`)
 
+    function addToFave(movieId){
+      if(isFave.includes(movieId)){
+        setFave(prevIds => prevIds.filter(prevId => prevId !== movieId))
 
-    const ACCESS_TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
+      } else{
+        setFave(prevId => [...prevId, movieId])
+      }
+    }
 
+    function addToWatched(movieId){
+      if(isWatched.includes(movieId)){
+        setWatched(prevIds => prevIds.filter(prevId => prevId !== movieId))
+
+      } else {
+        setWatched(prevId => [...prevId, movieId])
+      }
+    }
+  
     useEffect(()=>{
       const options = {
           method: 'GET',
@@ -25,6 +41,7 @@ function NowPlayingScreen({ criteriaFromHeader }){
           .then(response => response.json())
           .then(response => {
             handleSortMovies(criteriaFromHeader, movies.concat(response.results))
+           
           })
           .catch(err => console.error(err));
       }, [url, pageNumber]);
@@ -32,7 +49,6 @@ function NowPlayingScreen({ criteriaFromHeader }){
       function loadMore(){
         setPageNumber(prevPageNumber => prevPageNumber+1)
         setUrl(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${pageNumber + 1}`);
-        //useEffect();
       }
 
       function handleSortMovies(criteria, parmaMovies = movies){
@@ -56,13 +72,13 @@ function NowPlayingScreen({ criteriaFromHeader }){
       }, [criteriaFromHeader])
 
       return(
-        <div>
-            <MovieList data={movies} />
+        <div className="sidebarFlex">
+          <SideBar fave={isFave} watched={isWatched} movies={movies}/>
+            <MovieList watchedMovies={addToWatched} favMovies={addToFave} data={movies} />
             <button onClick={loadMore}>Load more</button>
         </div>
 
       )
-
 }
 
 export default NowPlayingScreen;
