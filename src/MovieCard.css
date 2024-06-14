@@ -24,3 +24,11 @@
     transform: scale(1.04);
 }
 
+.like {
+    float: left;
+    margin-right: 100px;
+}
+
+.watch {
+    margin-left: 10%;
+}
