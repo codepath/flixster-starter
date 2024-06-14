@@ -12,6 +12,8 @@
 }
 .menuText{
     color: white;
+    font-size: 2rem;
+    text-align: left;
 }
 .menuCloseBtn{
     color: white;
@@ -19,9 +21,16 @@
     display: flex;
     justify-content: flex-end;
 }
+.menuOptions{
+    align-content: left;
+}
 
 .closeMenuX{
     padding: 0.2rem;
     width: 3rem;
     border-radius: 0.1rem;
+    justify-content: flex-end;
+}
+.fa-solid{
+    margin: 10px;
 }

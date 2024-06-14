@@ -9,6 +9,9 @@
     border-radius: 20px;
     width: 15rem;
 }
+.AppName{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
 button{
     background-color: black;
     margin: 1.5rem;

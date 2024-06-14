@@ -107,7 +107,6 @@ function MovieList() {
 
   const handleGenreChange = async(event) => {
     setSelectedGenre(event.target.value);
-    console.log("movie genres", event.target.value);
     setMovies([]);
     setPage(1);
 
@@ -168,6 +167,13 @@ function MovieList() {
 
   }
 
+  const getGenreName = (genreId) => {
+    return genreId.map(id => {
+      const genre = genres.find(genre => genre.id === id);
+      return genre ? genre.name : '';
+    }).join(', ');
+  }
+
   useEffect(() => {
     if(!isSearching) {
       fetchMovies();
@@ -206,7 +212,7 @@ function MovieList() {
           <label onClick={handleMenuBar}>
             <i className="fa-solid fa-bars fa-2xl"></i>
           </label>
-          <h1>Flixster</h1>
+          <h1 className='AppName'>Flixster</h1>
         </div>
         <div className='header'>
           {/* search section */}
@@ -281,7 +287,7 @@ function MovieList() {
 
         {loading ? <p>Loading...</p> : <button onClick={handleLoadMoreMovies}>Load More</button>}
         {isModalOpen && selectedMovie &&  (
-            <Modal movie={selectedMovie} setOpenModal={closeModal} genre={genres}/>
+            <Modal movie={selectedMovie} setOpenModal={closeModal} genre={genres} getGenreName={getGenreName}/>
         )}
         {isMenuOpen && (<MenuBar setOpenModal={closeMenu} setView={setView}/>)}
       </div>

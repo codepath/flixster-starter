@@ -13,6 +13,4 @@ export default App
 
 
 // TO-DO:
-//favorite page
-//show genre movies in the modal
 //style modal *
