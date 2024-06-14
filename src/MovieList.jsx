@@ -20,7 +20,8 @@ function MovieList() {
   const [watchedMovies, setWatchedMovies] = useState([])
   const [selectedGenre, setSelectedGenre] = useState('');
   const [genres, setGenres] = useState([]);
-  const [view, setView] = useState('movies')
+  const [view, setView] = useState('movies');
+  const [watchList, setWatchList] = useState({});
 
   const handleWatchButton = (e, movieId) => {
     e.stopPropagation();
@@ -39,7 +40,6 @@ function MovieList() {
     try{
       const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}&api_key=9fc2582941573c4b168e5c4155a13688`);
       const data = await response.json();
-      console.log(data);
       if (page === 1){
       setMovies(data.results)
       } else {
@@ -71,6 +71,8 @@ function MovieList() {
       setPage((prevPage) => prevPage + 1);
     }
   }
+  // console.log(watchedMovies)
+  // console.log(movies)
 
   const handleSearch = async () => {
     if (searchQuery.trim() === ''){
@@ -147,6 +149,7 @@ function MovieList() {
     if (event.target.id === 'now-playing') {
       setShowSearchButton(false)
       handleResetSearch()
+      setView('movies')
     }
     else if (event.target.id === 'search'){
       setShowSearchButton(!showSearchButton)
@@ -179,7 +182,6 @@ function MovieList() {
           const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=9fc2582941573c4b168e5c4155a13688`);
           const data = await response.json();
           setGenres(data.genres);
-          console.log(data)
       } catch(error){
           console.error(error)
       }
@@ -188,7 +190,6 @@ function MovieList() {
   }, []);
 
   return (
-    <>
       <div className='wholeFlixster'>
         {/* header section */}
         <div className='title'>
@@ -238,7 +239,7 @@ function MovieList() {
 
         {/* movie list section */}
         {view === 'movies' && (
-            <div className='movieList'>
+          <div className='movieList'>
             {movies.map((movie, i) => {
               return(
                   <div key={movie.id} className='movie-cards' onClick={() => handleMovieCardClick(movie)}>
@@ -255,7 +256,7 @@ function MovieList() {
           </div>
         )}
         {view === 'watchlist' && (
-          <WatchList props={watchedMovies}/>)}
+          <WatchList movies={movies} watchList={watchedMovies} />)}
 
         {loading ? <p>Loading...</p> : <button onClick={handleLoadMoreMovies}>Load More</button>}
         {isModalOpen && selectedMovie &&  (
@@ -263,7 +264,6 @@ function MovieList() {
         )}
         {isMenuOpen && (<MenuBar setOpenModal={closeMenu} setView={setView}/>)}
       </div>
-    </>
   )
 }
 

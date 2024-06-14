@@ -2,27 +2,35 @@ import './MovieCard.css'
 import { useState } from 'react';
 
 
-function Favorites(props) {
+function Favorites({movies, watchList}) {
   // const [setFavorite, isSetFavorite] = useState({});
+  const watchListMovies = movies.filter(movie => watchList[movie.id]);
   // const handleFavoriteButton = (event, movieId) => {
-  //   event.stopPropagation();
+  //   event.stopmovieagation();
   //   isSetFavorite((prevfavorite) => ({...prevfavorite, [movieId]: !prevfavorite[movieId]}));
   // }
-  {props.map((props, i) => {
+  {movies.map((movie, i) => {
     return (
       <>
         <div className='movieCards'>
-          <div>
-            <img src={props.poster_path}/>
-            <p className='movieCard-title'>{props.title}</p>
-            <label onClick={(e) => handleFavoriteButton(e, props.id)}>
-              {setFavorite[props.id]? <i className="fa-solid fa-heart"></i> : <i className="fa-regular fa-heart"></i>}
-            </label>
-            <button className="watch-button" onClick={
-              (e) => props.handleWatchButton(e, props.id)}> {props.watchedMovies.includes(props.id) ? "Watched✔️":"Add to Watchlist"}
-            </button>
-            <p>Rating: {props.vote_average}</p>
-          </div>
+          {watchListMovies.map((movie) => (
+            <div className='movieCard' key={movie.id}>
+              <img src={movie.poster_path}/>
+              <p className='movieCard-title'>{movie.title}</p>
+              <p>Rating: {movie.vote_average}</p>
+            </div>
+          ))}
+           {/* <div>
+              <img src={movie.poster_path}/>
+              <p className='movieCard-title'>{movie.title}</p>
+              <label onClick={(e) => handleFavoriteButton(e, movies.id)}>
+                {setFavorite[movie.id]? <i className="fa-solid fa-heart"></i> : <i className="fa-regular fa-heart"></i>}
+              </label>
+              <button className="watch-button" onClick={
+                (e) => movie.handleWatchButton(e, movie.id)}> {movies.watchedMovies.includes(movie.id) ? "Watched✔️":"Add to Watchlist"}
+              </button>
+              <p>Rating: {movie.vote_average}</p>
+            </div> */}
         </div>
       </>
     )

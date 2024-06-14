@@ -8,7 +8,7 @@ function MenuBar({ movie, setOpenModal, setView }) {
           <button className="closeMenuX" onClick={() => {setOpenModal(false)}}> X </button>
         </div>
         <div className="body">
-          <p className="menuText"> <i className="fa-solid fa-house"></i> Home </p>
+          <p className="menuText" onClick={() => setView('movies')}> <i className="fa-solid fa-house"></i> Home </p>
           <p className="menuText"><i className="fa-solid fa-heart"></i> Favorites </p>
           <p className="menuText" onClick={() => setView('watchlist')}> <i className="fa-solid fa-list"></i> Watchlist </p>
         </div>

@@ -1,27 +1,27 @@
-import MovieCard from './MovieCard';
 import './MovieCard.css'
+import { useState } from 'react';
 
-function WatchList({movies, watchlist}) {
-  // movies = [{adult: false, backdrop_path: '/oavbmL3iddJUmC8nQjL6bLHwAP4.jpg', genre_ids: Array(2), id: 719221}
-  // , {adult: false, backdrop_path: '/oavbmL3iddJUmC8nQjL6bLHwAP4.jpg', genre_ids: Array(2), id: 719222}
-  // , {adult: false, backdrop_path: '/oavbmL3iddJUmC8nQjL6bLHwAP4.jpg', genre_ids: Array( 2), id: 719222}]
-  // watchlist = [719221, 719223]
-  const watchListMovies = movies.filter(movie => watchlist.includes(movie.id));
-  console.log(watchListMovies);
 
-  return (
-    <>
-      <h1>Watchlist</h1>
-      <div>
-        {watchListMovies.map((movie) => (
-          <div key={movie.id}>
-            <MovieCard  movie={movie} />
+function WatchList({movies, watchList}) {
+  // const [setFavorite, isSetFavorite] = useState({});
+  const watchListMovies = movies.filter(movie => watchList.includes(movie.id));
+  // const handleFavoriteButton = (event, movieId) => {
+  //   event.stopmovieagation();
+  //   isSetFavorite((prevfavorite) => ({...prevfavorite, [movieId]: !prevfavorite[movieId]}));
+  // }
+    return (
+      <div className='movieCards'>
+        <h1>Watchlist</h1>
+        {watchListMovies.map((movie, i) => (
+          <div className='movieCard' key={movie.id}>
+            <img src = {`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
+            <p>hi</p>
+            <p className='movieCard-title'>{movie.title}</p>
+            <p>Rating: {movie.vote_average}</p>
           </div>
         ))}
       </div>
-
-    </>
-  )
+    )
 }
 
 export default WatchList;
