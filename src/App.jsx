@@ -8,7 +8,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [searchValue, setSearchValue] = useState('');
-  // const [modal, setModal] = useState(false);
+  const [selectedGenre, setSelectedGenre] = useState('');
   const [movieID, setMovieID] = useState('');
   const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -71,6 +71,75 @@ function App() {
 
   }
 
+  let genreId;
+  const handleGenreChange = (event) => {
+    const selectedValue = event.target.value;
+    if (selectedValue === "comedy") {
+      genreId = 35;
+      sortByGenre(genreId);
+      // const loadButton = document.getElementById('load-more');
+      // loadButton.style.display = 'none';
+    } else if (selectedValue === "action") {
+      genreId = 28;
+      sortByGenre(genreId);
+      // const loadButton = document.getElementById('load-more');
+      // loadButton.style.display = 'none';
+    } else if (selectedValue === "rating-desc"){
+      sortByRatingDesc();
+      // const loadButton = document.getElementById('load-more');
+      // loadButton.style.display = 'none';
+    } else if (selectedValue === "rating-asc"){
+      sortByRatingAsc();
+    }
+  }
+
+  const sortByGenre = async (genreId) => {
+    const url =`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${genreId}&api_key=0d7613c1b95dbc61f3dd491c8f802475`;
+
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${apiKey}`
+      }
+    };
+
+    const response = await fetch(url, options);
+    const jsonResponse = await response.json();
+    setMovies(jsonResponse.results);
+  }
+
+  const sortByRatingDesc = async () => {
+    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=vote_average.desc&vote_average.gte=10&api_key=0d7613c1b95dbc61f3dd491c8f802475`;
+
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${apiKey}`
+      }
+    };
+
+    const response = await fetch(url, options);
+    const jsonResponse = await response.json();
+    setMovies(jsonResponse.results);
+  }
+
+  const sortByRatingAsc = async () => {
+    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=vote_average.asc&vote_average.gte=5&api_key=0d7613c1b95dbc61f3dd491c8f802475`;
+
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${apiKey}`
+      }
+    };
+
+    const response = await fetch(url, options);
+    const jsonResponse = await response.json();
+    setMovies(jsonResponse.results);
+  }
 
 
 
@@ -86,16 +155,26 @@ function App() {
           form.style.display = 'none';
           loadButton.style.display = 'grid';
           loadButton.style.marginLeft = '40%';
+          setPage(1);
           getMovies();
       }}>Now Playing</button>
 
       <button id="searchTabButton" onClick={() => {
-        const form = document.getElementsByClassName("searchForm")[0];
+        const searchForm = document.getElementsByClassName("searchForm")[0];
         const loadButton = document.getElementById('load-more');
-        form.style.display = 'block';
+        searchForm.style.display = 'block';
         loadButton.style.display = 'none';
         searchMovies();
         }}>Search</button>
+
+      <select id="dropdown-menu" onChange={handleGenreChange} value={selectedGenre}>
+          <option value="">Sort</option>
+          <option value="">All</option>
+          <option value="rating-asc">Rating Asc.</option>
+          <option value="rating-desc">Rating Desc.</option>
+          <option value="comedy">Comedy</option>
+          <option value="action">Action</option>
+        </select>
     </header>
     <MovieList data={movies} loadMore={loadMore} handleMovieClick={movieClick}/>
     </>

@@ -1,10 +1,7 @@
 import './Modal.css';
-import { format } from 'date-fns'
 
 const Modal = (props) => {
     const posterImage = `https://image.tmdb.org/t/p/w500${props.image}`;
-    const date = new Date(props.releaseDate);
-    const formattedDate = format(date, 'MMMM d, yyyy');
     const genreNames = props.genres.map(genre => genre.name);
     const genreNamesString = genreNames.join(', ');
 
@@ -16,7 +13,7 @@ const Modal = (props) => {
                 </div>
                 <div className='modal-info'>
                     <p id="modal-title">{props.movieTitle}</p>
-                    <p id='release-date'>Release Date: {formattedDate}</p>
+                    <p id='release-date'>Release Date: {props.releaseDate}</p>
                     <p id="runtime">Runtime: {props.runtime} minutes</p>
                     <p id='movie-overview'>{props.movieOverview}</p>
                     <p id='movie-genre'>Genres: {genreNamesString}</p>

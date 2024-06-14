@@ -65,6 +65,14 @@ form{
   display: none;
 }
 
+#dropdown-menu {
+  margin-left: 10px;
+  padding: 10px;
+  background-color: #B19CD9;
+  border: 2px solid darkmagenta;
+  border-radius: 5px;
+  text-align: center;
+}
 
 @media all and (max-width: 630px) {
   #search-bar {
