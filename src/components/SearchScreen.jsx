@@ -1,10 +1,34 @@
-import {useState} from "react";
+/* eslint-disable react/prop-types */
+import { useState} from "react";
 import MovieList from "./MovieList";
+import SideBar from "./SideBar";
 
-function SearchScreen(){
+function SearchScreen({setFave, isFave, setWatched, isWatched}){
     const[query, setSearchQuery]= useState('')
     const[movies, setMovies]= useState([]);
     const[pageNumber, setPageNumber]= useState(1)
+    
+
+    function addToFave(movieId){
+      if(isFave.includes(movieId)){
+        setFave(prevIds => prevIds.filter(prevId => prevId !== movieId))
+
+      } else{
+        setFave(prevId => [...prevId, movieId])
+      }
+    }
+
+    function addToWatched(movieId){
+      if(isWatched.includes(movieId)){
+        setWatched(prevIds => prevIds.filter(prevId => prevId !== movieId))
+
+      } else {
+        setWatched(prevId => [...prevId, movieId])
+      }
+    }
+
+    
+
     const ACCESS_TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 
     function handleSearch(searchQuery){
@@ -23,23 +47,22 @@ function SearchScreen(){
     }
 
     function loadMore(){
-      setPageNumber(prevPageNumber => prevPageNumber+1)
-      
+      setPageNumber(prevPageNumber => prevPageNumber+1)    
     }
 
     return(
-      <div className="search-bar">
-      <input
-        type="text"
-        placeholder="Search for movies..."
-        value={query}
-        onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
-      />
-      <button onClick={() => handleSearch(query)}>Search</button>
-      
-      <MovieList data={movies} />
-      <button onClick={loadMore}>Load more</button>
-
+      <div className="searchBar">
+        <SideBar fave={isFave} watched={isWatched} movies={movies}/>
+        <input
+          type="text"
+          placeholder="Search for movies..."
+          value={query}
+          onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
+        />
+        <button onClick={() => handleSearch(query)}>Search</button>
+        
+        <MovieList watchedMovies={addToWatched} favMovies={addToFave} data={movies} />
+        <button onClick={loadMore}>Load more</button>
     </div>
     )
 }
