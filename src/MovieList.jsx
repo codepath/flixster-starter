@@ -126,8 +126,8 @@ const MovieList = () =>{
                 {open &&
                 <Modal query={query} close={closeModal}/>}
                 {movies.map(movie => (
-                <MovieCard key={movie.id} id={movie.id} title={movie.original_title} url={"https://image.tmdb.org/t/p/w500" + movie.poster_path} rating={movie.vote_average} 
-                query={setQuery} handleOpening={openModal} />
+                <MovieCard key={movie.id} id={movie.id} title={movie.original_title} url={movie.poster_path !== null ? "https://image.tmdb.org/t/p/w500" + movie.poster_path : "https://cringemdb.com/img/movie-poster-placeholder.png"} 
+                rating={movie.vote_average} query={setQuery} handleOpening={openModal} />
             ))}
         </div>
         {search === "" ? <button className='load' type="button" onClick={event = () =>{
