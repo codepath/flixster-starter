@@ -46,6 +46,9 @@ Deployed Application (optional): [Flixster Deployed Site](https://flixster-proje
 https://github.com/Mar1789/flixster-starter/assets/116681148/254312c2-9aff-453e-922d-ba618c04d158
 
 ### Reflection
+* Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
+
+The topics discussed in my labs did prepare me to complete the assignment, but it only prepared me with useState and useEffect. I wish the labs went over passing variables to sibling components.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 
