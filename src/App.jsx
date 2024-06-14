@@ -146,15 +146,15 @@ function App() {
   return (
     <>
     <header className="header">
-      <h1 className="title">Flixster</h1>
+      <h1 className="title">🎥 Flixster 🍿</h1>
       <Search className="searchForm" searchValue={searchValue} setSearchValue={setSearchValue}/>
 
       <button id="nowPlayingButton" onClick={() => {
-          const form = document.getElementsByClassName("searchForm")[0];
+          const searchForm = document.getElementsByClassName("searchForm")[0];
           const loadButton = document.getElementById('load-more');
-          form.style.display = 'none';
+          console.log(loadButton);
+          searchForm.style.display = 'none';
           loadButton.style.display = 'grid';
-          loadButton.style.marginLeft = '40%';
           setPage(1);
           getMovies();
       }}>Now Playing</button>
@@ -177,6 +177,9 @@ function App() {
         </select>
     </header>
     <MovieList data={movies} loadMore={loadMore} handleMovieClick={movieClick}/>
+    <footer className="footer">
+      <p>Copyright &copy; 2024 Meta U</p>
+    </footer>
     </>
   )
 }

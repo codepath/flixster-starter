@@ -20,7 +20,9 @@ const MovieList = (props) => {
             })}
             </div>
                 <br />
-                <button id="load-more" onClick={props.loadMore}>Load More</button>
+                <div className="load-class">
+                    <button id="load-more" onClick={props.loadMore}>Load More</button>
+                </div>
         </>
     );
 };

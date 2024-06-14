@@ -11,6 +11,19 @@
   width: 100%;
   background-color: indigo;
   display: fixed;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.footer {
+  background-color: indigo;
+  height: 40px;
+  display: relative;
+  border: 2px solid indigo;
+  color: white;
+  margin-bottom: 0px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
 }
 
 .title {
