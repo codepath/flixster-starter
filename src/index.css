@@ -1,9 +1,7 @@
 #root{
-  /* max-width: max-content; */
 }
 html{
   background-color: black;
-  /* max-width: max-content; */
 }
 
 body {
@@ -44,7 +42,6 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 #footerText{
-  /* background-color: white; */
   color: black;
 }
 .footerEnd{

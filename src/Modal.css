@@ -16,7 +16,6 @@
 .modalBackground {
     width: 100vw;
     height: 100vh;
-    /* background-color: rgba(200, 200, 200); */
     position: fixed;
 }
 
@@ -58,7 +57,6 @@
 
 .modalContainer .body {
     flex: 50%;
-    /* display: flex; */
     justify-content: center;
     align-items: center;
     font-size: 1.7rem;
@@ -97,7 +95,6 @@
 }
 
 .backdrop{
-    /* margin: 2rem; */
     width: 100%;
     margin-top: 2rem;
     margin-bottom: 2rem;

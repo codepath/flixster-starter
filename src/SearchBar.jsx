@@ -28,6 +28,3 @@ function SearchBar({ handleSearch }) {
 }
 
 export default SearchBar
-
-// how to show search results in a different page
-//the different apge should have a button that takes you back to a list of "now showing" movies (original)

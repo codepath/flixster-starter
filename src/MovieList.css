@@ -20,7 +20,7 @@
     border: solid gold;
 }
 .AppName{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: cursive;
 }
 button{
     background-color: black;
@@ -40,7 +40,6 @@ button{
     float: left;
     padding: 15px;
 }
-
 h1{
     color: white;
 }
@@ -70,7 +69,6 @@ select{
     align-items: center;
     border-bottom: white solid;
     width: 100%;
-    /* margin: 1rem; */
     box-sizing: border-box;
 }
 .fa-bars{
