@@ -11,16 +11,16 @@ function Modal({ movie, setOpenModal, getGenreName, trailers}) {
           <h2>{movie.title}</h2>
         </div>
         <div className="body">
-          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
+          <img alt="Movie poster image" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
           <p className="modalText">Release Date: {movie.release_date} </p>
           <p className="modalText">Overview: {movie.overview} </p>
           <p className="modalText">Genres: {getGenreName(movie.genre_ids)}</p>
-          <img className="backdrop" src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}/>
+          <img className="backdrop" alt="movie backdrop image" src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}/>
           {trailers[movie.id] && (
             <div className="trailer">
               <iframe
-              width= '200'
-              height="100"
+              width= '250'
+              height="200"
               src={`https://www.youtube.com/embed/${trailers[movie.id]}`}
               allow="autoplay"
               title={movie.title}>

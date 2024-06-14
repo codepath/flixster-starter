@@ -5,7 +5,7 @@ function MovieCard(props) {
     <>
       <div className='movieCards'>
         <div>
-          <img className="movieCardImg" src={props.poster_path}/>
+          <img alt="Movie poster image" className="movieCardImg" src={props.poster_path}/>
           <p className='movieCard-title'>{props.title}</p>
           <label onClick={(e) => props.handleFavoriteButton(e, props.id)}>
             {props.favoritedMoviesList.includes(props.id)? <i className="fa-solid fa-heart"></i> : <i className="fa-regular fa-heart"></i>}

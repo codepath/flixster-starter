@@ -13,4 +13,5 @@ export default App
 
 
 // TO-DO:
-//style modal *
+//alt text for images
+//basic designs
