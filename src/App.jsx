@@ -17,7 +17,6 @@ function App() {
   const [watchedList, setWatchedList] = useState([]);
   const apiKey = import.meta.env.VITE_API_KEY;
 
-  console.log(likedList);
   useEffect(() => {
     getMovies();
   }, [page])
@@ -180,9 +179,9 @@ function App() {
           <option value="action">Action</option>
         </select>
     </header>
-    <SideBar showing={showSideBar} likedList={likedList}/>
+    <SideBar showing={showSideBar} likedList={likedList} watchedList={watchedList}/>
     <main>
-      <MovieList data={movies} loadMore={loadMore} handleMovieClick={movieClick} setLikedList={setLikedList} likedList={likedList}/>
+      <MovieList data={movies} loadMore={loadMore} handleMovieClick={movieClick} setLikedList={setLikedList} likedList={likedList} setWatchedList={setWatchedList} watchedList={watchedList}/>
     </main>
     <footer className="footer">
       <p>Copyright &copy; 2024 Meta U</p>

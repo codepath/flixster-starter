@@ -5,6 +5,7 @@ import './SideBar.css';
 
 const SideBar = (props) => {
     const likedMovies = props.likedList;
+    const watchedMovies = props.watchedList;
     return (
         <div className={props.showing ? 'side-bar active' : 'side-bar'}>
             <div className="side-bar-title">
@@ -13,7 +14,7 @@ const SideBar = (props) => {
             <div className="side-bar-content">
                 <ul className="side-bar-list">
                     <div className="liked-movies-div">
-                        <li className="liked-movies">Liked Movies</li>
+                        <li className="conatiner-names">Liked Movies</li>
                         {likedMovies.map(movie => (
                             <SideBarCard
                                 key={movie.id}
@@ -25,7 +26,16 @@ const SideBar = (props) => {
                         ))}
                     </div>
                     <div className="watched-movies-div">
-                        <li className="watched-movies">Watched Movies</li>
+                        <li className="container-names">Watched Movies</li>
+                        {watchedMovies.map(movie => (
+                            <SideBarCard
+                                key={movie.id}
+                                className="sidebar-card"
+                                id={movie.id}
+                                title={movie.title}
+                                image={movie.image}
+                            />
+                        ))}
                     </div>
                 </ul>
             </div>

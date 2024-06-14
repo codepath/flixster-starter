@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react';
 import Modal from './Modal';
 import './MovieCard.css';
-import './App.css';
-import SideBar from './SideBar';
-import { set } from 'date-fns';
 
 const MovieCard = (props) => {
     const [isClicked, setIsClicked] = useState(false);
@@ -24,6 +21,10 @@ const MovieCard = (props) => {
 
     const toggleLike = () => {
         setIsLiked(!isLiked);
+    }
+
+    const toggleWatched = () => {
+        setIsChecked(!isChecked);
     }
 
     const increaseLikes = () => {
@@ -55,10 +56,6 @@ const MovieCard = (props) => {
           setRuntime(jsonResponse.runtime);
     }
 
-    const handleCheckboxChange = () => {
-        setIsChecked(!isChecked);
-    }
-
     function handleLike() {
         increaseLikes();
         toggleLike();
@@ -74,13 +71,27 @@ const MovieCard = (props) => {
         }
     }
 
+    function handleWatched() {
+        toggleWatched();
+        if (isChecked) {
+            if (props.watchedList.some(movie => movie.id === props.id)) {
+                const updatedWatchedList = props.watchedList.filter(movie => movie.id !== props.id);
+                props.setWatchedList(updatedWatchedList);
+            }
+        }else {
+            if (!props.watchedList.some(movie => movie.id === props.id)) {
+                props.setWatchedList(isWatchedList => [...isWatchedList, {id: props.id, image: props.image, title: props.title}])
+            }
+        }
+    }
+
     const className = Number(props.rating) < 5 ? 'bad' : Number(props.rating) < 7.5 ? 'okay' : 'good'
     return (
         <div>
             <div className="imageContainer" id={props.id} >
                 <img src={props.image} id="movie-poster" onClick={toggleModal}/>
                 <p id="movie-title">{props.title}</p>
-                <label id="check-box"><input type="checkbox" checked={isChecked} onChange={handleCheckboxChange}/>Watched </label>
+                <label id="check-box"><input type="checkbox" onChange={handleWatched}/>Watched </label>
                 <p><span id="movie-rating" className={className}>{props.rating}</span><span id="like-count" onClick={handleLike}> ♡</span></p>
             </div>
             <Modal  id={props.id} isClicked={isClicked} toggleModal={toggleModal} movieTitle={props.title} image={props.image} releaseDate={props.releaseDate} movieOverview={props.movieOverview} movieGenres={props.movieGenres} runtime={runtime} genres={genres}/>

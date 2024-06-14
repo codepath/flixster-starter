@@ -17,6 +17,7 @@ const MovieList = (props) => {
                     key={movie.id} id={movie.id} image={posterImage} title={movie.title}
                     rating={movie.vote_average.toFixed(1)} releaseDate={movie.release_date}
                     movieOverview={movie.overview} movieGenres={movie.genre_ids} setLikedList={props.setLikedList} likedList={props.likedList}
+                    setWatchedList={props.setWatchedList} watchedList={props.watchedList}
                     />
                     </div>
                 );
