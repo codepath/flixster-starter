@@ -8,7 +8,7 @@ function MovieList({ data }) {
         <div className='list'>
            
         {data.map(movie => (
-            <div className='movie' key={movie.title}>
+            <div className='movie' key={movie}>
                 <MovieCard
                 imgSrc={movie.poster_path}
                 title={movie.title}
@@ -16,6 +16,7 @@ function MovieList({ data }) {
                 genres={movie.genre_ids} 
                 overview={movie.overview}
                 date={movie.release_date}
+                id={movie.id}
                 />
             </div>
 

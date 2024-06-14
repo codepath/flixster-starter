@@ -15,12 +15,10 @@
     width: 100%; 
     height: auto; 
     display: block; 
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+    margin: 0;
 }
-
-/*
-.card:hover {
-    box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.5);
-} */
 
 .card:hover {
     transform: scale(1.04);
