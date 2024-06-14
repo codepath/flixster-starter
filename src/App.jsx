@@ -13,8 +13,11 @@ function App() {
   const [selectedGenre, setSelectedGenre] = useState('');
   const [movieID, setMovieID] = useState('');
   const [showSideBar, setShowSideBar] = useState(false);
+  const [likedList, setLikedList] = useState([]);
+  const [watchedList, setWatchedList] = useState([]);
   const apiKey = import.meta.env.VITE_API_KEY;
 
+  console.log(likedList);
   useEffect(() => {
     getMovies();
   }, [page])
@@ -80,17 +83,11 @@ function App() {
     if (selectedValue === "comedy") {
       genreId = 35;
       sortByGenre(genreId);
-      // const loadButton = document.getElementById('load-more');
-      // loadButton.style.display = 'none';
     } else if (selectedValue === "action") {
       genreId = 28;
       sortByGenre(genreId);
-      // const loadButton = document.getElementById('load-more');
-      // loadButton.style.display = 'none';
     } else if (selectedValue === "rating-desc"){
       sortByRatingDesc();
-      // const loadButton = document.getElementById('load-more');
-      // loadButton.style.display = 'none';
     } else if (selectedValue === "rating-asc"){
       sortByRatingAsc();
     }
@@ -160,7 +157,6 @@ function App() {
       <button id="nowPlayingButton" onClick={() => {
           const searchForm = document.getElementsByClassName("searchForm")[0];
           const loadButton = document.getElementById('load-more');
-          console.log(loadButton);
           searchForm.style.display = 'none';
           loadButton.style.display = 'grid';
           setPage(1);
@@ -184,9 +180,9 @@ function App() {
           <option value="action">Action</option>
         </select>
     </header>
-    <SideBar showing={showSideBar} />
+    <SideBar showing={showSideBar} likedList={likedList}/>
     <main>
-      <MovieList data={movies} loadMore={loadMore} handleMovieClick={movieClick}/>
+      <MovieList data={movies} loadMore={loadMore} handleMovieClick={movieClick} setLikedList={setLikedList} likedList={likedList}/>
     </main>
     <footer className="footer">
       <p>Copyright &copy; 2024 Meta U</p>

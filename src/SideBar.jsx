@@ -1,9 +1,10 @@
 import React from 'react';
+import { useState } from 'react';
+import SideBarCard from './SideBarCard';
 import './SideBar.css';
 
 const SideBar = (props) => {
-    // console.log(props)
-    // const posterImage = `https://image.tmdb.org/t/p/w500${props.likedMovies.movieImage}`
+    const likedMovies = props.likedList;
     return (
         <div className={props.showing ? 'side-bar active' : 'side-bar'}>
             <div className="side-bar-title">
@@ -13,8 +14,15 @@ const SideBar = (props) => {
                 <ul className="side-bar-list">
                     <div className="liked-movies-div">
                         <li className="liked-movies">Liked Movies</li>
-                        {/* <img src={posterImage} alt="poster" /> */}
-                        <p></p>
+                        {likedMovies.map(movie => (
+                            <SideBarCard
+                                key={movie.id}
+                                className="sidebar-card"
+                                id={movie.id}
+                                title={movie.title}
+                                image={movie.image}
+                            />
+                        ))}
                     </div>
                     <div className="watched-movies-div">
                         <li className="watched-movies">Watched Movies</li>

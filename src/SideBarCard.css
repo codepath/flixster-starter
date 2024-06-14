@@ -1,0 +1,26 @@
+.side-bar-card {
+    border: 2px solid indigo;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 70px;
+    height: auto;
+    justify-content: center;
+}
+
+
+.sidebar-poster {
+    width: 70px;
+    height: 80%;
+    align-self: center;
+    margin-bottom: 0px;
+}
+
+.sidebar-movie-title {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    flex-shrink: 1;
+    color: white;
+    margin-top: 0px;
+}

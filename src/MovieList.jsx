@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import './MovieList.css';
 import MovieCard from './MovieCard';
 
@@ -17,8 +16,7 @@ const MovieList = (props) => {
                     <MovieCard
                     key={movie.id} id={movie.id} image={posterImage} title={movie.title}
                     rating={movie.vote_average.toFixed(1)} releaseDate={movie.release_date}
-                    movieOverview={movie.overview} movieGenres={movie.genre_ids}
-                    // toggleWatched={movie.addWatchedMovie} watchedMovies={watchedMovies}
+                    movieOverview={movie.overview} movieGenres={movie.genre_ids} setLikedList={props.setLikedList} likedList={props.likedList}
                     />
                     </div>
                 );

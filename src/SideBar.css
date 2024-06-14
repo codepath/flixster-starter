@@ -2,12 +2,12 @@
     width: 200px;
     background-color: indigo;
     position: absolute;
-    height: 100vh;
+    min-height: 100vh;
     padding: 0 30px;
     left: -100%;
     transition: all 0.5s;
     color: white;
-    display: fixed;
+    display: block;
     z-index: 100;
 }
 
