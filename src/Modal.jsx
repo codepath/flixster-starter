@@ -27,6 +27,7 @@ const Modal = ({
           src={trailer}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
+          alt="trailer"
         ></iframe>
       </div>
     </div>

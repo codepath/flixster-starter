@@ -31,9 +31,6 @@
     color: #f1f1f1;
   }
 
-  
-  
-  
   .dropdown {
     padding: 8px;
     margin-bottom: 10px;
@@ -54,4 +51,10 @@
   }
   .dropdown-content a:hover {
     background-color: #ddd;
+  }
+
+  @media (max-width: 600px)  {
+    .w3-sidebar {
+      width: 16%;
+    }
   }

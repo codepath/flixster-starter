@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between; /* Distributes space between and around content items */
     align-items: center; /* Align items vertically in the center */
-    padding: 10px; /* Add some padding around the nav-bar */
+    padding: 5px; /* Add some padding around the nav-bar */
   }
   
   .search-area {
@@ -23,4 +23,22 @@
   .sort-filter-group {
     display: flex;
     gap: 10px; /* Space between sort and filter dropdowns */
+  }
+
+
+  @media (max-width: 600px) {
+    .nav-bar {
+      flex-direction: column; /* Stack elements vertically */
+      align-items: stretch; /* Stretch items to fill the width */
+    }
+    .button-group, .search-area, .sort-filter-group {
+      flex-direction: column; /* Stack buttons and inputs vertically */
+      align-items: center; /* Center-align the items */
+      width: 100%; /* Full width */
+      margin: 5px 0; /* Add some vertical spacing */
+    }
+    .sort-menu, .search-area input, .search-area button {
+      width: 100%; /* Full width for select elements and input */
+      text-align: center;
+    }
   }

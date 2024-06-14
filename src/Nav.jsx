@@ -81,7 +81,6 @@ const Nav = ({
         <div className="sort-filter-group">
           <select
             name="sort"
-            id="sort-menu"
             className="sort-menu"
             onChange={(e) => handleSortChange(e.target.value)}
           >
@@ -94,7 +93,6 @@ const Nav = ({
           </select>
           <select
             name="filter"
-            id="filter-menu"
             className="sort-menu"
             onChange={(e) => {
               handleGenreChange(e.target.value);
