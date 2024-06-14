@@ -1,0 +1,33 @@
+import './MovieCard.css'
+import { useState } from 'react';
+
+
+function Favorites(props) {
+  // const [setFavorite, isSetFavorite] = useState({});
+  // const handleFavoriteButton = (event, movieId) => {
+  //   event.stopPropagation();
+  //   isSetFavorite((prevfavorite) => ({...prevfavorite, [movieId]: !prevfavorite[movieId]}));
+  // }
+  {props.map((props, i) => {
+    return (
+      <>
+        <div className='movieCards'>
+          <div>
+            <img src={props.poster_path}/>
+            <p className='movieCard-title'>{props.title}</p>
+            <label onClick={(e) => handleFavoriteButton(e, props.id)}>
+              {setFavorite[props.id]? <i className="fa-solid fa-heart"></i> : <i className="fa-regular fa-heart"></i>}
+            </label>
+            <button className="watch-button" onClick={
+              (e) => props.handleWatchButton(e, props.id)}> {props.watchedMovies.includes(props.id) ? "Watched✔️":"Add to Watchlist"}
+            </button>
+            <p>Rating: {props.vote_average}</p>
+          </div>
+        </div>
+      </>
+    )
+  })}
+
+}
+
+export default Favorites;

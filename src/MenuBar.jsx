@@ -1,6 +1,6 @@
 import "./MenuBar.css";
 
-function MenuBar({ movie, setOpenModal }) {
+function MenuBar({ movie, setOpenModal, setView }) {
   return (
     <div className="modalBackground">
       <div className="modalContainer  menu-bar">
@@ -8,9 +8,9 @@ function MenuBar({ movie, setOpenModal }) {
           <button className="closeMenuX" onClick={() => {setOpenModal(false)}}> X </button>
         </div>
         <div className="body">
-          <p className=""> <i className="fa-solid fa-house"></i> Home </p>
-          <p className=""><i className="fa-solid fa-heart"></i> Favorites </p>
-          <p className=""> <i className="fa-solid fa-list"></i> Watchlist </p>
+          <p className="menuText"> <i className="fa-solid fa-house"></i> Home </p>
+          <p className="menuText"><i className="fa-solid fa-heart"></i> Favorites </p>
+          <p className="menuText" onClick={() => setView('watchlist')}> <i className="fa-solid fa-list"></i> Watchlist </p>
         </div>
         <div className="footer">
           <button onClick={() => {setOpenModal(false)}} id="cancelBtn"> Cancel</button>
