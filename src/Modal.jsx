@@ -23,8 +23,7 @@ function Modal({ movie, setOpenModal, getGenreName, trailers}) {
               height="100"
               src={`https://www.youtube.com/embed/${trailers[movie.id]}`}
               allow="autoplay"
-              title={movie.title}
-              >
+              title={movie.title}>
               </iframe>
             </div>
           )}

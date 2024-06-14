@@ -20,17 +20,23 @@
     padding: 0;
     display: flex;
     justify-content: flex-end;
+    width: 100%;
 }
 .menuOptions{
     align-content: left;
+    width: 100%;
 }
 
 .closeMenuX{
     padding: 0.2rem;
     width: 3rem;
     border-radius: 0.1rem;
-    justify-content: flex-end;
+    align-items: right;
 }
 .fa-solid{
-    margin: 10px;
+    margin: 2rem;
 }
+.menuText:hover{
+    transform: translateX(20px);
+}
+

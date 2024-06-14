@@ -254,7 +254,6 @@ function MovieList() {
             </select>
           </div>
           <div className="">
-            <label>Genre:</label>
               <select name="genre" value={selectedGenre} onChange={handleGenreChange}>
                   <option>All Genres</option>
                   {genres && genres.map((genre) => {
