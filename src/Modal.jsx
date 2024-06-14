@@ -7,6 +7,7 @@ const Modal = ({
   release,
   overview,
   genres,
+  trailer,
 }) => {
   const modalStyle = { display: isOpen ? "flex" : "none" };
   return (
@@ -20,6 +21,13 @@ const Modal = ({
         <p>Release date: {release}</p>
         <p>Overview: {overview}</p>
         <p>Genres: {genres}</p>
+        <iframe
+          width="300"
+          height="215"
+          src={trailer}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
   );

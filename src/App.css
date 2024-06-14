@@ -3,12 +3,12 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #880ac2;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
   color: white;
+  padding: 10px 20px;
   
 }
 
@@ -16,6 +16,8 @@
   display: flex;
   align-items: center;
   height: 100px;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 .title h1 {
@@ -39,4 +41,23 @@
   .search-bar form {
     flex-direction: column;
   }
+}
+
+.line {
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 3px 0;
+}
+
+.btn-wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column; /* Aligns the lines vertically */
+  justify-content: center; /* Center lines vertically within the btn-wrapper */
+  align-items: flex-start;
+}
+
+.btn-wrapper:hover {
+  cursor: pointer;
 }

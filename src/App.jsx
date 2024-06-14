@@ -1,17 +1,29 @@
+// App.jsx
+import React, { useState } from "react";
 import "./App.css";
 import MovieList from "./MovieList";
-import "../public/movie.png";
 
 const App = () => {
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
   return (
     <div className="App">
       <header className="App-header">
+        {!isSidebarOpen && (
+          <div className="btn-wrapper" onClick={toggleSidebar}>
+            <div className="line"></div>
+            <div className="line"></div>
+            <div className="line"></div>
+          </div>
+        )}
         <div className="title">
           <h1>Flixster</h1>
-          <img src="../public/movie.png" alt="" />
+          <img src="movie.png" alt="" />
         </div>
       </header>
-      <MovieList />
+      <MovieList isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
     </div>
   );
 };
