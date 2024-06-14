@@ -1,0 +1,27 @@
+.menu-bar{
+    background-color: black;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.modalText{
+    color: white;
+}
+.menuCloseBtn{
+    color: white;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.closeMenuX{
+    padding: 0.2rem;
+    width: 3rem;
+    border-radius: 0.1rem;
+}

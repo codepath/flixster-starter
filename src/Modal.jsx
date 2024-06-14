@@ -14,7 +14,7 @@ function Modal({ movie, setOpenModal }) {
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
           <p className="modalText">Release Date: {movie.release_date} </p>
           <p className="modalText">Overview: {movie.overview} </p>
-          <p className="modalText">Genres: {movie.genre_ids}</p>
+          <p className="modalText">Genres: {movie.id}</p>
           <img className="backdrop" src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}/>
         </div>
         <div className="footer">

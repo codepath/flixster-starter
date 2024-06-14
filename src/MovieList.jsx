@@ -4,6 +4,8 @@ import Modal from './Modal'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import MenuBar from './MenuBar'
+import WatchList from './WatchList'
+import MovieGenre from './MovieGenre'
 
 function MovieList() {
   const [movies, setMovies] = useState([]);
@@ -16,7 +18,20 @@ function MovieList() {
   const [sortOrder, setSortOrder] = useState('ascending');
   const [showSearchButton, setShowSearchButton] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [watchedMovies, setWatchedMovies] = useState([])
+  const [selectedGenre, setSelectedGenre] = useState('');
+  const [genres, setGenres] = useState([]);
 
+  const handleWatchButton = (e, movieId) => {
+    e.stopPropagation();
+    setWatchedMovies((prevWatchList) => {
+      if(prevWatchList.includes(movieId)) {
+        return prevWatchList.filter(id => id !== movieId);
+      } else {
+        return [...prevWatchList, movieId];
+      }
+    })
+  };
 
   const fetchMovies = async() => {
     setLoading(true);
@@ -33,6 +48,22 @@ function MovieList() {
     }
     setLoading(false);
   }
+
+  const fetchGenres = async() => {
+    try{
+        const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=9fc2582941573c4b168e5c4155a13688`);
+        const data = await response.json();
+        setGenres(data.genres);
+        console.log(data)
+    } catch(error){
+        console.error(error)
+    }
+  };
+  useEffect(() => {
+      fetchGenres();
+  }, []);
+
+  console.log("list of genres",genres);
 
   //function to add more movies to the list
   const handleLoadMoreMovies = () => {
@@ -172,7 +203,16 @@ function MovieList() {
               <option value="descending">Movie title Z-A</option>
               <option value="releaseDateAscending">Release Date (ascending)</option>
               <option value="releaseDateDescending">Release Date (descending)</option>
+              <option value="">Comedy</option>
+              <option value="">Action</option>
+              <option value="">Horror</option>
+              <option value="">Romance</option>
+              <option value="">Drama</option>
+              <option value="">Thriller</option>
+              <option value="">Sci-Fi</option>
+              <option value="">Fantasy</option>
             </select>
+            <MovieGenre movies={movies} genres={genres} selectedGenres={selectedGenre} setSelectedGenre={setSelectedGenre}/>
           </div>
         </div>
 
@@ -180,18 +220,21 @@ function MovieList() {
         <div className='movieList'>
           {movies.map((movie, i) => {
             return(
-              <div key={i} className='movie-cards' onClick={() => handleMovieCardClick(movie)}>
-                <MovieCard
-                poster_path = {`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                title = {movie.title}
-                vote_average = {movie.vote_average}/>
-              </div>
+                <div key={movie.id} className='movie-cards' onClick={() => handleMovieCardClick(movie)}>
+                  <MovieCard
+                  poster_path = {`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  title = {movie.title}
+                  vote_average = {movie.vote_average}
+                  id = {movie.id}
+                  handleWatchButton = {handleWatchButton}
+                  watchedMovies={watchedMovies}/>
+               </div>
             )
           })}
         </div>
         {loading ? <p>Loading...</p> : <button onClick={handleLoadMoreMovies}>Load More</button>}
         {isModalOpen && selectedMovie &&  (
-            <Modal movie={selectedMovie} setOpenModal={closeModal} />
+            <Modal movie={selectedMovie} setOpenModal={closeModal} genre={genres}/>
         )}
         {isMenuOpen && (<MenuBar setOpenModal={closeMenu}/>)}
       </div>
