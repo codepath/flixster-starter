@@ -9,13 +9,6 @@ function SideBar(props){
     function MovieCardForSideBar(movieID, index){
         // get selected movie from the list of movies
         const movie = props.movies.find((item) => item.id === movieID);
-
-
-        // update state to show the selected movie
-
-
-
-        console.log(movie);
         return(
             // display updated state to the user (in the browser)
             <div key={index}>
@@ -24,7 +17,6 @@ function SideBar(props){
             </div>
         )
     }
-
     return(
         <div className="sidebar">
             <div id='title-liked'>

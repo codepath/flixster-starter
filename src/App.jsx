@@ -43,9 +43,6 @@ function App() {
     //state variable to store genre type
     const [genreType, setGenreType] = useState('');
 
-
-
-
     //function to choose what to display on the page. If it's now playing, it will fetch the data from now-playing endpoint.
     // If sort button is clicked, then it'll fetch the data from sort endpoint
     async function handleDiscoverRequest() {
@@ -93,7 +90,6 @@ function App() {
     }
 
     //useEffect to fetch if the tab is now playing or search
-
     useEffect(() => {
         if (fetchBetweenTabs === 'now-playing-home' && searchTerm === '') {
             fetchNewPageMovieData()
@@ -121,7 +117,6 @@ function App() {
             .then(response => response.json())
             .then(response => setMovieData(movies.concat(response.results)))
             .catch(err => console.error(err));
-
     }
 
     //function to display search bar and search button when clicked or to hide them when clicked on now-playing button
@@ -168,30 +163,6 @@ function App() {
             setWatchedMovies(previousID => [...previousID, movieID]);
         }
     }
-
-    //dictionary of genre IDS to their corresponding names
-    const Genres = {
-        28:"Action",
-        12:"Adventure",
-        16:"Animation",
-        35:"Comedy",
-        80:"Crime",
-        99:"Documentary",
-        18:"Drama",
-        10751:"Family",
-        14:"Fantasy",
-        36:"History",
-        27:"Horror",
-        10402:"Music",
-        9648:"Mystery",
-        10749:"Romance",
-        878:"Science Fiction",
-        10770:"TV Movie",
-        53:"Thriller",
-        10752:"War",
-        37:"Western",
-    }
-
 
 
     return (

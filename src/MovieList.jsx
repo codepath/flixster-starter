@@ -16,8 +16,6 @@ function MovieList(props) {
         }
     }
     function createMovieCards(card, i) {
-        // if(!id.includes(card.id)){
-        //     id.push(card.id);
         return (
             <MovieCard key={i}
                 movieID={card.id}
@@ -32,10 +30,8 @@ function MovieList(props) {
                 setFavoriteMovies={() => props.setFavoriteMovies(card.id)}
                 setWatchedMovies={() => props.setWatchedMovie(card.id)}
                 />
-
         )
     }
-
     return (
         <>
             <div className='movieCards'>
