@@ -1,5 +1,3 @@
-📝 `NOTE` Use this template to initialize the contents of a README.md file for your application. As you work on your assignment over the course of the week, update the required or stretch features lists to indicate which features you have completed by changing `[ ]` to `[x]`. (🚫 Remove this paragraph before submitting your assignment.)
-
 ## Unit Assignment: Flixster
 
 Submitted by: **MAYA ODY-AJIKE**
@@ -46,24 +44,21 @@ Deployed Application (optional): [Flixster Deployed Site](https://flixster-start
   - [x] The sidebar displays the user's favorited and watched movies
 
 ### Walkthrough Video
-
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+https://youtu.be/RPEgE3v8sM0?si=C5ESvc59nbDtWL71
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+I felt unprepared handling the useState and useEffects, passing props from Parent to Child and Child back to Parents was also difficult for me. I also felt unprepared to access the data from the API calls at first, but after doing it multiple times I was able to get the hang of it. 
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+If I had more time I would have done more CSS designs and made my app a little more responsive. I would have also styled my side bar a lot better. 
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I think my demo went well, My peers did a lot of cool designs and animations and I would like to try some more of that next time. 
 
 ### Open-source libraries used
 
@@ -72,3 +67,4 @@ Add your response here
 ### Shout out
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+Shoutout to Saja, Marvin, Carter, George, Makayla, Thomas, Jackie, and my manager Melissa everyone overall was super helpful!
