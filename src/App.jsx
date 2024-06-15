@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import.meta.env.VITE_API_KEY;
 import NowPlayingScreen from './components/NowPlayingScreen';
 import SearchScreen from './components/SearchScreen.jsx';
+import Footer from './components/Footer.jsx';
 
 const App = () => {
   const [isSearching, setSearching] = useState(false);
@@ -59,6 +60,7 @@ const App = () => {
         :
         <SearchScreen isFave={isFave} setFave={handleSetFav} isWatched={isWatched} setWatched={handleSetWatched}/>
       }
+      <Footer />
     </div>
   );
 }
