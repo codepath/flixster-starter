@@ -1,0 +1,30 @@
+.movieCards{
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.movieCardImg{
+    width: 100%;
+    display: block;
+    border-top-left-radius: 17px;
+    border-top-right-radius: 17px;
+    width: 18rem;
+    height: 18rem;
+}
+.movieCard-title{
+   font-weight: bold;
+   text-wrap: wrap;
+}
+.watch-button{
+    padding: 0.2rem;
+}
+
+p{
+    color: white;
+}
+i{
+    color: white;
+}
+.fa-heart:hover{
+    cursor: pointer;
+}
