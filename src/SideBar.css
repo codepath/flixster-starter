@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'Lato-regular';
+    src: url('./assets/Lato/Lato-Regular.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Lato-bold';
+    src: url('./assets/Lato/Lato-Bold.ttf') format('truetype');
+  }
+
 .side-bar {
     width: 200px;
     background-color: indigo;
@@ -17,6 +27,7 @@
 
 ul {
     padding: 0;
+    font-family: 'Lato-bold';
 }
 
 li {

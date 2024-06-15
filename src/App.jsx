@@ -150,7 +150,7 @@ function App() {
       <div onClick={handleClickSideBar}>
         <FaBarsStaggered className="side-bar-logo" onClick={handleClickSideBar}/>
       </div>
-      <h1 className="title">🎥 Flixster 🍿</h1>
+      <h1 className="title">🎥 Flix Max 🍿</h1>
       <Search className="searchForm" searchValue={searchValue} setSearchValue={setSearchValue}/>
 
       <button id="nowPlayingButton" onClick={() => {

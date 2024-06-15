@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'Blacklisted';
+  src: url('./assets/Blacklisted.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Lato-regular';
+  src: url('./assets/Lato/Lato-Regular.ttf') format('truetype');
+}
+
 #root {
   max-width: 1900px;
   margin: 0 auto;
@@ -10,6 +20,7 @@ main {
   display: grid;
   justify-content: end;
   margin-left: 70px;
+  font-family: 'Lato-regular';
 }
 
 .header {
@@ -33,6 +44,7 @@ main {
 .title {
   color: white;
   margin-top: 0px;
+  font-family: 'Blacklisted'
 }
 
 form{

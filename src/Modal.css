@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Lato-regular';
+    src: url('./assets/Lato/Lato-Regular.ttf') format('truetype');
+  }
+
 .movie-modal{
     display: flex;
     position: fixed;
@@ -14,6 +19,7 @@
 }
 
 .modal-content {
+    font-family: 'Lato-regular';
     display: flex;
     position: relative;
     margin: 10% auto;
@@ -45,6 +51,7 @@
     color: white;
     margin-top: 10px;
     justify-self: center;
+    font-family: 'Blacklisted';
 }
 
 #modal-poster{
@@ -58,21 +65,25 @@
 #release-date {
     font-size: 18px;
     color: white;
+    font-family: 'Lato-regular';
 }
 
 #movie-overview {
     font-size: 18px;
     color: white;
+    font-family: 'Lato-regular';
 }
 
 #runtime {
     font-size: 18px;
     color: white;
+    font-family: 'Lato-regular';
 }
 
 #movie-genre {
     font-size: 18px;
     color: white;
+    font-family: 'Lato-regular';
 }
 
 
