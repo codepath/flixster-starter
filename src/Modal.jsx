@@ -3,31 +3,31 @@ import FocusTrap from "focus-trap-react"
 import { genre_to_id, swap, timeFormat } from './utils/utils';
 import { imageGuard } from './utils/utils';
 function Modal({ isOpen, imgSrc, title, genres, overview, date, closeModal, runtime, trailer }) {
-    
+
     if (!isOpen) {
         return null;
     }
 
     const formattedTime = timeFormat(runtime);
     const genreKeys = swap(genre_to_id);
-    const genreNames = [] 
-    for(let i=0; i < genres.length ; i++){
+    const genreNames = []
+    for (let i = 0; i < genres.length; i++) {
         genreNames.push(genreKeys[genres[i]]);
     }
 
     const checkForTrailer = () => {
-        if(trailer != ''){
-            return  (
+        if (trailer != '') {
+            return (
                 <>
-                <img src={imageGuard(imgSrc)} alt={`Poster of ${title}`}/>
-                <iframe src={"https://www.youtube.com/embed/" + trailer}></iframe>
+                    <img src={imageGuard(imgSrc)} alt={`Poster of ${title}`} />
+                    <iframe src={"https://www.youtube.com/embed/" + trailer}></iframe>
                 </>
             )
         } else {
             return (
                 <>
-                <img src={imageGuard(imgSrc)} alt={`Poster of ${title}`}/>
-                <p>No Trailer Available</p>
+                    <img src={imageGuard(imgSrc)} alt={`Poster of ${title}`} />
+                    <p>No Trailer Available</p>
                 </>
             )
         }

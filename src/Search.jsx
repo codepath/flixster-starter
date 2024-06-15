@@ -1,6 +1,6 @@
 import './Search.css';
 
-function Search({searchQuery , setSearchQuery}) {
+function Search({ searchQuery, setSearchQuery }) {
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value)

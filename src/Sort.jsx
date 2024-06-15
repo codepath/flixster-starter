@@ -6,7 +6,7 @@ function Sort({ setSort }) {
     const animatedComponents = makeAnimated();
     const sortOptions = [
         { value: 'release_date.desc', label: 'Release Date (descending)' },
-        {value: 'release_date.asc', label: 'Release Date (ascending)'},
+        { value: 'release_date.asc', label: 'Release Date (ascending)' },
         { value: 'vote_average.desc', label: 'Rating (descending)' },
         { value: 'vote_average.asc', label: 'Rating (ascending)' },
         { value: 'original_title.desc', label: 'Alphabetical (descending)' },

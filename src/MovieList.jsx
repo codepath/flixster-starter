@@ -1,32 +1,27 @@
-import './MovieList.css'
-import MovieCard from './MovieCard'
+import React from 'react';
+import MovieCard from './MovieCard';
+import './MovieList.css';
 
-
-
-function MovieList({ data }) { 
+const MovieList = ({ data, updateFavorites, updateWatchlist }) => {
     return (
-        <div className='list'>
-           
-        {data.map(movie => (
-            <div className='movie' key={movie}>
+        <div className="list">
+            {data.map(movie => (
                 <MovieCard
-                imgSrc={movie.poster_path}
-                title={movie.title}
-                rating={movie.vote_average}
-                genres={movie.genre_ids} 
-                overview={movie.overview}
-                date={movie.release_date}
-                id={movie.id}
+                    key={movie.id}
+                    imgSrc={movie.poster_path}
+                    title={movie.title}
+                    rating={movie.vote_average}
+                    genres={movie.genre_ids}
+                    overview={movie.overview}
+                    date={movie.release_date}
+                    id={movie.id}
+                    trailer={movie.trailer}
+                    updateFavorites={updateFavorites}
+                    updateWatchlist={updateWatchlist}
                 />
-            </div>
-
-                
-        ))}
-            
+            ))}
         </div>
-
-
     );
-}
+};
 
 export default MovieList;
