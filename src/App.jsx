@@ -11,7 +11,3 @@ function App() {
 
 export default App
 
-
-// TO-DO:
-//alt text for images
-//basic designs

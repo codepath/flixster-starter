@@ -15,7 +15,7 @@ Submitted by: Oluwatosin Oyekeye
 
 Estimated time spent: 25 hours spent in total
 
-Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
+Deployed Application (optional): [Flixster Deployed Site] https://flixster-starter-1cb8.onrender.com/
 
 ### Application Features
 
@@ -57,7 +57,7 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 ### Walkthrough Video
 
 `TODO://`
-`ADD_EMBEDDED_CODE_HERE`
+`ADD_EMBEDDED_CODE_HERE` https://www.loom.com/share/7917f1c647d0416797f0ac1e811f3728?sid=9b4a8429-b055-4c8a-a64b-974190caff0a
 
 ### Reflection
 

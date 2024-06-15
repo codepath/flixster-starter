@@ -1,8 +1,6 @@
 .movieList{
     display: flex;
     flex-wrap: wrap;
-    /* width: 100%; */
-    /* margin: 25px; */
 }
 .movieCard{
     border: solid white;
