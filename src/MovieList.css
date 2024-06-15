@@ -1,0 +1,82 @@
+.movieList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 2rem;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+}
+.movie-cards{
+    border: 1.5px solid white;
+    margin: 1rem;
+    border-radius: 20px;
+    width: 18rem;
+    background-color: rgba(190, 190, 190, 0.231);
+}
+.movie-cards:hover{
+    transition: 0.1s;
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(213, 205, 205, 0.4);
+    border: solid gold;
+}
+.AppName{
+    font-family: cursive;
+}
+button{
+    background-color: black;
+    margin: 1.5rem;
+    width: 8rem;
+}
+.filters{
+    display: inline;
+    margin: 1rem;
+    padding: 2rem;
+}
+.title{
+    display: inline;
+}
+.title i{
+    align-self: center;
+    float: left;
+    padding: 15px;
+}
+h1{
+    color: white;
+}
+label{
+    color: white;
+}
+img{
+    width: 12rem;
+    height: 10rem;
+}
+input{
+    border-radius: 2rem;
+    height: 1.5rem;
+    width: 15rem;
+    padding: 0.7rem;
+}
+select{
+    height: 1.5rem;
+    border-radius: 0.6rem;
+}
+.modalText{
+    color: black;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: white solid;
+    width: 100%;
+    box-sizing: border-box;
+}
+.fa-bars{
+    margin: 2rem;
+}
+option{
+    text-align: center;
+}
+.genre{
+    margin-top: 1rem;
+}
