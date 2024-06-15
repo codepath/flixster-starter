@@ -44,7 +44,14 @@ Deployed Application (optional): [Flixster Deployed Site](https://flixster-start
   - [X] The sidebar displays the user's favorited and watched movies
 
 ### Walkthrough Video
-https://www.loom.com/share/fed1b3fdf9c64469ac9084acf1505b09?sid=b6ae632f-f6f4-4099-ac12-2f8b36bd2abf
+<div>
+    <a href="https://www.loom.com/share/9d2833a0b43540df8a0b41f195c7d256">
+      <p>Exploring New Features on My Website - Watch Video</p>
+    </a>
+    <a href="https://www.loom.com/share/9d2833a0b43540df8a0b41f195c7d256">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/9d2833a0b43540df8a0b41f195c7d256-with-play.gif">
+    </a>
+  </div>
 
 ### Reflection
 
