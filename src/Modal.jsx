@@ -66,7 +66,6 @@ function Modal(props){
                                 className='youtube'></iframe>
                             </div>
                             <div className='modal-Information'>
-
                                 <div className='over-view'>{props.data.overview}</div>
                                 <div>Original Title: {props.data.originalTitle}</div>
                                 <div>Genres: {getGenres(props.data.genres)}</div>

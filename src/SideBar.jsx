@@ -3,9 +3,6 @@ import { useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
 
 function SideBar(props){
-
-
-
     function MovieCardForSideBar(movieID, index){
         // get selected movie from the list of movies
         const movie = props.movies.find((item) => item.id === movieID);

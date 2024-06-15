@@ -7,7 +7,6 @@ function MovieCard(props) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [liked, setLiked] = useState(false);
     const [watched, setWatched] = useState(false);
-
     function openModal() {
         setIsModalOpen(true);
     }
@@ -50,7 +49,6 @@ function MovieCard(props) {
                     </button>
                 </div>
                 </div>
-
             </div>
             {isModalOpen && <Modal close={closeModal} data={props}/>}
 

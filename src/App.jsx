@@ -51,9 +51,6 @@ function App() {
                 if (sortType != "") {
                     fetchURL += '&sort_by=' + sortType;
                 }
-                // if (genreType != "") {
-                //     fetchURL += '&with_genres=' + genreType;
-                // }
                 setMovieData([]);
                 setPageNumber(1);
                 const response = await fetch(fetchURL);
@@ -76,9 +73,6 @@ function App() {
             if (sortType != "") {
                 fetchURL += '&sort_by=' + sortType;
             }
-            // if (genreType != "") {
-            //     fetchURL += '&with_genres=' + genreType;
-            // }
             fetchURL += '&page=' + pageNumber;
             const response = await fetch(fetchURL);
             const data = await response.json();

@@ -2,7 +2,6 @@ import './MovieList.css';
 import MovieCard from './MovieCard.jsx';
 import SideBar from './SideBar';
 function MovieList(props) {
-
     const toggleLikeList = (movieID, isRemove) => {
         if(isRemove){
             props.setLikedMovies((prev) => {
