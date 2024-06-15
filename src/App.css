@@ -1,28 +1,49 @@
-.App {
-  text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
+header {
+  height: 10vh;
+  background-color: #457462;
+  position: sticky;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
-  color: white;
-  padding: 20px;
 }
 
-@media (max-width: 600px) {
-  .movie-card {
-    width: 100%;
-  }
+h1 {
+  color: #ee892f;
+  margin-left: 2%;
+  font-size: 40pt;
+}
 
-  .search-bar {
-    flex-direction: column;
-    gap: 10px;
-  }
+footer {
+  height: 10vh;
+  background-color: #457462;
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
 
-  .search-bar form {
-    flex-direction: column;
-  }
+#loadbtn {
+  justify-content: center;
+  align-self: center;
+  display: flex;
+}
+
+
+.App {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+#emptymessage {
+  font-size: 16pt;
+}
+
+#hamburger {
+  font-size: 30pt;
+  color: #ee892f;
+  cursor: pointer;
 }

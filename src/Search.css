@@ -1,0 +1,6 @@
+.searchbar{
+    margin-left: 5%;
+    display: flex;
+    height: 4vh;
+    border-radius: 8px;
+}

@@ -1,0 +1,14 @@
+.list {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1vw;
+    align-items: center;
+}
+
+.App.open-side .list {
+    margin-right: 300px; /* Adjust this width to match the side width */
+  }
+  
