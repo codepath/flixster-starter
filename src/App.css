@@ -1,28 +1,82 @@
-.App {
+.title-header{
   text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
+  padding-right: auto;
   color: white;
-  padding: 20px;
+}
+.loadMoreButton{
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  justify-content: center;
+  background-color: white;
+  color: black
+}
+footer{
+  display: inline-block;
+  /* position: fixed; */
+  margin-left: 50%;
+  left: 0;
+  bottom: 0;
+  margin-right: 50%;
+  width: 200px;
+  height: 50px;
+  background-color:black;
+}
+.button{
+  margin-left: auto;
+  margin-right: auto;
+}
+.search-bar{
+  width: 80%
+}
+.body{
+  background-color: #0d0f16;
+  margin-left: 20%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.hide{
+  display: none;
+}
+.show{
+  display: flex;
+}
+.nav-bar{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  backdrop-filter: blur(5px);
+
+}
+.whole-body{
+  background-color: #0d0f16;
 }
 
-@media (max-width: 600px) {
-  .movie-card {
-    width: 100%;
-  }
+.button {
+  font-family: "Poppins";
+  border-radius: 10px;
+  font-size: 110%;
+  border: none;
+}
+.button:hover {
+  background-color: rgba(255, 82, 122, .6);
 
-  .search-bar {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .search-bar form {
-    flex-direction: column;
-  }
+}
+.load-more{
+  margin-left: 10%;
+  margin-right: 10%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  color: #333;
+  background-image: url('/src/Background.jpg');
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  height:100%
 }
