@@ -1,7 +1,7 @@
 import React from "react";
 import './Modal.css'; 
 
-const Modal = ({show, onClose, children, movieBackdrop, movieTitle, releaseDate, movieOverview, trailerUrl, movieGenres}) => {
+const Modal = ({show, onClose, children, movieBackdrop, movieTitle, releaseDate, movieOverview, trailerUrl, genres}) => {
 
     if(!show){
         return null;
@@ -10,18 +10,17 @@ const Modal = ({show, onClose, children, movieBackdrop, movieTitle, releaseDate,
         <div className="modal" onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                 <div className="modal-header">
-                    <button onClick={onClose}>Close</button>
+                    <button className="close-button" onClick={onClose}>X</button>
                 </div>
                 <div className="modal-body">{children}
-                    <h2>{movieTitle}</h2>
-                    <h3><strong>Genres: {movieGenres}</strong></h3>
+                    <h2 className="modalMovieTitle">{movieTitle}</h2>
+                    <p className="modalGenres"><strong>Genres:</strong>  <span className="release-date">{genres}</span></p>
                     <img className="modalposterImage" src={movieBackdrop} alt={`${movieTitle} poster`} />
-                    <h3>Release Date: {releaseDate}</h3>
-                    <p><strong>Overview:</strong> {movieOverview}</p>
-                    <a href={trailerUrl} target="_blank" rel="noopener noreferrer">
+                    <h3 className="releaseTitle">Release Date: <span className="release-date">{releaseDate}</span></h3>
+                    <p className="modalOverview"><strong>Overview:</strong>  <span className="release-date">{movieOverview}</span></p>
+                    <a href={trailerUrl}  target="_blank" rel="noopener noreferrer" >
                         Watch Trailer
                     </a>
-                    <img src = ".."/>
                 </div>
             </div>
         </div>

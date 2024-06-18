@@ -10,21 +10,61 @@
     align-items: center;
     z-index: 1000; /* Ensure modal is on top of other content */
   }
+
+  .modal-body {
+    margin-top: 20px;
+    color: white;
+  }
+  .modalMovieTitle{
+    text-align: center;
+    color: #F7BE10;
+  }
+  .modal-body img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    border-radius: 10px;
+  }
+  .modalGenres{
+    text-align:center;
+    color: #F7BE10;
+
+  }
+  .modalOverview{
+    color: #F7BE10;
+  }
   
   .modal-content {
     background: white;
     padding: 20px;
     border-radius: 5px;
     position: relative;
-    max-width: 500px;
+    max-width: 800px;
     width: 90%;
+    background-color: #141414;
+  }
+  .releaseTitle{
+    color: #F7BE10;
+  }
+  .release-date{
+    color: white;
   }
   
   .modal-header {
     display: flex;
     justify-content: flex-end;
   }
-  
-  .modal-body {
-    margin-top: 20px;
+  .close-button{
+    /* margin: 30px;
+    padding: 10px; */
+    width: 5%;
+    background-color: #F7BE10;
+    border-radius: 15px;
+    color: #141414;
+    border: none;
+    cursor: pointer;
+  }
+  a{
+    color: #F7BE10;
   }

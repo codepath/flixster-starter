@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import MovieCard from "../MovieCard/MovieCard.jsx";
 import "../MovieList/MovieList.css";
 import SearchForm from "../SearchForm/SearchForm.jsx";
@@ -15,7 +15,7 @@ const MovieList = () =>{
     const[searchTerm, setSearchTerm] = useState("");
     const [activeView, setActiveView] = useState("nowPlaying");
     const [selectedMovie, setSelectedMovie] = useState(null);
-    const[sortOption, setSortOption] = useState("rating");
+    const[sortOption, setSortOption] = useState("releaseDate");
 
     useEffect(() => {
         if (activeView === "nowPlaying") {
@@ -89,26 +89,25 @@ const MovieList = () =>{
         }
     };
 
-    // useEffect(() => {
-    //     const sortedData = [...movieData];
-    //     switch (sortOption) {
-    //         case 'alphabetic':
-    //             sortedData.sort((a, b) => a.title.localeCompare(b.title));
-    //             break;
-    //         case 'releaseDate':
-    //             sortedData.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
-    //             break;
-    //         case 'rating':
-    //             sortedData.sort((a, b) => b.vote_average - a.vote_average);
-    //             break;
-    //         default:
-    //             break;
-    //     }
-    //     setMovieData(sortedData);
-    // }, [sortOption, movieData]);
+    const sortedData = useMemo(() => {
+        const sorted = [...movieData];
+        switch (sortOption) {
+            case 'alphabetic':
+                sorted.sort((a, b) => a.title.localeCompare(b.title));
+                break;
+            case 'releaseDate':
+                sorted.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+                break;
+            case 'rating':
+                sorted.sort((a, b) => b.vote_average - a.vote_average);
+                break;
+            default:
+                break;
+        }
+        return sorted;
+    }, [movieData, sortOption]);
 
-
-    const parsedData = parseMovieData(movieData);
+    const parsedData = parseMovieData(sortedData);
     console.log(parsedData);
 
     const handleViewChange = (view) => {
@@ -130,37 +129,11 @@ const MovieList = () =>{
     return(
         <>
         <Header handleViewChange={handleViewChange} activeView={activeView} handleSearchTerm={handleSearchTerm}  />
-        {/* <div className="button-container">
-                <button 
-                    onClick={() => handleViewChange("nowPlaying")} 
-                    className="now-playing-button"
-                >
-                    Now Playing
-                </button>
-                <button 
-                    onClick={() => handleViewChange("search")} 
-                    className="search-button"
-                >
-                    Search
-                </button>
-            </div>
-            {activeView === "search" && <SearchForm onSearchChange={handleSearchTerm} />} */}
-        {/* <SortOption sortOption={sortOption} handleSortChange={handleSortChange}/> */}
         <div className="body-container">
             
-        <div className="button-container">
-                <button 
-                    onClick={() => handleViewChange("nowPlaying")} 
-                    className="now-playing-button"
-                >
-                    Now Playing
-                </button>
-                <button 
-                    onClick={() => handleViewChange("search")} 
-                    className="search-button"
-                >
-                    Search
-                </button>
+            <div className="button-container">
+                <button onClick={() => handleViewChange("nowPlaying")} className="now-playing-button">Now Playing</button>
+                <button onClick={() => handleViewChange("search")} className="search-button">Search</button>
                 <SortOptions sortOption={sortOption} handleSortChange={handleSortChange}/>
             </div>
             {activeView === "search" && <SearchForm onSearchChange={handleSearchTerm} />}
@@ -188,10 +161,15 @@ const MovieList = () =>{
             movieOverview={selectedMovie.movieOverview}
             trailerUrl={selectedMovie.trailerUrl}
             genres={selectedMovie.genres}/>
-        )};
+        )}
         
         <footer>
-            This is The footer!! Display Relevant Information.....
+        <div className="footer-links">
+            {/* <a href="https://www.linkedin.com/in/kiahna-isadore/">Contact</a> */}
+            <a className="footer-class" href="https://github.com/Kisadore">Contact</a>
+         
+        </div >
+            @ 2024 Kiahna Isadore 
         </footer>
         </>
     );

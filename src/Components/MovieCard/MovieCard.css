@@ -2,13 +2,11 @@
     width: 100%;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    /* border-radius: 15px; */
 
 }
 .movieTitle{
     text-align: center;
     font-size: 15px;
-    /* color: #c91c55; */
     color:#F7BE10;
 
 
@@ -16,6 +14,6 @@
 .movieVoteAverage{
     text-align: center;
     font-size: 15px;
-    color: gray;
+    color: white;
 
 }

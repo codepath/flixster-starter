@@ -1,14 +1,6 @@
-
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-} */
  .body-container{
     /* margin-top: 10px; */
     background-color: #1d1d1d;
-
-
 }
 
 .button-container {
@@ -24,7 +16,7 @@
     color: #141414;
     border: none;
     cursor: pointer;
-    width: 13%;
+    width: 20%;
     transition: transform 0.8s ease, box-shadow 0.4s ease;
 }
 .now-playing-button:hover, .search-button:hover{
@@ -40,7 +32,7 @@
     gap: 20px;
     padding: 20px;
     justify-content: center;
-    background-color: #1d1d1d;
+    /* background-color: #1d1d1d; */
     /* testing */
 
 
@@ -51,7 +43,9 @@
     width: 17%;
     box-shadow: 0 2px 4px rgba(10, 10, 10, 10);
     border-radius: 15px;
+    /* background-color: #EFDECD; */
     background-color: #141414;
+    margin-bottom: 20px;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 .movie-card:hover{
@@ -80,8 +74,12 @@
 footer{
     background-color: black;
     color: #888888;
-    padding: 20px;
+    padding: 40px;
+    text-align: center;
     
+}
+.footer-links{
+    padding: 5px;
 }
 
 @media (max-width: 800px) {

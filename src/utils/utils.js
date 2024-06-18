@@ -45,7 +45,7 @@ const parseMovieData = (movieData) => {
         movieBackdrop: `https://image.tmdb.org/t/p/w500${data.backdrop_path}`,
         releaseDate: formatDate(data.release_date),
         trailerUrl: generateYouTubeSearchURL(data.original_title),
-        genres: data.genre_ids.map(id => genreMap[id])
+        genres: data.genre_ids.map(id => genreMap[id] + " ")
 
     }));
 };

@@ -1,45 +1,16 @@
 .my-header{
     padding: 35px;
-    /* background-color: #0B0B0B; */
     background-image: url("./bannerimage.jpg");
-    /* background-image: url("./popcorn.avif"); */
     background-repeat: no-repeat;
-    background-size: cover; /* or "contain" */
+    background-size: cover; 
     background-position: center;
 }
 .title{
     color: #919191;
     text-align: center;
     font-size: 42px;
-
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
-.nav-bar{
-    color: #919191;
-
-}
-
-/* .button-container {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-}
-.now-playing-button, .search-button {
-    padding: 10px;
-    background-color: #F7BE10;
-    border-radius: 15px;
-    color: #141414;
-    border: none;
-    cursor: pointer;
-    width: 13%;
-    transition: transform 0.8s ease, box-shadow 0.4s ease;
-}
-.now-playing-button:hover, .search-button:hover{
-    background-color: #141414;
-    color: #888888;
-    transform: scale(1.00) translateY(-10px); 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-} */
-
 @media (max-width: 800px) {
     .now-playing-button, .search-button{
         width: 24%
