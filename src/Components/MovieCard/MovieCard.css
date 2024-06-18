@@ -1,0 +1,19 @@
+.posterImage{
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    /* border-radius: 15px; */
+
+}
+.movieTitle{
+    text-align: center;
+    font-size: 15px;
+
+
+}
+.movieVoteAverage{
+    text-align: center;
+    font-size: 15px;
+    color: gray;
+
+}

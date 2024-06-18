@@ -1,0 +1,50 @@
+.my-header{
+    padding: 20px;
+    background-color: #1d1d1d
+    
+
+}
+.title{
+    color: #919191;
+    text-align: center;
+    font-size: 38px;
+
+}
+.nav-bar{
+    color: #919191;
+
+}
+.movie-container{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    background-color: #1d1d1d;
+
+
+}
+.movie-card{
+    display:flex;
+    border: 1px solid #ddd9d9;
+    width: 17%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    background-color: #fff;
+    border-radius: 15px;
+    /* overflow: hidden; */
+}
+.load-button{
+    display:flex;
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;;
+    border-radius: 15px;
+    /* width: 25%; */
+    font-size: 25px;
+    padding: 10px;
+    
+}
+
+@media screen and (max-width: 320px) {
+
+}
