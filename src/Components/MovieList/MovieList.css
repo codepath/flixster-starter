@@ -1,19 +1,39 @@
-.my-header{
-    padding: 20px;
-    background-color: #1d1d1d
-    
+
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+ .body-container{
+    /* margin-top: 10px; */
+    background-color: #1d1d1d;
+
 
 }
-.title{
-    color: #919191;
-    text-align: center;
-    font-size: 38px;
 
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    /* margin-bottom: 20px; */
 }
-.nav-bar{
-    color: #919191;
+.now-playing-button, .search-button {
+    margin: 30px;
+    padding: 10px;
+    background-color: #F7BE10;
+    border-radius: 15px;
+    color: #141414;
+    border: none;
+    cursor: pointer;
+    width: 13%;
+    transition: transform 0.8s ease, box-shadow 0.4s ease;
+}
+.now-playing-button:hover, .search-button:hover{
+    background-color: #141414;
+    color: #888888;
+    transform: scale(1.00) translateY(-10px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
-}
 .movie-container{
     display:flex;
     flex-wrap: wrap;
@@ -21,30 +41,57 @@
     padding: 20px;
     justify-content: center;
     background-color: #1d1d1d;
+    /* testing */
 
 
 }
 .movie-card{
     display:flex;
-    border: 1px solid #ddd9d9;
+    border: 1px solid #141414;
     width: 17%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(10, 10, 10, 10);
     border-radius: 15px;
-    /* overflow: hidden; */
+    background-color: #141414;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.movie-card:hover{
+    transform: scale(1.03) translateY(-10px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .load-button{
     display:flex;
-    display: block;
     margin: auto;
-    margin-bottom: 10px;;
-    border-radius: 15px;
-    /* width: 25%; */
     font-size: 25px;
     padding: 10px;
+    background-color: #F7BE10;
+    border-radius: 15px;
+    color: #141414;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.8s ease, box-shadow 0.4s ease;
+}
+
+.load-button:hover{
+    background-color: #141414;
+    color: #888888;
+    transform: scale(1.03) translateY(-10px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+footer{
+    background-color: black;
+    color: #888888;
+    padding: 20px;
     
 }
 
-@media screen and (max-width: 320px) {
-
-}
+@media (max-width: 800px) {
+    .movie-card{
+        width:100;
+        max-width: 400px;
+        margin: 0 auto 20px auto;
+    }
+    .movie-card:hover{
+        transform: scale(1.00) translateY(-10px); 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  }

@@ -1,0 +1,38 @@
+.input-form-box {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    /* justify-content: center; */
+    align-items: center;
+    }
+    
+    .search-bar {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    color: #888888;
+    background-color: #141414;
+    opacity: 0.9;
+    width: 25%;
+    }
+    .submit-button:hover{
+        background-color: #141414;
+        color: #888888;
+        /* transform: scale(.95) translateY(-10px);  */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .submit-button {
+    padding: 10px;
+    background-color: #F7BE10;
+    border-radius: 15px;
+    color: #141414;
+    border: none;
+    cursor: pointer;
+    width: 25%;
+    transition: transform 0.8s ease, box-shadow 0.4s ease;
+    }
+
+
+
+

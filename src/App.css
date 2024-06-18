@@ -1,5 +1,12 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
 .App {
   text-align: center;
+  
 }
 
 .App-header {
@@ -12,7 +19,7 @@
   padding: 20px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .movie-card {
     width: 100%;
   }

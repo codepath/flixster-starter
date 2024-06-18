@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import MovieCard from "../MovieCard/MovieCard.jsx";
 import "../MovieList/MovieList.css";
 import SearchForm from "../SearchForm/SearchForm.jsx";
+import Header from '../Header/Header.jsx';
 import { parseMovieData} from "../../utils/utils.js";
+import Modal from '../Modal/Modal.jsx';
+import SortOptions from '../SortOptions/SortOptions.jsx';
+
 
 const MovieList = () =>{
 
@@ -10,6 +14,8 @@ const MovieList = () =>{
     const [page, setPage] = useState(1);
     const[searchTerm, setSearchTerm] = useState("");
     const [activeView, setActiveView] = useState("nowPlaying");
+    const [selectedMovie, setSelectedMovie] = useState(null);
+    const[sortOption, setSortOption] = useState("rating");
 
     useEffect(() => {
         if (activeView === "nowPlaying") {
@@ -17,7 +23,8 @@ const MovieList = () =>{
         } else {
             fetchData(page, searchTerm);
         }
-    }, [page, searchTerm, activeView]);
+        
+    }, [page, searchTerm, activeView], sortOption);
 
     // const handleClick = () => {
     //     setPage(page + 1);
@@ -29,6 +36,7 @@ const MovieList = () =>{
         setPage(prevPage => prevPage + 1);
         };
     console.log(`Clicked ${page}`)
+
 
     const handleSearchTerm = (newSearch) => {
         setSearchTerm(newSearch);
@@ -81,6 +89,24 @@ const MovieList = () =>{
         }
     };
 
+    // useEffect(() => {
+    //     const sortedData = [...movieData];
+    //     switch (sortOption) {
+    //         case 'alphabetic':
+    //             sortedData.sort((a, b) => a.title.localeCompare(b.title));
+    //             break;
+    //         case 'releaseDate':
+    //             sortedData.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+    //             break;
+    //         case 'rating':
+    //             sortedData.sort((a, b) => b.vote_average - a.vote_average);
+    //             break;
+    //         default:
+    //             break;
+    //     }
+    //     setMovieData(sortedData);
+    // }, [sortOption, movieData]);
+
 
     const parsedData = parseMovieData(movieData);
     console.log(parsedData);
@@ -93,39 +119,80 @@ const MovieList = () =>{
         }
     };
 
+    const handleSortChange = (event) => {
+        const sort = event.target.value;
+        console.log('Selected sort option:', sort)
+        setSortOption(sort);
+        setPage(1);
+    }
+
      
     return(
         <>
-        <header className="my-header">
-            <h1 className="title">
-                Flixster
-            </h1>
-            {/* ????? */}
-            <div className="button-container">
-                    <button onClick={() => handleViewChange("nowPlaying")} className={activeView === "nowPlaying" ? "active" : ""}>
-                        Now Playing
-                    </button>
-                    <button onClick={() => handleViewChange("search")} className={activeView === "search" ? "active" : ""}>
-                        Search
-                    </button>
-                </div>
-                {activeView === "search" && <SearchForm onSearchChange={handleSearchTerm} />}
-                <nav className="nav-bar"></nav>
-            {/* <SearchForm onSearchChange={handleSearchTerm}/> */}
-           
-            <nav className="nav-bar">
-
-            </nav>
-
-        </header>
-        <div className="movie-container">
+        <Header handleViewChange={handleViewChange} activeView={activeView} handleSearchTerm={handleSearchTerm}  />
+        {/* <div className="button-container">
+                <button 
+                    onClick={() => handleViewChange("nowPlaying")} 
+                    className="now-playing-button"
+                >
+                    Now Playing
+                </button>
+                <button 
+                    onClick={() => handleViewChange("search")} 
+                    className="search-button"
+                >
+                    Search
+                </button>
+            </div>
+            {activeView === "search" && <SearchForm onSearchChange={handleSearchTerm} />} */}
+        {/* <SortOption sortOption={sortOption} handleSortChange={handleSortChange}/> */}
+        <div className="body-container">
+            
+        <div className="button-container">
+                <button 
+                    onClick={() => handleViewChange("nowPlaying")} 
+                    className="now-playing-button"
+                >
+                    Now Playing
+                </button>
+                <button 
+                    onClick={() => handleViewChange("search")} 
+                    className="search-button"
+                >
+                    Search
+                </button>
+                <SortOptions sortOption={sortOption} handleSortChange={handleSortChange}/>
+            </div>
+            {activeView === "search" && <SearchForm onSearchChange={handleSearchTerm} />}
+            <div className="movie-container">
             {parsedData.map(movie => (
                 <div className="movie-card" key={movie.movieId}>
-                    <MovieCard movieTitle={movie.movieTitle} posterImage={movie.posterImage} movieVoteAverage={movie.movieVoteAverage} />
+                    <MovieCard movieTitle={movie.movieTitle} posterImage={movie.posterImage} movieVoteAverage={movie.movieVoteAverage} onClick={() => setSelectedMovie(movie) } 
+                        />
+                        
                 </div>
-            ))}        
+            ))}     
+            <button onClick={handleClick} className="load-button">Load More...</button>   
         </div>
-        <button onClick={handleClick} className="load-button">Load More...</button>
+        </div>
+        {/* load pages */}
+
+
+
+        {selectedMovie && (
+            <Modal show={selectedMovie != null}
+            onClose={() => setSelectedMovie(null)}
+            movieTitle={selectedMovie.movieTitle}
+            movieBackdrop={selectedMovie.movieBackdrop}
+            releaseDate={selectedMovie.releaseDate}
+            movieOverview={selectedMovie.movieOverview}
+            trailerUrl={selectedMovie.trailerUrl}
+            genres={selectedMovie.genres}/>
+        )};
+        
+        <footer>
+            This is The footer!! Display Relevant Information.....
+        </footer>
         </>
     );
 };
