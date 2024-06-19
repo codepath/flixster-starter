@@ -7,6 +7,8 @@ const Modal = ({show, onClose, children, movieBackdrop, movieTitle, releaseDate,
     if(!show){
         return null;
     }
+
+    
     return(
         <div className="modal" onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>

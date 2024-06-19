@@ -170,7 +170,7 @@ const MovieList = () =>{
             <a className="footer-class" href="https://github.com/Kisadore">Contact</a>
          
         </div >
-        &copy; 2024 Kiahna Isadore 
+        &copy; @ 2024 Kiahna Isadore 
         </footer>
         </>
     );
