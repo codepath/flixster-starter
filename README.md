@@ -51,22 +51,25 @@ Deployed Application (optional): [Flixster Deployed Site](https://flixster-2uua.
 
 ### Reflection
 
-* Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
+Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
+* Yes, the weather labs helped a ton when it came down to doing the project.
 
 
 
-* If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
+If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
+* Embed the iframe youtube trailer
   
 
 
-* Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
+Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
+* Making sure after showing my website to go back to my slides in order to help me stay organized during my presentation.
 
 
 
 ### Open-source libraries used
 
-- Add any links to open-source libraries used in your project.
+-https://medium.com/@otooker/embedding-a-youtube-video-in-react-9be0040b050d
 
 ### Shout out
 
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+Shout out to the instructors, chris, and my roomates
