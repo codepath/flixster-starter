@@ -45,26 +45,25 @@ Deployed Application (optional): [Flixster Deployed Site](https://flixster-2uua.
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+<div>
+    <a href="https://www.loom.com/share/3933cbaa7e764942a114d90ab480db51">
+      <p>Flixter - Watch Video</p>
+    </a>
+    <a href="https://www.loom.com/share/3933cbaa7e764942a114d90ab480db51">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/3933cbaa7e764942a114d90ab480db51-with-play.gif">
+    </a>
+  </div>
 
 ### Reflection
 
 Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 * Yes, the weather labs helped a ton when it came down to doing the project.
 
-
-
 If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 * Embed the iframe youtube trailer
   
-
-
 Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 * Making sure after showing my website to go back to my slides in order to help me stay organized during my presentation.
-
-
 
 ### Open-source libraries used
 
