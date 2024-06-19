@@ -50,7 +50,7 @@ Deployed Application (optional): [Flixster Deployed Site](https://flixster-2uua.
       <p>Flixter - Watch Video</p>
     </a>
     <a href="https://www.loom.com/share/3933cbaa7e764942a114d90ab480db51">
-      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/3933cbaa7e764942a114d90ab480db51-with-play.gif">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/3933cbaa7e764942a114d90ab480db51-1718759884927-with-play.gif">
     </a>
   </div>
 
