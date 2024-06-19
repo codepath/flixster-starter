@@ -6,6 +6,7 @@ import Header from '../Header/Header.jsx';
 import { parseMovieData} from "../../utils/utils.js";
 import Modal from '../Modal/Modal.jsx';
 import SortOptions from '../SortOptions/SortOptions.jsx';
+import YouTube from "react-youtube";
 
 
 const MovieList = () =>{

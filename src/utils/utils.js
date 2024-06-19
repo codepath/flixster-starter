@@ -10,6 +10,8 @@ const formatDate = (dateString) => {
 function generateYouTubeSearchURL(movieTitle) {
     const query = encodeURIComponent(`${movieTitle} trailer`);
     return `https://www.youtube.com/results?search_query=${query}`;
+    // return `https://www.youtube.com/watch?v=${query}&t=102s`;
+    
 }
 
 const genreMap = {

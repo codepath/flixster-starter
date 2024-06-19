@@ -1,5 +1,6 @@
 import React from "react";
 import './Modal.css'; 
+import YouTube from "react-youtube";
 
 const Modal = ({show, onClose, children, movieBackdrop, movieTitle, releaseDate, movieOverview, trailerUrl, genres}) => {
 
@@ -21,6 +22,7 @@ const Modal = ({show, onClose, children, movieBackdrop, movieTitle, releaseDate,
                     <a href={trailerUrl}  target="_blank" rel="noopener noreferrer" >
                         Watch Trailer
                     </a>
+                    
                 </div>
             </div>
         </div>
