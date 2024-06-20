@@ -134,15 +134,15 @@ const MovieList = () =>{
             </div>
             {activeView === "search" && <SearchForm onSearchChange={handleSearchTerm} />}
             <div className="movie-container">
-            {parsedData.map(movie => (
-                <div className="movie-card" key={movie.movieId}>
+            {parsedData.map((movie, idx)  => (
+                <div className="movie-card" key={idx}>
                     <MovieCard movieTitle={movie.movieTitle} posterImage={movie.posterImage} movieVoteAverage={movie.movieVoteAverage} onClick={() => setSelectedMovie(movie) } 
                         />
                         
                 </div>
-            ))}     
-            <button onClick={handleClick} className="load-button">Load More...</button>   
-        </div>
+            ))}   
+            <button onClick={handleClick} className="load-button">Load More...</button> 
+            </div> 
         </div>
 
         {selectedMovie && (
