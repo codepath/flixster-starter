@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import SideBar from './SideBar';
 import { FaBarsStaggered } from "react-icons/fa6";
 import './App.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -184,7 +185,30 @@ function App() {
       <MovieList data={movies} loadMore={loadMore} handleMovieClick={movieClick} setLikedList={setLikedList} likedList={likedList} setWatchedList={setWatchedList} watchedList={watchedList}/>
     </main>
     <footer className="footer">
-      <p>Copyright &copy; 2024 Meta U</p>
+      <div className="footer-about">
+        <h3>About</h3>
+        <p>
+          <span>Explore the latest movies now playing in cinemas.</span>
+          <span>Get movie details, trailers, and posters. </span>
+          <span>Create personalized watch lists and track what you've seen or liked.</span>
+          <span>Your one-stop destination for all things cinema.</span>
+        </p>
+      </div>
+      <div className="footer-contacts">
+        <h3>Contacts</h3>
+        <p>
+          <i class="fa-solid fa-phone"></i> +1 555 123456
+        </p>
+        <p>
+          <i class="fa-solid fa-envelope"></i> <a href="mailto:info@metau.com">info@metau.com</a>
+        </p>
+        <p>
+          <i class="fa-solid fa-location-dot"></i> 123 Main St, Anytown, USA
+        </p>
+      </div>
+      <div className="footer-copyright">
+        <p>&copy; 2024 Meta U</p>
+      </div>
     </footer>
     </>
   )

@@ -113,7 +113,7 @@ const MovieCard = (props) => {
     return (
         <div>
             <div className="imageContainer" id={props.id} >
-                <img src={props.image} id="movie-poster" onClick={toggleModal}/>
+                <img src={props.image} id="movie-poster" onClick={toggleModal} alt={props.title}/>
                 <p id="movie-title" >{props.title} </p>
                 <label id="check-box"><input type="checkbox" onChange={handleWatched}/>Watched </label>
                 <p><span id="movie-rating" className={className}>{props.rating}</span><span id="like-count" onClick={handleLike}> ♡</span></p>

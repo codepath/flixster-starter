@@ -16,14 +16,16 @@ const Modal = (props) => {
             <div className='modal-content'>
                 <div className='background-image' style={{ backgroundImage: `url(${backdropImage})` }} />
                 <div className='modal-image'>
-                    <img src ={posterImage} id='modal-poster' />
+                    <img src ={posterImage} id='modal-poster' alt={props.movieTitle}/>
                 </div>
                 <div className='modal-info'>
-                    <p id="modal-title">{props.movieTitle}</p>
-                    <p id='release-date'>Release Date: {props.releaseDate}</p>
-                    <p id="runtime">Runtime: {runtime}</p>
-                    <p id='movie-overview'>{props.movieOverview}</p>
-                    <p id='movie-genre'>Genres: {genreNamesString}</p>
+                    <div className='modal-text'>
+                        <p id="modal-title">{props.movieTitle}</p>
+                        <p id='release-date'>Release Date: {props.releaseDate}</p>
+                        <p id="runtime">Runtime: {runtime}</p>
+                        <p id='movie-overview'>{props.movieOverview}</p>
+                        <p id='movie-genre'>Genres: {genreNamesString}</p>
+                    </div>
                     <div className='movie-trailer'>
                         <iframe
                             width="200"

@@ -30,15 +30,61 @@ main {
   border-bottom-right-radius: 30px;
 }
 
+
 .footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
   background-color: indigo;
-  height: 40px;
-  display: relative;
-  border: 2px solid indigo;
   color: white;
-  margin-bottom: 0px;
-  border-top-left-radius: 30px;
+  font-family: 'Montserrat', sans-serif;
   border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+}
+
+.footer-about {
+  width: 33%;
+}
+
+.footer-about h3 {
+  text-align: center;
+}
+
+.footer-about p {
+  margin-bottom: 0;
+}
+
+.footer-about p span {
+  display: block;
+}
+
+.footer-contacts {
+  width: 33%;
+}
+
+.footer-contacts h3 {
+  text-align: center;
+}
+
+.footer-contacts p {
+  margin-bottom: 0;
+  font-size: 18px;
+}
+
+.footer-contacts p a{
+  color: #B3E5FC;
+}
+
+.fa-solid {
+  margin-right: 10px;
+  font-size: 20px;
+  color: grey;
+}
+.footer-copyright {
+  width: 33%;
+  text-align: center;
 }
 
 .title {
