@@ -46,11 +46,11 @@ Deployed Application (optional): [Flixster Deployed Site](https://flixster-2uua.
 ### Walkthrough Video
 
 <div>
-    <a href="https://www.loom.com/share/3933cbaa7e764942a114d90ab480db51">
-      <p>Flixter - Watch Video</p>
+    <a href="https://www.loom.com/share/17935cf089f74e2da75964fe664c78c4">
+      <p>Flixster updated - Watch Video</p>
     </a>
-    <a href="https://www.loom.com/share/3933cbaa7e764942a114d90ab480db51">
-      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/3933cbaa7e764942a114d90ab480db51-1718759884927-with-play.gif">
+    <a href="https://www.loom.com/share/17935cf089f74e2da75964fe664c78c4">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/17935cf089f74e2da75964fe664c78c4-with-play.gif">
     </a>
   </div>
 
