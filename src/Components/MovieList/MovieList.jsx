@@ -27,11 +27,6 @@ const MovieList = () =>{
         
     }, [page, searchTerm, activeView], sortOption);
 
-    // const handleClick = () => {
-    //     setPage(page + 1);
-    //     fetchData()
-    // }
-
     //Load Pages...
     const handleClick = () => {
         setPage(prevPage => prevPage + 1);
@@ -149,9 +144,6 @@ const MovieList = () =>{
             <button onClick={handleClick} className="load-button">Load More...</button>   
         </div>
         </div>
-        {/* load pages */}
-
-
 
         {selectedMovie && (
             <Modal show={selectedMovie != null}
@@ -160,17 +152,19 @@ const MovieList = () =>{
             movieBackdrop={selectedMovie.movieBackdrop}
             releaseDate={selectedMovie.releaseDate}
             movieOverview={selectedMovie.movieOverview}
-            trailerUrl={selectedMovie.trailerUrl}
+            movieId={selectedMovie.movieId}
+            // trailerUrl={selectedMovie.trailerUrl}
             genres={selectedMovie.genres}/>
         )}
         
         <footer>
         <div className="footer-links">
-            {/* <a href="https://www.linkedin.com/in/kiahna-isadore/">Contact</a> */}
-            <a className="footer-class" href="https://github.com/Kisadore">Contact</a>
+            <a className="footer-class" href="https://github.com/Kisadore">Contact </a>
+
+            <a className="footer-about" href="https://github.com/Kisadore/flixster/blob/main/README.md">About</a>
          
         </div >
-        &copy; 2024 Kiahna Isadore 
+        &copy; 2024 Kiahna Isadore, Inc.
         </footer>
         </>
     );

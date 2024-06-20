@@ -6,7 +6,7 @@ const Header = ({ handleViewChange, activeView, handleSearchTerm }) => {
     return (
         <>
         <header className="my-header">
-            <h1 className="title">Flixster</h1>
+            <h1 className="title">Flixster 🎬</h1>
         </header>
         </>
     );

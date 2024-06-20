@@ -1,5 +1,6 @@
 import.meta.env;
 
+
 const apiKey = import.meta.env.VITE_APP_API_KEY;
 
 const formatDate = (dateString) => {
