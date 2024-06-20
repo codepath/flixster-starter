@@ -3,10 +3,11 @@
     margin: 30px;
     padding: 10px;
     background-color: #F7BE10;
-    border-radius: 15px;
+    border-radius: 10px;
     color: #141414;
     border: none;
     cursor: pointer;
     width: 20%;
     transition: transform 0.8s ease, box-shadow 0.4s ease;
+    font-weight: bold;
 }
