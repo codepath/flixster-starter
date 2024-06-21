@@ -44,7 +44,7 @@ Deployed Application (optional): [Flixster Deployed Site](https://flixster-start
   - [x] The sidebar displays the user's favorited and watched movies
 
 ### Walkthrough Video
-https://youtu.be/RPEgE3v8sM0?si=C5ESvc59nbDtWL71
+[(https://www.youtube.com/watch?v=-rxltp0H8b4)]
 
 ### Reflection
 
