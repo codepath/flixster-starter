@@ -24,23 +24,22 @@ const MovieList = () =>{
         } else {
             fetchData(page, searchTerm);
         }
-        
-    }, [page, searchTerm, activeView], sortOption);
+    }, [page, searchTerm, activeView]);
 
     //Load Pages...
     const handleClick = () => {
         setPage(prevPage => prevPage + 1);
         };
-    console.log(`Clicked ${page}`)
+    // console.log(`Clicked ${page}`)
 
 
     const handleSearchTerm = (newSearch) => {
         setSearchTerm(newSearch);
         setPage(1);
         setActiveView("search");
-      };
+    };
 
-      const fetchNowPlaying = async (page) => {
+    const fetchNowPlaying = async (page) => {
         try {
             const apiKey = import.meta.env.VITE_APP_API_KEY;
             const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&page=${page}`);
@@ -48,39 +47,40 @@ const MovieList = () =>{
                 throw new Error('Failed to fetch movie data');
             }
             const data = await response.json();
-            if (page === 1) {
-                setMovieData(data.results);
-            } else {
-                setMovieData(prevData => [...prevData, ...data.results]);
-            }
+            setMovieData(prevData => {
+                // Create a Set to remove potential duplicates
+                const uniqueMovies = new Set([...prevData, ...data.results].map(movie => movie.id));
+                // Convert back to an array of full movie objects
+                return [...prevData, ...data.results].filter((movie, index, self) => 
+                    uniqueMovies.has(movie.id) && self.findIndex(m => m.id === movie.id) === index
+                );
+            });
         } catch (error) {
             console.error(error);
         }
     };
-
+    
     const fetchData = async (page, searchTerm) => {
-    try{
-        const apiKey = import.meta.env.VITE_APP_API_KEY;
-        //Maybe without
-        console.log('API Key:', apiKey);
-        
-        const url = searchTerm
+        try {
+            const apiKey = import.meta.env.VITE_APP_API_KEY;
+            const url = searchTerm
                 ? `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(searchTerm)}&page=${page}`
                 : `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${page}`;
-
+    
             const response = await fetch(url);
-            if(!response.ok){
+            if (!response.ok) {
                 throw new Error('Failed to fetch movie data');
             }
-            const data = await response.json()
-            if (page === 1) {
-                setMovieData(data.results);
-            } else {
-                setMovieData(prevData => [...prevData, ...data.results]);
-            }
-            console.log(data);
-            } 
-        catch (error){
+            const data = await response.json();
+            setMovieData(prevData => {
+                // Create a Set to remove potential duplicates
+                const uniqueMovies = new Set([...prevData, ...data.results].map(movie => movie.id));
+                // Convert back to an array of full movie objects
+                return [...prevData, ...data.results].filter((movie, index, self) => 
+                    uniqueMovies.has(movie.id) && self.findIndex(m => m.id === movie.id) === index
+                );
+            });
+        } catch (error) {
             console.error(error);
         }
     };
@@ -104,7 +104,7 @@ const MovieList = () =>{
     }, [movieData, sortOption]);
 
     const parsedData = parseMovieData(sortedData);
-    console.log(parsedData);
+    // console.log(parsedData);
 
     const handleViewChange = (view) => {
         setActiveView(view);
@@ -121,7 +121,6 @@ const MovieList = () =>{
         setPage(1);
     }
 
-     
     return(
         <>
         <Header handleViewChange={handleViewChange} activeView={activeView} handleSearchTerm={handleSearchTerm}  />
@@ -141,8 +140,8 @@ const MovieList = () =>{
                         
                 </div>
             ))}   
-            <button onClick={handleClick} className="load-button">Load More...</button> 
             </div> 
+            <button onClick={handleClick} className="load-button">Load More...</button> 
         </div>
 
         {selectedMovie && (
