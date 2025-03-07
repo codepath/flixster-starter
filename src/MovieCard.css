@@ -1,0 +1,67 @@
+.movie-card {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  background-color: rgba(102, 51, 153, 0.8); /* Purple with transparency */
+  color: white;
+  margin: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  cursor: pointer;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgb(0, 0, 0); /* Darker shadow */
+}
+
+.moviePoster {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.movie-title {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.movie-rating {
+  color: #ccc;
+  margin-bottom: 10px; /* Add space below the rating */
+}
+
+.favorite-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: rgb(255, 1, 1);
+  transition: color 0.3s;
+}
+
+.favorite-button .fa-solid {
+  color: #ff0000; /* Red color for favorite */
+}
+
+.favorite-button .fa-regular {
+  color: rgb(255, 32, 32); /* Default color */
+}
+
+.watched-button {
+  position: relative;
+  background: none;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.3s;
+}
+
+.watched-button.watched {
+  color: #00ff00; /* Green color for watched */
+}

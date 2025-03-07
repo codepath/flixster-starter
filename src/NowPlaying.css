@@ -1,0 +1,49 @@
+.now-playing {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url(/public/purplebackground.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: rgb(255, 255, 255);
+  }
+
+  main {
+    flex: 1;
+    padding: 20px;
+    margin: 20px;
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly lighten the main content for readability */
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url(/public/purplebackground.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: rgb(255, 255, 255);
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #7d3b8a; /* Darker purple */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 20px auto;
+    display: block;
+  }
+
+  button:hover {
+    background-color: #9c4bb5; /* Lighter purple */
+  }
+
+  @media (max-width: 600px) {
+    .movie-card {
+      width: 100%;
+    }
+
+  }
