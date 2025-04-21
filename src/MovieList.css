@@ -1,0 +1,16 @@
+.movie-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;  /* Center cards horizontally */
+        padding: 20px;
+        width: 75%; 
+        margin: 0 auto;
+        gap: 2%;
+        z-index: 0;
+}
+
+.load-btn {
+        width: 100%;
+        float: left;
+        margin-top: 30px;
+}
