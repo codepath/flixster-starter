@@ -1,28 +1,176 @@
-.App {
+@font-face {
+  font-family: 'Blacklisted';
+  src: url('./assets/Blacklisted.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Lato-regular';
+  src: url('./assets/Lato/Lato-Regular.ttf') format('truetype');
+}
+
+#root {
+  max-width: 1900px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #f5f5f5;
+}
+
+main {
+  max-width: 1700px;
+  display: grid;
+  justify-content: end;
+  margin-left: 70px;
+  font-family: 'Lato-regular';
+}
+
+.header {
+  border: 2px solid indigo;
+  width: 100%;
+  background-color: indigo;
+  border-bottom-right-radius: 30px;
+}
+
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+  background-color: indigo;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+}
+
+.footer-about {
+  width: 33%;
+}
+
+.footer-about h3 {
   text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  color: white;
-  padding: 20px;
+.footer-about p {
+  margin-bottom: 0;
 }
 
-@media (max-width: 600px) {
-  .movie-card {
-    width: 100%;
-  }
+.footer-about p span {
+  display: block;
+}
 
-  .search-bar {
-    flex-direction: column;
-    gap: 10px;
-  }
+.footer-contacts {
+  width: 33%;
+}
 
-  .search-bar form {
-    flex-direction: column;
+.footer-contacts h3 {
+  text-align: center;
+}
+
+.footer-contacts p {
+  margin-bottom: 0;
+  font-size: 18px;
+}
+
+.footer-contacts p a{
+  color: #B3E5FC;
+}
+
+.fa-solid {
+  margin-right: 10px;
+  font-size: 20px;
+  color: grey;
+}
+.footer-copyright {
+  width: 33%;
+  text-align: center;
+}
+
+.title {
+  color: white;
+  margin-top: 0px;
+  font-family: 'Blacklisted'
+}
+
+form{
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 25px;
+}
+
+#search-bar {
+  padding: 10px;
+  width: 500px;
+  margin-right: 3px;
+
+}
+
+#search-button {
+  background-color: #B19CD9;
+  padding: 10px;
+  border: 2px solid darkmagenta;
+  border-radius: 5px;
+}
+
+#search-button:hover,
+#nowPlayingButton:hover,
+#searchTabButton:hover {
+  color: white;
+  background-color: darkmagenta;
+  border: 2px solid #B19CD9;
+  border-radius: 5px;
+}
+
+#nowPlayingButton {
+  background-color: #B19CD9;
+  padding: 10px;
+  border: 2px solid darkmagenta;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+#searchTabButton {
+  background-color: #B19CD9;
+  padding: 10px;
+  border: 2px solid darkmagenta;
+  border-radius: 5px;
+}
+
+
+.searchForm {
+  display: none;
+}
+
+#dropdown-menu {
+  margin-left: 10px;
+  padding: 10px;
+  background-color: #B19CD9;
+  border: 2px solid darkmagenta;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.side-bar-logo {
+  font-size: 30px;
+  display: grid;
+  margin-left: 30px;
+  margin-top: 20px;
+  color: #f5f5f5;
+}
+
+.side-bar-logo:hover {
+  transform: scale(1.2);
+}
+
+@media all and (max-width: 630px) {
+  #search-bar {
+    width: 300px;
+  }
+}
+
+@media all and (max-width: 400px) {
+  #search-bar {
+    width: 100px;
   }
 }

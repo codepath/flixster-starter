@@ -1,0 +1,141 @@
+@font-face {
+    font-family: 'Lato-regular';
+    src: url('./assets/Lato/Lato-Regular.ttf') format('truetype');
+  }
+
+.movie-modal{
+    display: flex;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(225, 225, 225, 0.5);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    font-family: 'Lato-regular';
+    display: flex;
+    position: relative;
+    margin: 10% auto;
+    padding: 20px;
+    width: 50%;
+    border: 3px solid indigo;
+    border-radius: 10px;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(225, 225, 225, 0.5);
+    animation: zoomIn 0.3s ease-out;
+    color: black;
+}
+
+.modal-info {
+    justify-content: flex-end;
+    width: 90%;
+    padding-left: 20px;
+}
+.modal-text {
+    background-color: rgba(255, 255, 255, 0.537);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 3px;
+    margin-left: 8%;
+}
+
+#close-modal {
+    justify-self: flex-end;
+    font-size: 35px;
+    cursor: pointer;
+    color: white;
+    position: relative;
+    top: -25px;
+    margin-left: 10px;
+}
+
+#modal-title {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 10px;
+    justify-self: center;
+    font-family: 'Blacklisted';
+}
+
+#modal-poster{
+    width: 100%;
+    height: 100%;
+    justify-self: center;
+    align-self: center;
+    border: 2px;
+    box-shadow: 0 0 10px 4px rgba(63, 61, 61, 0.644);
+}
+
+#release-date {
+    font-size: 18px;
+    font-family: 'Lato-regular';
+}
+
+#movie-overview {
+    font-size: 18px;
+    font-family: 'Lato-regular';
+}
+
+#runtime {
+    font-size: 18px;
+    font-family: 'Lato-regular';
+}
+
+#movie-genre {
+    font-size: 18px;
+    font-family: 'Lato-regular';
+}
+
+
+@keyframes fadeIn {
+    from {
+        background-color: transparent;
+    }
+    to {
+        background-color: rgba(225, 225, 225, 0.5);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.movie-trailer {
+    margin-left: 10px;
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+.movie-trailer iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
