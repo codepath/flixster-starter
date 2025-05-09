@@ -17,12 +17,13 @@
     width: 100%;
   }
 
-  .search-bar {
+  .searchBar {
     flex-direction: column;
     gap: 10px;
   }
 
-  .search-bar form {
+  .searchBar form {
     flex-direction: column;
   }
 }
+
