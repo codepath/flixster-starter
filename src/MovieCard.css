@@ -1,0 +1,228 @@
+@import 'https://fonts.googleapis.com/css?family=Do+Hyeon';
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.clear-fix:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.card {
+  position: relative;
+  display: block;
+  padding: 10px;
+  font-family: "Do Hyeon", sans-serif;
+  overflow: hidden;
+}
+.card .cards {
+  width: 300px;
+  height: 400px;
+  display: block;
+  background-size: cover;
+  float: left;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  background-position: center;
+  margin: 10px;
+}
+.card .cards--one {
+  backface-visibility: hidden;
+}
+.card .cards--one:hover:after {
+  bottom: -20px;
+}
+.card .cards--one:hover:before {
+  bottom: -10px;
+}
+.card .cards--one:hover .cards--one__rect {
+  left: 45%;
+}
+.card .cards--one:hover .cards--one__rect--back {
+  left: 50%;
+}
+.card .cards--one::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 70px;
+  transform: rotate(-3deg);
+  background: #e660e3;
+  position: absolute;
+  bottom: -80px;
+  left: 0;
+  right: -10px;
+  z-index: 9;
+  transition: all 0.2s ease-in;
+  transition-delay: 0.3s;
+}
+.card .cards--one:before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 80px;
+  transform: rotate(-3deg);
+  bottom: -90px;
+  left: 0;
+  background: #fff;
+  right: -10px;
+  z-index: 5;
+  transition: all 0.2s ease-in;
+  transition-delay: 0.1s;
+}
+.card .cards--one__rect {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 18px;
+  background: #0f9bc0;
+  width: 126px;
+  height: 55px;
+  transform: skewY(5deg);
+  position: absolute;
+  display: block;
+  top: 60%;
+  left: -45%;
+  z-index: 1;
+  line-height: 3.3rem;
+  text-align: center;
+  transition: all 0.2s ease-in;
+}
+.card .cards--one__rect--back {
+  display: block;
+  background: rgba(34, 65, 154, 0.8);
+  width: 126px;
+  height: 55px;
+  transform: skewY(7deg);
+  position: absolute;
+  top: 65%;
+  left: -50%;
+  transition: all 0.2s ease-in;
+  transition-delay: 0.3s;
+}
+.card .cards--one__rect p {
+  transform: skewY(-7deg);
+  position: relative;
+}
+.card .card-movie {
+  position: relative;
+  backface-visibility: hidden;
+}
+.card .card-movie p {
+  position: absolute;
+  top: 83%;
+  left: -100%;
+  text-transform: capitalize;
+  color: #fff;
+  font-size: 20px;
+  z-index: 8;
+  transition: all 0.6s ease;
+  width: 185px;
+  margin-top: -5px;
+}
+.card .card-movie:hover p {
+  left: 8%;
+}
+.card .card-movie:hover img {
+  transform: translateY(-15px);
+}
+.card .card-movie:hover .card-movie__rect {
+  top: 75%;
+}
+.card .card-movie:hover .card-movie__rect:before {
+  transform: translateY(15px);
+}
+.card .card-movie:hover li {
+  transform: translateY(0);
+}
+.card .card-movie:hover .card-movie__tri {
+  right: -40%;
+}
+.card .card-movie:hover .card-movie__tri:before {
+  right: -312px;
+}
+.card .card-movie img {
+  transition: all 0.2s ease;
+}
+.card .card-movie__tri {
+  border-top: 220px solid transparent;
+  border-bottom: 190px solid transparent;
+  border-right: 288px solid #fff;
+  opacity: 0.9;
+  position: absolute;
+  display: block;
+  top: 0;
+  right: -100%;
+  transition: all 0.3s ease-in-out;
+}
+.card .card-movie__tri:before {
+  border-top: 220px solid transparent;
+  border-bottom: 190px solid transparent;
+  border-right: 288px solid #57ccfd;
+  position: absolute;
+  content: "";
+  display: block;
+  top: -220px;
+  right: -612px;
+  transition: all 0.3s ease-in-out;
+  transition-delay: 0.2s;
+}
+.card .card-movie__rect {
+  width: 750px;
+  height: 200px;
+  background: #fff;
+  display: block;
+  position: absolute;
+  top: 175%;
+  left: -78%;
+  transform: rotate(30deg);
+  z-index: 5;
+  opacity: 0.9;
+  transition: all 0.3s ease-in-out;
+}
+.card .card-movie__rect:before {
+  content: "";
+  display: block;
+  width: 100%;
+  position: relative;
+  height: 100%;
+  background: #f07306;
+  transform: translateY(200px);
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
+  transition-delay: 0.1s;
+}
+.card .card-movie ul {
+  list-style: none;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  z-index: 9;
+}
+.card .card-movie ul li {
+  display: inline-block;
+  font-size: 16px;
+  margin: 7px;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+  transform: translateY(100px);
+}
+.card .card-movie ul li:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.card .card-movie ul li:nth-child(3) {
+  transition-delay: 0.3s;
+}
+.card .card-movie ul li:nth-child(4) {
+  transition-delay: 0.4s;
+}
