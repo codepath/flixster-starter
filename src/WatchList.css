@@ -1,0 +1,20 @@
+.movieList{
+    display: flex;
+    flex-wrap: wrap;
+}
+.movieCard{
+    border: solid white;
+    margin: 2rem;
+    border-radius: 20px;
+    width: 15rem;
+    height: 17rem;
+}
+img{
+    width: 15rem;
+    height: 15rem;
+    border-top-right-radius: 17px;
+    border-top-left-radius: 17px;
+}
+.watchListCards{
+    height: 20rem;
+}
