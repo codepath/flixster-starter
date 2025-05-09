@@ -1,0 +1,26 @@
+.sidebar{
+    position: fixed;
+    height: 100%;
+    width: 20%;
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(5px);
+    color: white;
+  }
+
+/* .favorite-cards{
+    background-size: 100%;
+    width: 80%;
+    height: 10vh;
+    text-align: left;
+    border-radius: 6px;
+    margin-top: 2%;
+    padding: 1% 4%;
+    box-shadow: inset 0 0 0 100px rgba(0, 0, 0, 0.6);
+} */
+.title-liked{
+    width: 100%;
+    margin: 0% 4%;
+}
+.texts{
+    text-align: center;
+}

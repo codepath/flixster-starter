@@ -1,0 +1,81 @@
+.modalOverlay{
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 70%;
+    top: 25%;
+    left: 25%;
+    z-index: 1;
+
+
+
+
+}
+.modalContainer{
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    /* background: transparent; */
+    color: white;
+    border: solid white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    background-size: 100%;
+
+
+}
+.closeButton{
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: red;
+}
+.modalContent{
+    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: solid white;
+
+
+}
+.hide{
+    display: none;
+}
+.show{
+    display: flex;
+}
+.main-image{
+    width: 25%;
+    border-right: white;
+}
+.image-video{
+    display: flex;
+}
+.title-of-modal{
+    text-align: center;
+    font-size: 120%;
+    font-weight: bolder;
+    color: goldenrod;
+    background-color: black;
+    background-position: center;
+    margin-left: 10%;
+    margin-right: 10% ;
+
+}
+.over-view{
+    font-weight: bold;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-wrap: wrap;
+}
+.youtube{
+    width: 100%;
+    display: flex;
+}
+.modal-Information{
+    background-color: black;
+    padding: 5%;
+}
