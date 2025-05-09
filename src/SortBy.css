@@ -1,0 +1,14 @@
+.sort-by {
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    background-color: #7d3b8a; /* Darker purple */
+    color: white;
+    cursor: pointer;
+  }
+
+  .sort-by:hover {
+    background-color: #9c4bb5; /* Lighter purple */
+  }
