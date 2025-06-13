@@ -1,0 +1,106 @@
+.moviemodal {
+    display: block;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.moviemodal-content {
+    background-color: var(--martinique);
+    margin: 100px auto;
+    border: 1px solid var(--martinique);
+    width: 75vw;
+    max-width: 100%;
+    height: 80%;
+    position: relative;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    font-family: --lucida;
+    color: var(--gallery)
+}
+
+.moviemodal-content > * {
+    width: 100%;
+}
+
+.moviemodal-close-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    border: none;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 9px;
+    background-color: var(--wildblueyonder);
+    color: var(--gallery);
+    transition: 0.2s;
+}
+
+.moviemodal-close-button:hover {
+    scale: 125%;
+}
+
+.moviemodal-content-image {
+    object-fit: contain;
+    width: 60%;
+    height: 40%;
+    margin-top: 400px;
+}
+
+.genre-header {
+    margin-bottom: 5px;
+}
+
+.moviemodal-content-info-genres {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+}
+
+.moviemodal-content-videos {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 60%;
+}
+
+iframe {
+    margin: 15px;
+    width: 100%;
+    height: 500px;
+}
+
+.trailer-select {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+
+.trailer-select > button {
+    border: none;
+    background-color: var(--steelgray);
+    transition: 0.2s;
+}
+
+.trailer-select > button:hover {
+    border: none;
+    border-radius: 9px;
+    background-color: var(--wildblueyonder);
+}
+
+
+.moviemodal-content-info {
+    width: 80%
+}

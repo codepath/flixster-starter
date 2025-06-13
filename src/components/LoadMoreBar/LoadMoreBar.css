@@ -1,0 +1,21 @@
+.loadmore-bar {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loadmore-button {
+    height: 40px;
+    width: 160px;
+    color: var(--gallery);
+    background-color: var(--butterflybush);
+    border-radius: 9px;
+}
+
+.loadmore-button:hover {
+    background-color: var(--gallery);
+    color: var(--butterflybush);
+}
