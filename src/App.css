@@ -1,28 +1,340 @@
+@viewport {
+  width: device-width;
+  initial-scale: 1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f9d0de; /* Soft pink body */
+}
+
 .App {
   text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  color: white;
-  padding: 20px;
+header{
+  width: 100%;
+
 }
 
-@media (max-width: 600px) {
-  .movie-card {
-    width: 100%;
-  }
 
-  .search-bar {
+/*for mobile responsiveness*/
+@media (max-width: 600px) {
+  .controls {
     flex-direction: column;
     gap: 10px;
+    align-items: center;
   }
 
-  .search-bar form {
-    flex-direction: column;
+
+@media (max-width: 768px) {
+  .movie-card {
+    grid-template-columns: 1fr;  /* for phones */
   }
+}
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+/* Adjust grid columns based on screen size */
+@media only screen and (max-width: 768px) {
+  .grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet and iPad layout */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .grid-container {
+
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+  .controls input,
+  .controls button {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .movie-list {
+    /* grid-template-columns: 1fr;
+    gap: 15px; */
+    display: flex;
+    grid-template-columns: repeat(5, 1fr);    gap: 18px;
+    margin-top: 20px;
+
+  }
+
+  .movie-card img {
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+
+
+
+
+
+
+
+/* Layout basics */
+main {
+  padding: 1rem 2rem;
+  flex: 1;
+  overflow: auto;
+  position: relative;
+  background-color: pink;
+  font-family: 'Arial', sans-serif;
+  width: 100%
+
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Controls: search bar + buttons */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.controls input {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  flex: 1 1 200px;
+  max-width: 300px;
+}
+
+.controls button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.controls button:disabled {
+  background-color: black;
+  cursor: not-allowed;
+}
+
+.controls button:not(:disabled):hover {
+  background-color: #0056b3;
+}
+
+.sort-box {
+  border-radius: 10px;
+}
+
+/* Movie list layout */
+.movie-list {
+  display: flex;
+  /* grid-template-columns: repeat(6, 1fr); Lock to 6 cards per row */
+  gap: 2rem;
+  margin-top: 20px;
+  padding: 0 20px;
+  flex-grow: 1;
+  transition: all 0.3s ease;
+  flex-wrap: wrap;
+  margin-left: 85px;
+}
+
+/* Individual movie card */
+.movie-card {
+  background-color: #f48fb1;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  width: 200px;               /* fixed width */
+  height: 400px;              /* fixed height to unify layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.movie-card:hover {
+  transform: scale(1.03);
+}
+
+.movie-card img {
+  width: 100%;
+  border-radius: 10px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.movie-card h3 {
+  font-size: 1rem;
+  margin: 10px 0 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-card p {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Load More button */
+.load-more {
+  /* display: block;
+  margin: 0 auto;
+  padding: 10px 25px;
+  background-color: hotpink;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease; */
+  margin-top: 20px;
+  padding: 10px 16px;
+  font-size: 16px;
+  background-color: #ff66b2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.load-more:hover {
+  background-color: #1e7e34;
+}
+
+#Otter{
+  font-size: 50px;
+  margin-top: 0;         /* Remove top space */
+  margin-bottom: 0.5rem; /* Just a tiny gap below */
+  text-align: center;
+}
+
+
+
+
+
+/* Header styles */
+header {
+  background-color: hotpink; /* hot pink */
+  color: white;
+  color: #333;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+/* Footer styles */
+footer {
+  
+  color: #999;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-top: 1px solid #eee;
+  background-color: hotpink; /* Deep pink */
+  color: white;
+}
+
+
+.favorite-button {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.card-icons{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap:70px;
+  background-color: transparent;
+  border: none;
+}
+.eye-icon img{ 
+  border: none;
+   height: 25px;
+   width: 25px;
+   background-color: transparent;
+
+}
+button.eye-icon{
+  border: none;
+  background-color: transparent;
+
+}
+
+.layout-container {
+  /* display: flex;
+   */
+  /* soft pink for body */
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  align-items: flex-start;
+  gap: 0;
+  background-color: #ffe6f0; 
+  min-height: 100vh;
+  flex-direction: row;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #ff66b2; /* deep/dark pink */
+  color: black;
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.sidebar.closed {
+  display: none;
+}
+
+.sidebar-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+  font-size: 24px;
+  background: #ff66b2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 14px;
+  cursor: pointer;
 }

@@ -1,12 +1,22 @@
-import { useState } from 'react'
-import './App.css'
+import './App.css';
+import MovieList from './components/MovieList';
 
 const App = () => {
   return (
     <div className="App">
-    
-    </div>
-  )
-}
+      <header>
+        <h1>🎬 Flixster</h1>
+      </header>
 
-export default App
+      <main>
+        <MovieList />
+      </main>
+
+      <footer>
+        © {new Date().getFullYear()} Flixster by Jennifer 💖
+      </footer>
+    </div>
+  );
+};
+
+export default App;
