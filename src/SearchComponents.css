@@ -1,0 +1,15 @@
+.Submit{
+    padding: 5px;
+}
+.inputSpace{
+    height: 2em;
+    background-color: #282c34;
+    color: white;
+}
+.inputSpace placeholder{
+    color: white;
+}
+.Submit button{
+    height: 1.6em;
+    border-radius: 7px;
+}

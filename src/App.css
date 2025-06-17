@@ -1,7 +1,7 @@
 .App {
   text-align: center;
+  margin: 0;
 }
-
 .App-header {
   background-color: #282c34;
   display: flex;
@@ -11,7 +11,27 @@
   color: white;
   padding: 20px;
 }
+.Nav{
+  position: fixed;
+  height: 100%;
+  z-index: 1000;
+  width: 200px;
+  background-color: aquamarine;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sidebarContainer{
+  list-style: none;
+  text-decoration: none;
+  padding: 20px;
 
+}
+.sidebarContainer li{
+  text-decoration: none;
+  font-size: 30px;
+}
 @media (max-width: 600px) {
   .movie-card {
     width: 100%;
