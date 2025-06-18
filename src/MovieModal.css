@@ -1,0 +1,246 @@
+/* MODAL OVERLAY */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+/* MAIN MODAL */
+.modal-content {
+
+  position: relative;
+  height: 85vh;
+  width: 100%;
+  max-width: 800px;
+  max-height: 100vh;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+
+  /* netflix-type popup animation */
+  animation: modalFadeIn 1s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.2s;
+}
+
+.modal-close:hover {
+  background-color: rgba(250, 82, 82, 0.8);
+}
+
+.modal-backdrop {
+  height: 40%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.modal-backdrop-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(26, 26, 26, 0.2), rgba(26, 26, 26, 1));
+}
+
+.modal-details {
+  padding: 2rem;
+  overflow-y: auto;
+  height: 60%;
+  /* z-index: 10000000; */
+}
+
+.modal-title {
+  font-size: 2.4rem;
+  margin-bottom: 1.5rem;
+  color: #fa5252;
+}
+
+.modal-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 6rem;
+}
+
+.modal-info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.rating
+{
+    grid-column: 2/3;
+}
+
+.info-label {
+  font-size: 1.4rem;
+  color: #aaa;
+  margin-bottom: 0.5rem;
+}
+
+.info-value {
+  font-size: 1.6rem;
+  color: white;
+}
+
+.modal-vote {
+  background-color: #fa5252;
+  color: black;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.4rem;
+  font-weight: bold;
+  margin-right: 0.8rem;
+}
+
+.modal-vote-count {
+  color: #aaa;
+  font-size: 1.4rem;
+}
+
+.modal-overview h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #fa5252;
+}
+
+.modal-overview p {
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.modal-loading, .modal-error {
+  padding: 4rem;
+  text-align: center;
+  color: white;
+}
+
+.modal-error {
+  color: #fa5252;
+}
+
+
+.trailer-thumbnail, .trailer-player
+{
+    position: relative;
+}
+
+.modal-trailer
+{
+    width: 50rem;
+    height: 40rem;
+    margin: 0 auto;
+    /* border: 0.1rem solid #fa5252; */
+}
+
+.trailer-frame
+{
+    border: 1rem solid #fa5252;
+}
+
+.close-button{
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background-color: #282c34;
+    padding : 0.5rem 1rem;
+    border-radius: 6rem;
+
+    border: none;
+    color: #fa5252;
+    cursor: pointer;
+    font-size: 1.6rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease
+    color 0.3s ease;
+}
+
+.play-button svg:hover
+{
+    /* background-color: #; */
+    background-color: rgba(250, 82, 82, 0.5);
+    border-radius: 67rem;
+}
+
+
+
+.play-button
+{
+    height: 5rem;
+    width: 5rem;
+    position: absolute;
+    top: 40%;
+    left: 48%;
+    z-index: 100000;
+    background-color: rgba(250, 82, 82, 0.2);
+    border-radius: 67rem;
+    cursor: pointer;
+}
+
+/* .favorite-button svg,
+.watched-button svg {
+  transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+.play-button.active {
+  background-color: rgba(250, 82, 82, 0.2);
+} */
+
+
+
+@media (max-width: 60rem) {
+  .modal-content {
+    max-height: 95vh;
+  }
+
+  .modal-backdrop {
+    height: 18rem;
+  }
+
+  .modal-info {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-title {
+    font-size: 2rem;
+  }
+}

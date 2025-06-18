@@ -1,14 +1,25 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  font-family: 'Rubik', sans-serif;
+  background-color: #212529;
+
 }
+
+
+*
+{
+  /* color: rgb(229, 9, 20); */
+  color: #fa5252;
+  font-size: 1.6rem;
+  box-sizing: border-box;
+}
+
 
 button {
   background-color: #282c34;
-  color: white;
+  color: #fa5252;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
@@ -16,4 +27,9 @@ button {
 button:hover {
   background-color: #777;
   color: white;
+}
+
+html
+{
+  font-size: 62.5%;
 }
