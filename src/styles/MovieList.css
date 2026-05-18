@@ -1,0 +1,20 @@
+.MovieList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    padding: 5%;
+}
+
+.no-movies-splash {
+    color: gray;
+    margin: auto;
+}
+
+.splash-text {
+    font-size: 2vw;
+}
+
+.splash-icon {
+    font-size: 30vw;
+}

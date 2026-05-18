@@ -1,0 +1,13 @@
+.Sort {
+    border-radius: 20px;
+    background-color: gray;
+    color: aliceblue;
+
+    margin: 1vw;
+    padding: 0.5vw;
+}
+
+.Sort:hover {
+    cursor: pointer;
+    background-color: rgb(144, 144, 144);
+}

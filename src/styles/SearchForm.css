@@ -1,0 +1,31 @@
+.SearchForm {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 1vh 5vw;
+    text-align: center;
+}
+
+.hideSearchForm {
+    display: none;
+}
+
+.SearchBar {
+    width: 30vw;
+}
+
+.searchBtn {
+    margin: 0 1vw;
+    
+    background-color: rgb(88, 130, 244);
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.searchBtn:hover {
+    cursor: pointer;
+    background-color: rgb(60, 108, 239);
+
+}

@@ -1,0 +1,12 @@
+.Close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.Close:hover, .Close:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
