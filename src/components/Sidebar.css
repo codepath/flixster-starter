@@ -1,0 +1,28 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  background-color: #10254C;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 15vw;
+  justify-content: center;
+}
+
+.sidebar ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.sidebar button {
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.sidebar button:hover {
+  color: #8AAAE5;
+  background-color: inherit;
+}
