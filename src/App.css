@@ -3,26 +3,183 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #031927;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
   color: white;
-  padding: 20px;
+  padding-top: 5px;
+  font-size: large;
+
+  .sortByButton {
+    background-color:rgb(191, 191, 191);
+    border-radius: 7px;
+    width: 70px;
+    padding: 1px;
+    border: none;
+  }
 }
 
-@media (max-width: 600px) {
-  .movie-card {
-    width: 100%;
+.banner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 10px;
+  background-color: #031927;
+  /* background: linear-gradient(to right, #8B786D, #D5CFC6); */
+  font-family: Georgia, Times, 'Times New Roman', serif;
+
+  .searchBar {
+    border-radius: 7px;
+    border: none;
+    padding: 5px;
+    background-color: #dfdfdf;
+    font-family:Georgia, Times, 'Times New Roman', serif;
+  }
+  .Submit {
+    border-radius: 7px;
+    padding: 5px;
+    font-size: small;
+    color: black;
+    font-family: Georgia, Times, 'Times New Roman', serif;
+    background-color: #dfdfdf;
+  }
+  .Clear {
+    border-radius: 7px;
+    font-size: small;
+    color: black;
+    font-family: Georgia, Times, 'Times New Roman', serif;
+    background-color: #dfdfdf;
   }
 
-  .search-bar {
+  .sortByButton {
+    background-color: #dfdfdf;
+    color: black;
+    border-radius: 7px;
+    font-family: Georgia, Times, 'Times New Roman', serif;
+    width: 90px;
+    padding: 4px;
+    border: none;
+  }
+}
+
+.buttons{
+  display: flex;
+  gap: 10px;
+  }
+
+@media (max-width: 600px) {
+  .App-MovieCard {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .banner {
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
     gap: 10px;
   }
-
-  .search-bar form {
+  .App-MovieCard {
+    display: flex;
     flex-direction: column;
   }
+}
+
+.body {
+    background: linear-gradient(to top, #031927 50%, rgba(51, 51, 51, 0)) no-repeat;
+
+}
+.App-MovieCard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding-top: 20px;
+
+  .App-MovieContainer {
+    display: flex;
+    border-radius: 5px;
+    font-size: x-small;
+    width: 200px;
+    background-color: #EBF5EE;
+    box-shadow: 0px 5px 5px rgba(36, 36, 36, 0.5);
+    transition: all 0.3s ease;
+  }
+  .App-MovieContainer:hover {
+    box-shadow: 0px 0px 20px rgba(36, 36, 36, 0.5);
+    cursor: pointer;
+    transform: scale(1.03);
+  }
+  .voteAverage {
+    font-size: small;
+    background-color:#031927;
+    color: white;
+    margin-right: 50px;
+    margin-left: 50px;
+    border-radius: 5px;
+  }
+}
+
+.likeButton {
+  background-color: transparent;
+  border: none;
+}
+.likeButton:hover {
+  cursor: pointer;
+  background-color: transparent;
+  transform: scale(1.2);
+}
+
+.watchedButton {
+  background-color: transparent;
+  border: none;
+}
+.watchedButton:hover {
+  cursor: pointer;
+  background-color: transparent;
+  transform: scale(1.2);
+}
+
+.loadButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  background-color: #031927;
+
+  button {
+    padding: 8px;
+    background-color: #EBF5EE;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+}
+
+.favoriteButton {
+  background: transparent;
+  border: none;
+}
+
+.footer {
+  background-color: #031927;
+  margin-bottom: 0;
+  bottom: 0;
+  color: white;
+  padding: 5px;
+}
+img {
+  width: 200px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
